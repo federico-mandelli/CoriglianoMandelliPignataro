@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage{acronym}
+\usepackage{enumitem}
+\usepackage{readarray}
+\usepackage{pgffor}
+\usepackage{tikz}
+
+\def\fixcheck{%
+    \def\tikzifinpicture##1##2{##2}%
+}%
+
+%Import the settings
+\input{Settings}
+
+\begin{document}
+
+%Index
+\tableofcontents{}
+\clearpage
+
+%Introduction
+\section{Introduction}
+\input{Introduction}
+
+% General description about the system
+\section{Overall Description}
+\input{OverallDescription}
+
+%Here we include more details on all aspects in Section 2 if they
+%can be useful for the development team.
+\section{Specific Requirements}
+\input{SpecificRequirements}
+
+\section{Formal Analysis Using Alloy}
+\input{Alloy}
+
+\section{Effort Spent}
+\input{Effort}
+
+\end{document}

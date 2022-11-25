@@ -1,0 +1,60 @@
+\usepackage[a4paper]{geometry}
+\usepackage[T1]{fontenc} % Extends the character set
+\usepackage{fancyhdr} % Customize page layout
+\usepackage{nomencl} % Nomenclature support
+\usepackage[export]{adjustbox} % Elements alignment
+\usepackage{graphicx} % Allows to manage images
+\usepackage[sc]{mathpazo} % Math fonts
+\usepackage{euler} % AMS Euler
+\usepackage[detect-all]{siunitx} % Units system
+\usepackage[font={footnotesize}]{caption} % Custumise captions in floating environments
+\usepackage{multicol} % Enables multiple columns
+\usepackage{prettyref} % Allows to specify the way in which a reference is typeset
+\usepackage{pdfpages} % Used to include PDFs of more than one page
+\usepackage{xargs} % Use more than one optional parameter
+\usepackage{hyperref} % Hyperlinks support
+\usepackage{acronym} % Used in the nomenclature
+\usepackage{tabularx} % Provides tables
+\usepackage{longtable} % Tables spanning multiple pages
+\usepackage[colorinlistoftodos]{todonotes} % TODO notes
+\usepackage{xcolor}
+\usepackage{wrapfig}
+\usepackage[most]{tcolorbox}
+\usepackage{titlesec}
+\usepackage{multirow}
+\usepackage{bigdelim}
+
+\geometry{lmargin=2cm,rmargin=2cm,tmargin=2cm,marginparwidth=2cm}
+\renewcommand{\headrule}{\hbox to\headwidth{\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\leaders\hrule height \headrulewidth\hfill}}
+\hypersetup{colorlinks=true, linkcolor=blue ,linktoc=page,citecolor=black}
+\pagestyle{fancy}
+\setcounter{secnumdepth}{3} % Set sections number depth
+\setcounter{tocdepth}{3} % Table of contents depth
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+%Set the footer
+\fancyfoot{}
+\fancyfoot[L]{\fontsize{9}{11} \selectfont RASD Project}
+\fancyfoot[R]{\fontsize{9}{11} \selectfont \thepage}
+
+%Set the top layout
+\fancyhead{} % Clear all header fields
+\pagestyle{fancyplain} % Defines a new header for all pages
+%\fancyheadoffset[]{0.2pt}
+\lhead{
+    \raisebox{-0.35cm}{
+        \includegraphics[height=1.2cm,keepaspectratio]{polimi-logo.png}
+    }
+}
+
+\tikzset{
+    ->, % makes the edges directed
+    node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+    every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+}
+
+\rhead{\rule[-2ex]{0pt}{2ex}\fontsize{9}{11} \selectfont Politecnico di Milano}
+
+\setlength{\headheight}{36.18459pt}
