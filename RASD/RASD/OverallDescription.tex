@@ -1,12 +1,4 @@
 \subsection{Product perspective}
-Domande utili per UML:
-\begin{enumerate}
-      \item C'è una relazione 1:1 tra CPO e CPMS oppure un CPO è una compagnia che gestisce tante stazioni di ricarica?
-            \\ Per ogni CPO c'è un CPMS che amministra PIÙ stazioni di ricarica
-      \item Mi immagino il CPMS come una periferica che ha ogni stazione a disposizione, l'UML mostra la struttura dati / funzionale del sistema eMSP, quindi non ha la facoltà di aggiornare attivamente i componenti come CPMS e socket. Vogliamo includere un'interfaccia che permetta a questi componenti di fare una richiesta al server per aggiornare i dati?\\
-            Per quanto riguarda l'utilizzare un'altra interfaccia pensavo di inserire un'interfaccia che permettesse di interfacciarsi con il CPMS e con i vari sockets del modello centralizzato. In questo modo non si intaccherebbe l'interfaccia utente e ci sarebbe modo di avere un "filo" di ragionamento coerente con il modello e con la rappresentazione fisica.
-      \item Il pattern più comodo per il sistema sarebbe partire sempre da una richiesta del client e poi rispondere. Mi chiedo quindi se è possibile seguire questo profilo in tutto il progetto. Per il calendario pensavo che il client (leggermente fat) potesse chiedere ogni tot al server se sarebbe un buon momento per fare rifornimento ed il server risponde.
-\end{enumerate}
 \begin{figure}[h!]
       \begin{center}
             \includegraphics[keepaspectratio, width=16cm]{UML.png}
