@@ -62,19 +62,30 @@
 \subsection{Product functions}
 In the following subsections the functions of each subsystem are described.
 
-\todo[inline]{Secondo me questi dovrebbero rispecchiare i metodi delle interfacce che si vedono nell'UML.}
+\todo[inline]{Secondo me questi dovrebbero rispecchiare i metodi delle interfacce che si vedono nell'UML. Meglio se sono atomici o aggregati? es: staccare registrazione e login o avere un paragrafo solo per l'identificazione?}
 
 \subsubsection{\ac{eMSP}}
 \paragraph{Registering to the \ac{eMSP} as customer}
+In order to have accounts on the platform a registration for the customers is required. They have to supply Name, Surname, e-Mail, Password and a Payment Method. 
+
+Optionally, the customer can provide also the model of the car in order to have a better experience with the application, since the suggestions will be more specific and precise.
+\todo[inline]{Specify what payment methods they have to provide}
+
 \paragraph{Logging to the \ac{eMSP} as customer}
+The user, once the application is downloaded for the first time, should provide the e-Mail and Password (optionally also an OTP sent to the e-Mail if it is setted in the application). The OTP could be an important setting since we are storing our payment information.
+
 \paragraph{Book a charge}
+The most significant function of our application is booking a charge. A customer can choose from a list of charging stations. Once the customer sees its informations (like location, cost of 1 $Ampere \times Hour$, availability). 
 
 \paragraph{Cancel a charge}
+After a charge has been booked, the customer can cancel it through the application. \acp{CPO} can decide whether to charge a fee and at what conditions.
 
 \paragraph{Start a charge}
-\todo[inline]{What about this point? Get information through the app about the starting of the charging process?}
+
+\todo[inline]{Get only informations through the app about the starting of the charging process? Or actively do it on the app? I think this is up to the charging station with his framework. CS maybe communicates to the CSPM that his socket is active (charging something). Then the eMSP polls the state and can say that "the socket you booked is now active"} 
 
 \paragraph{Get nearest station}
+The user should be able to spot the nearest station from the application.
 
 \paragraph{Get cheapest station nearby}
 
