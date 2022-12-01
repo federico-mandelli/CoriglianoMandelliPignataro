@@ -28,6 +28,7 @@
             Jessica, after choosing a station, decides to book it, the station location and booked time frame are displayed
             and she is asked to confirm the booking via a popup. Jessica then receives a confirmation email with the details
             of the charge (Location, time frame, socket id) and a confirmation pin to insert at the station.
+      \item User cancels a charge:\\
       \item User charges the car:\\
             Mary, after booking a charge, arrives at the station, she parks her car at the designed socket
             and plugs her car in, Mary then inserts the confirmation pin in the socket to start the charge.
@@ -62,11 +63,13 @@
 \subsection{Product functions}
 In the following subsections the functions of each subsystem are described.
 
-\todo[inline]{Secondo me questi dovrebbero rispecchiare i metodi delle interfacce che si vedono nell'UML. Meglio se sono atomici o aggregati? es: staccare registrazione e login o avere un paragrafo solo per l'identificazione?}
+\todo[inline]{
+      Secondo me questi dovrebbero rispecchiare i metodi delle interfacce che si vedono nell'UML.
+      Meglio se sono atomici o aggregati? es: staccare registrazione e login o avere un paragrafo solo per l'identificazione?}
 
 \subsubsection{\ac{eMSP}}
 \paragraph{Registering to the \ac{eMSP} as customer}
-In order to have accounts on the platform a registration for the customers is required. They have to supply Name, Surname, e-Mail, Password and a Payment Method. 
+In order to have accounts on the platform a registration for the customers is required. They have to supply Name, Surname, e-Mail, Password and a Payment Method.
 
 Optionally, the customer can provide also the model of the car in order to have a better experience with the application, since the suggestions will be more specific and precise.
 \todo[inline]{Specify what payment methods they have to provide}
@@ -75,14 +78,13 @@ Optionally, the customer can provide also the model of the car in order to have 
 The user, once the application is downloaded for the first time, should provide the e-Mail and Password (optionally also an OTP sent to the e-Mail if it is setted in the application). The OTP could be an important setting since we are storing our payment information.
 
 \paragraph{Book a charge}
-The most significant function of our application is booking a charge. A customer can choose from a list of charging stations. Once the customer sees its informations (like location, cost of 1 $Ampere \times Hour$, availability). 
+The most significant function of our application is booking a charge. A customer can choose from a list of charging stations. Once the customer sees its informations (like location, cost of 1 $Ampere \times Hour$, availability)
 
-\paragraph{Cancel a charge}
+\paragraph{Cancel a book}
 After a charge has been booked, the customer can cancel it through the application. \acp{CPO} can decide whether to charge a fee and at what conditions.
 
-\paragraph{Start a charge}
-
-\todo[inline]{Get only informations through the app about the starting of the charging process? Or actively do it on the app? I think this is up to the charging station with his framework. CS maybe communicates to the CSPM that his socket is active (charging something). Then the eMSP polls the state and can say that "the socket you booked is now active"} 
+\paragraph{View the state of a charge}
+\todo[inline]{CS maybe communicates to the CSPM that his socket is active (charging something). Then the eMSP polls the state and can say that "the socket you booked is now active"}
 
 \paragraph{Get nearest station}
 The user should be able to spot the nearest station from the application.
@@ -111,8 +113,7 @@ CPOs, and the availability of charging slots at the identified stations
 \paragraph{Choose to make the \ac{CPMS} choose the energy source automatically}
 \paragraph{Providing charging station informations for utilizators}
 \paragraph{Providing charging station informations for maintainers}
-\paragraph{Acquire informations about \acp{DSO}}
-price
+\paragraph{Acquire informations about \acp{DSO} price}
 
 
 
@@ -123,8 +124,12 @@ price
 \begin{enumerate}[label=DA\arabic*]
       \item Users insert genuine data in the forms
       \item Users(Including CPOs) do not use the system with malicious intent
-      \item Forse cancellare i booking
       \item All the electric vehicles can be charged by all the stations (no incompatibility)
-      \item All the user have an active connection always available while using the service
+      \item All the user have an active internet and GPS connection always available while using the service
 \end{enumerate}
+\subsubsection{Constraint}
+\begin{enumerate}[label=C\arabic*]
+      \item If a User wants to change the time slot of a charge he is required to cancel and re-book the charge
+\end{enumerate}
+
 \clearpage

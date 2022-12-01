@@ -5,13 +5,22 @@
 % \acl{} Stampa solo l'acronimo completo.
 
 % Introduction
+\todo[inline]{
+    - Aggiungere nei world phenomena il ChargingType\\
+    - Inserire password nell'UML nella classe utente\\
+    - Nell'UML al posto di "best" in strategia mettere "cheapest"\\
+    - Inserire "car type" all'interno dell'attore auto\\
+    - Controlla che gli Scenarios siano coerenti con l'UML\\
+    - Aggiorna Requirements con spiegazione di EnergySourceStrategy\\
+}
+
 \subsection{Purpose}
 Paragrafetto che spiega il progetto
 
 %\input{Introduzione}
 \begin{enumerate}[label=G\arabic*]
     \item The \ac{eMSP} shall help the user to select the station; \label{goal:eMSP-helps-selecting} [\ref{world:people-charge-cars},\ref{world:people-use-calendars}] [\ref{shared:eMSP-suggests-charge},\ref{shared:user-asks-suggestions}]
-    \item The \ac{eMSP} shall allow the user to book a charge; \label{goal:eMSP-booking-charge} [\ref{world:people-charge-cars},\ref{world:people-use-calendars}] [\ref{shared:user-books-charge}]
+    \item The \ac{eMSP} shall allow the user to book/cancel a charge; \label{goal:eMSP-booking-charge} [\ref{world:people-charge-cars},\ref{world:people-use-calendars}] [\ref{shared:user-books-charge}]
     \item The \ac{eMSP} shall allow the user to perform a charge; \label{goal:eMSP-allow-charge} [\ref{world:people-charge-cars},\ref{world:people-use-calendars},\ref{world:people-pay-service}] [\ref{shared:eMSP-notifies-charging-finished},\ref{shared:user-pays-service}]
     \item \acp{CPMS} shall handle the car charging cycles; \label{goal:CPMS-handles-charge} [\ref{world:people-charge-cars},\ref{world:CPO-own-batteries},\ref{world:CPO-decide-energy}] [\ref{shared:CPO-energy-through-CPMS}]
     \item \acp{CPMS} shall manage the car charging stations; \label{goal:CPMS-manage-station} [\ref{world:DSO-supply-energy},\ref{world:CPO-own-batteries},\ref{world:CPO-decide-energy}] [\ref{shared:CPMS-info-from-DSO}, \ref{shared:CPO-energy-through-CPMS}]
