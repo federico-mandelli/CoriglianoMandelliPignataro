@@ -67,54 +67,35 @@ It is assumed that in S4,S5,S6,S7 the user is already logged in the system (S2)
 \subsection{Product functions}
 In the following subsections the functions of each subsystem are described.
 
-\todo[inline]{
-      Secondo me questi dovrebbero rispecchiare i metodi delle interfacce che si vedono nell'UML.
-      Meglio se sono atomici o aggregati? es: staccare registrazione e login o avere un paragrafo solo per l'identificazione?}
-
 \subsubsection{\ac{eMSP}}
-\paragraph{Registering to the \ac{eMSP} as customer}
-In order to have accounts on the platform a registration for the customers is required. They have to supply Name, Surname, e-Mail, Password and a Payment Method.
+\paragraph{Accessing the \ac{eMSP}}
+In order to have a personalized experience the system needs accounts. So a registration and login process is present. When registering it's required to give the system Name, Surname, e-Mail, Password and a Payment Method. For the login, an authentication with e-Mail and password is required.
 
-Optionally, the customer can provide also the model of the car in order to have a better experience with the application, since the suggestions will be more specific and precise.
-\todo[inline]{Specify what payment methods they have to provide}
+\paragraph{Performing a charge}
+The principal feature of the system is the ability to help the people to plan a charge for their cars efficiently. For this, people can see the availability of charging stations and choose where and in which time slot to charge the vehicle.
+Also, if a user changes his mind, there is the possibility to delete a previously booked charge with no charge.
+When the user arrives in the booked socket of the charging station, he has to insert the pin that the application displays in order to let the charging process begin.
+Always through the application, the user is able to pay for the service thanks to the previously inserted payment method.
+The system also notifies the user when the charging process is completed.
 
-\paragraph{Logging to the \ac{eMSP} as customer}
-The user, once the application is downloaded for the first time, should provide the e-Mail and Password (optionally also an OTP sent to the e-Mail if it is setted in the application). The OTP could be an important setting since we are storing our payment information.
+\paragraph{Retrieving informations about charging stations}
+Whenever a user selects a charging station, various informations are shown in order to help the user to make a decision on which station to choose. Informations reguard location, price, a parameter on how green the energy provided is, special offers and availability of sockets in the station.
 
-\paragraph{Book a charge}
-The most significant function of our application is booking a charge. A customer can choose from a list of charging stations. Once the customer sees its informations (like location, cost of 1 $Ampere \times Hour$, availability)
+\paragraph{Get suggestions about the recharge of the vehicle}
+An additional feature the system offers reguards a proactive suggestion about the recharge of the vehicle. Thanks to the connection of the application with the car and with the electronic calendar, the system is able to suggest to the user where and when to charge the vehicle in order to satisfy certain parameters chosen by the user. These may involve minimizing the cost of the recharge, minimizing the environment impact of our recharge, minimizing the distance from the scheduled appointments.
 
-\paragraph{Cancel a book}
-After a charge has been booked, the customer can cancel it through the application. \acp{CPO} can decide whether to charge a fee and at what conditions.
-
-\paragraph{View the state of a charge}
-\todo[inline]{CS maybe communicates to the CSPM that his socket is active (charging something). Then the eMSP polls the state and can say that "the socket you booked is now active"}
-
-\paragraph{Get nearest station}
-The user should be able to spot the nearest station from the application.
-
-\paragraph{Get cheapest station nearby}
-
-\paragraph{Get top K stations nearby in base of characteristics}
-\paragraph{Get infos about parcticular charging station}
-number of charging sockets available, their type such as slow/fast/rapid, their cost, and, if all sockets of a certain type are occupied, the estimated amount of time until the first socket of that type is freed
-
-\paragraph{Notify the user about the finish of the charge}
-
-\paragraph{Pay for the obtained charge}
-
-\paragraph{proactively suggest the user to go and charge the vehicle}
-depending on the status of the
-battery, the schedule of the user (this implies that the eMSP application can get access to the
-calendar of the user and his/her navigation system), the special offers made available by some
-CPOs, and the availability of charging slots at the identified stations
 
 \subsubsection{\ac{CPMS}}
-\paragraph{Registering to the \ac{CPMS} as \ac{CPO}}
-\paragraph{Logging to the \ac{CPMS} as \ac{CPO}}
-\paragraph{Choose manually to use the batteries}
-\paragraph{Choose manually to use the \acp{DSO} energy}
-\paragraph{Choose to make the \ac{CPMS} choose the energy source automatically}
+\paragraph{Accessing the \ac{CPMS} as \ac{CPO}}
+
+
+\paragraph{Manage the energy source for a charging station}
+% \paragraph{Choose manually to use the batteries}
+% \paragraph{Choose manually to use the \acp{DSO} energy}
+% \paragraph{Choose to make the \ac{CPMS} choose the energy source automatically}
+
+
+
 \paragraph{Providing charging station informations for utilizators}
 \paragraph{Providing charging station informations for maintainers}
 \paragraph{Acquire informations about \acp{DSO} price}
