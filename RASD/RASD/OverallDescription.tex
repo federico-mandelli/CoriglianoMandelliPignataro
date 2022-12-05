@@ -33,18 +33,18 @@ It is assumed that in S4,S5,S6,S7 the user is already logged in the system (S2)
             Luke, after booking a charge wants to cancel it, he opens the app, select the booking he wants to cancel,
             and press the Cancel button, a popup appear asking confirmation, if it is pressed the booking is removed,
             the station returns available and a confirmation email is sent to the user; otherwise the booking is still valid.
-      \item User charges the car:\\
-            Mary, after booking a charge, arrives at the station, she parks her car at the designed socket
-            and plugs her car in, Mary then inserts the confirmation pin in the socket to start the charge.
+      \item User charges the vehicle:\\
+            Mary, after booking a charge, arrives at the station, she parks her vehicle at the designed socket
+            and plugs her vehicle in, Mary then inserts the confirmation pin in the socket to start the charge.
             The socket displays on a monitor the status and the finishing time of the charge.
             Once the charge is finished Mary receives a notification of finished charge,
-            she gets her car and complete the charge.
+            she gets her vehicle and complete the charge.
       \item User gets charging suggestion based on his calendar:\\
             Josh is a very busy man, is also an avid google calendar user,
             setting up every event with correct time and location.
-            The service accessing his calendar finds the closest available charging station to each car movement,
-            it connects to the car while driving and stores the last charge level and once the battery is below fifty percent Josh gets notified
-            about the possibility to charge his car in an available time-slot and near his movement.
+            The service accessing his calendar finds the closest available charging station to each vehicle movement,
+            it connects to the vehicle while driving and stores the last charge level and once the battery is below fifty percent Josh gets notified
+            about the possibility to charge his vehicle in an available time-slot and near his movement.
             Josh liking the idea open the app and confirms the booking.
       \item Cpo subscribes to the system:\\
             Judy, the CEO of a famous CPO, wants to subscribe it to EMAll to improve sales and to access the CPMS feature.
@@ -72,7 +72,7 @@ In the following subsections the functions of each subsystem are described.
 In order to have a personalized experience the system needs accounts. So a registration and login process is present. When registering it's required to give the system Name, Surname, e-Mail, Password and a Payment Method. For the login, an authentication with e-Mail and password is required.
 
 \paragraph{Performing a charge}
-The principal feature of the system is the ability to help the people to plan a charge for their cars efficiently. For this, people can see the availability of charging stations and choose where and in which time slot to charge the vehicle.
+The principal feature of the system is the ability to help the people to plan a charge for their vehicles efficiently. For this, people can see the availability of charging stations and choose where and in which time slot to charge the vehicle.
 Also, if a user changes his mind, there is the possibility to delete a previously booked charge with no charge.
 When the user arrives in the booked socket of the charging station, he has to insert the pin that the application displays in order to let the charging process begin.
 Always through the application, the user is able to pay for the service thanks to the previously inserted payment method.
@@ -82,7 +82,7 @@ The system also notifies the user when the charging process is completed.
 Whenever a user selects a charging station, various informations are shown in order to help the user to make a decision on which station to choose. Informations reguard location, price, a parameter on how green the energy provided is, special offers and availability of sockets in the station.
 
 \paragraph{Get suggestions about the recharge of the vehicle}
-An additional feature the system offers reguards a proactive suggestion about the recharge of the vehicle. Thanks to the connection of the application with the car and with the electronic calendar, the system is able to suggest to the user where and when to charge the vehicle in order to satisfy certain parameters chosen by the user. These may involve minimizing the cost of the recharge, minimizing the environment impact of our recharge, minimizing the distance from the scheduled appointments.
+An additional feature the system offers reguards a proactive suggestion about the recharge of the vehicle. Thanks to the connection of the application with the vehicle and with the electronic calendar, the system is able to suggest to the user where and when to charge the vehicle in order to satisfy certain parameters chosen by the user. These may involve minimizing the cost of the recharge, minimizing the environment impact of our recharge, minimizing the distance from the scheduled appointments.
 
 
 \subsubsection{\ac{CPMS}}

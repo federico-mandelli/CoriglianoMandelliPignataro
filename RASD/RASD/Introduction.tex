@@ -7,9 +7,7 @@
 % Introduction
 \todo[inline]{
     - Aggiungere nei world phenomena il ChargingType\\
-    - Inserire password nell'UML nella classe utente\\
-    - Nell'UML al posto di "best" in strategia mettere "cheapest"\\
-    - Inserire "car type" all'interno dell'attore auto\\
+    - Inserire "vehicle type" all'interno dell'attore auto (Ho messo consumption per Km perchè altrimenti avremmo dovuto definire una sorta di lista di tipi di macchine)\\
     - Controlla che gli Scenarios siano coerenti con l'UML\\
     - Aggiorna Requirements con spiegazione di EnergySourceStrategy\\
     - Update Scenarios with "Giochini di Emilio"
@@ -17,15 +15,23 @@
 }
 
 \subsection{Purpose}
-Paragrafetto che spiega il progetto
-
+Due to the recently increase of effort in the battle against the climate change, electric vehicles are slowly becoming the new technology for private transport that the people use everyday.
+To sustain this type of strategy, we need to develop a clever and capillary charging system.\\
+\ac{eMall} is an \ac{eMSP} that aims to help the final user dealing with the charging need.
+To do so it will inform the user about the nearby charging stations, their cost and any special offer that they have.
+Also, it will allow the user to book/cancel/pay a charge and will notify the user when the charging process is terminated.
+With the integration of the user's calendar, the system will also suggest the user the best moment in the schedule to charge the vehicle.
+To have a fully integrated system, all the \acp{CPO} will have a technological support called \ac{CPMS} to interface the service with the physical charging stations and to manage all the energy sources like batteries and \acp{DSO}.
+Such \acp{CPMS} will be in charge of deciding the energy source and, in case of batteries in a charging station it will also manage their charging.
+These decisions will affect the energy prices, so it is important that a system like this allows also the \ac{CPO} maintainers to decide it.
+\subsubsection{Goals}
 %\input{Introduzione}
 \begin{enumerate}[label=G\arabic*]
-    \item The \ac{eMSP} shall help the user to select the station; \label{goal:eMSP-helps-selecting} [\ref{world:people-charge-cars},\ref{world:people-use-calendars}] [\ref{shared:eMSP-suggests-charge},\ref{shared:user-asks-suggestions}]
-    \item The \ac{eMSP} shall allow the user to book/cancel a charge; \label{goal:eMSP-booking-charge} [\ref{world:people-charge-cars},\ref{world:people-use-calendars}] [\ref{shared:user-books-charge}]
-    \item The \ac{eMSP} shall allow the user to perform a charge; \label{goal:eMSP-allow-charge} [\ref{world:people-charge-cars},\ref{world:people-use-calendars},\ref{world:people-pay-service}] [\ref{shared:eMSP-notifies-charging-finished},\ref{shared:user-pays-service}]
-    \item \acp{CPMS} shall handle the car charging cycles; \label{goal:CPMS-handles-charge} [\ref{world:people-charge-cars},\ref{world:CPO-own-batteries},\ref{world:CPO-decide-energy}] [\ref{shared:CPO-energy-through-CPMS}]
-    \item \acp{CPMS} shall manage the car charging stations; \label{goal:CPMS-manage-station} [\ref{world:DSO-supply-energy},\ref{world:CPO-own-batteries},\ref{world:CPO-decide-energy}] [\ref{shared:CPMS-info-from-DSO}, \ref{shared:CPO-energy-through-CPMS}]
+    \item The \ac{eMSP} shall help the user to select the station; \label{goal:eMSP-helps-selecting} [\ref{world:people-charge-vehicles},\ref{world:people-use-calendars}] [\ref{shared:eMSP-suggests-charge},\ref{shared:user-asks-suggestions}]
+    \item The \ac{eMSP} shall allow the user to book/cancel a charge; \label{goal:eMSP-booking-charge} [\ref{world:people-charge-vehicles},\ref{world:people-use-calendars}] [\ref{shared:user-books-charge}]
+    \item The \ac{eMSP} shall allow the user to perform a charge; \label{goal:eMSP-allow-charge} [\ref{world:people-charge-vehicles},\ref{world:people-use-calendars},\ref{world:people-pay-service}] [\ref{shared:eMSP-notifies-charging-finished},\ref{shared:user-pays-service}]
+    \item \acp{CPMS} shall handle the vehicle charging cycles; \label{goal:CPMS-handles-charge} [\ref{world:people-charge-vehicles},\ref{world:CPO-own-batteries},\ref{world:CPO-decide-energy}] [\ref{shared:CPO-energy-through-CPMS}]
+    \item \acp{CPMS} shall manage the vehicle charging stations; \label{goal:CPMS-manage-station} [\ref{world:DSO-supply-energy},\ref{world:CPO-own-batteries},\ref{world:CPO-decide-energy}] [\ref{shared:CPMS-info-from-DSO}, \ref{shared:CPO-energy-through-CPMS}]
 \end{enumerate}
 
 % Subsection where we enumerate all the world and shared phenomena
@@ -33,7 +39,7 @@ Paragrafetto che spiega il progetto
 
 % world phenomena
 \begin{enumerate}[label=W\arabic*]
-    \item People charge electric cars; \label{world:people-charge-cars}
+    \item People charge electric vehicles; \label{world:people-charge-vehicles}
     \item People use web calendar; \label{world:people-use-calendars}
     \item People pay for the charging service; \label{world:people-pay-service}
     \item \acp{DSO} supply energy to \acp{CPO}; \label{world:DSO-supply-energy}
@@ -60,6 +66,7 @@ Paragrafetto che spiega il progetto
         \acro{CPO}{Charging Point Operators}
         \acro{CPMS}{Charge Point Management System}
         \acro{DSO}{Distribution System Operators}
+        \acro{eMall}{e-Mobility for All}
         \acro{API}{Application Programming Interface}
     \end{acronym}
 \end{multicols}
