@@ -26,37 +26,37 @@ Such \acp{CPMS} will be in charge of deciding the energy source and, in case of 
 These decisions will affect the energy prices, so it is important that a system like this allows also the \ac{CPO} maintainers to decide it.
 \subsubsection{Goals}
 %\input{Introduzione}
-\begin{enumerate}[label=G\arabic*]
-    \item The \ac{eMSP} shall help the user to select the station; \label{goal:eMSP-helps-selecting} [\ref{world:people-charge-vehicles},\ref{world:people-use-calendars}] [\ref{shared:eMSP-suggests-charge},\ref{shared:user-asks-suggestions}]
-    \item The \ac{eMSP} shall allow the user to book/cancel a charge; \label{goal:eMSP-booking-charge} [\ref{world:people-charge-vehicles},\ref{world:people-use-calendars}] [\ref{shared:user-books-charge}]
-    \item The \ac{eMSP} shall allow the user to perform a charge; \label{goal:eMSP-allow-charge} [\ref{world:people-charge-vehicles},\ref{world:people-use-calendars},\ref{world:people-pay-service}] [\ref{shared:eMSP-notifies-charging-finished},\ref{shared:user-pays-service}]
-    \item \acp{CPMS} shall handle the vehicle charging cycles; \label{goal:CPMS-handles-charge} [\ref{world:people-charge-vehicles},\ref{world:CPO-own-batteries},\ref{world:CPO-decide-energy}] [\ref{shared:CPO-energy-through-CPMS}]
-    \item \acp{CPMS} shall manage the vehicle charging stations; \label{goal:CPMS-manage-station} [\ref{world:DSO-supply-energy},\ref{world:CPO-own-batteries},\ref{world:CPO-decide-energy}] [\ref{shared:CPMS-info-from-DSO}, \ref{shared:CPO-energy-through-CPMS}]
+\begin{enumerate}[label=\textbf{G\arabic*}]
+    \item The \ac{eMSP} shall help the user to select the station; \label{goal:eMSP-helps-selecting}
+    \item The \ac{eMSP} shall allow the user to book/cancel a charge; \label{goal:eMSP-booking-charge}
+    \item The \ac{eMSP} shall allow the user to perform a charge; \label{goal:eMSP-allow-charge}
+    \item \acp{CPMS} shall handle the vehicle charging cycles; \label{goal:CPMS-handles-charge}
+    \item \acp{CPMS} shall manage the vehicle charging stations; \label{goal:CPMS-manage-station}
 \end{enumerate}
 
 % Subsection where we enumerate all the world and shared phenomena
 \subsection{Scope}
 
 % world phenomena
-\begin{enumerate}[label=W\arabic*]
-    \item People charge electric vehicles; \label{world:people-charge-vehicles}
-    \item People use web calendar; \label{world:people-use-calendars}
-    \item People pay for the charging service; \label{world:people-pay-service}
-    \item \acp{DSO} supply energy to \acp{CPO}; \label{world:DSO-supply-energy}
-    \item Some \acp{CPO} own batteries; \label{world:CPO-own-batteries}
-    \item \acp{CPO} decide whether to use batteries or \ac{DSO} supplied energy; \label{world:CPO-decide-energy}
+\begin{enumerate}[label=\textbf{W\arabic*}]
+    \item People charge electric vehicles; \label{world:people-charge-vehicles} [\ref{goal:eMSP-helps-selecting}, \ref{goal:eMSP-booking-charge}, \ref{goal:eMSP-allow-charge}, \ref{goal:CPMS-handles-charge}]
+    \item People use web calendar; \label{world:people-use-calendars} [\ref{goal:eMSP-helps-selecting}, \ref{goal:eMSP-booking-charge}, \ref{goal:eMSP-allow-charge}]
+    \item People pay for the charging service; \label{world:people-pay-service} [\ref{goal:eMSP-allow-charge}]
+    \item \acp{DSO} supply energy to \acp{CPO}; \label{world:DSO-supply-energy} [\ref{goal:CPMS-manage-station}]
+    \item Some \acp{CPO} own batteries; \label{world:CPO-own-batteries} [\ref{goal:CPMS-handles-charge}, \ref{goal:CPMS-manage-station}]
+    \item \acp{CPO} decide whether to use batteries or \ac{DSO} supplied energy; \label{world:CPO-decide-energy} [\ref{goal:CPMS-handles-charge}, \ref{goal:CPMS-manage-station}]
 \end{enumerate}
 % shared phenomena
-\begin{enumerate}[label=S\arabic*]
+\begin{enumerate}[label=\textbf{S\arabic*}]
     % system -> user
-    \item The \ac{eMSP} suggests the user to charge the vehicle; \label{shared:eMSP-suggests-charge}
-    \item The \ac{eMSP} notifies the user when the charging process is finished; \label{shared:eMSP-notifies-charging-finished}
-    \item \acp{CPMS} acquire information about energy prizes from \acp{DSO}; \label{shared:CPMS-info-from-DSO}
+    \item The \ac{eMSP} suggests the user to charge the vehicle; \label{shared:eMSP-suggests-charge} [\ref{goal:eMSP-helps-selecting}]
+    \item The \ac{eMSP} notifies the user when the charging process is finished; \label{shared:eMSP-notifies-charging-finished} [\ref{goal:eMSP-allow-charge}]
+    \item \acp{CPMS} acquire information about energy prizes from \acp{DSO}; \label{shared:CPMS-info-from-DSO} [\ref{goal:CPMS-manage-station}]
           % user -> system
-    \item The user books a charge using the \ac{eMSP}; \label{shared:user-books-charge}
-    \item The user asks the \ac{eMSP} for suggestions about charging station; \label{shared:user-asks-suggestions}
-    \item The user pays for the service using the \ac{eMSP}; \label{shared:user-pays-service}
-    \item \acp{CPO} gather the energy source through the \ac{CPMS}; \label{shared:CPO-energy-through-CPMS}
+    \item The user books a charge using the \ac{eMSP}; \label{shared:user-books-charge} [\ref{goal:eMSP-booking-charge}]
+    \item The user asks the \ac{eMSP} for suggestions about charging station; \label{shared:user-asks-suggestions} [\ref{goal:eMSP-helps-selecting}]
+    \item The user pays for the service using the \ac{eMSP}; \label{shared:user-pays-service} [\ref{goal:eMSP-allow-charge}]
+    \item \acp{CPO} gather the energy source through the \ac{CPMS}; \label{shared:CPO-energy-through-CPMS} [\ref{goal:CPMS-handles-charge}, \ref{goal:CPMS-manage-station}]
 \end{enumerate}
 
 \subsection{Definitions, Acronyms, Abbreviations}
