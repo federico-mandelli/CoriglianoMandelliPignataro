@@ -5,28 +5,24 @@ It is assumed that in S4,S5,S6,S7 the user is already logged in the system (S2)
 \begin{enumerate}[label=\textbf{S\arabic*}]
       \item User Signs up:\\
             Lucy, wanting to use the system, opens the app, she is prompted to login or register,
-            she chooses to register herself and inserts her personal info (email, password, birthday, payment information, );
+            she chooses to register herself and inserts her personal info (email, password, birthday, payment information);
             an email is sent with a link to confirm the activation of the account, if the link is clicked within
             the first 15 minutes the account is activated and the sign up is successful,
             otherwise it is considered failed and the process must be repeated.
       \item User Logs in:\\
             Jay, after signing up, opens the app and he is prompted to insert his email and password,
             if the given information are correct the login is successful and he obtain access to his account
-            and the service of the apps, otherwise the login is unsuccessful and it must be repeated.
+            and the services of the app, otherwise the login is unsuccessful and it must be repeated.
       \item User searches for stations:\\
             Robert, once logged in, inserts the location and the time frame to search for charging stations.
-            Once submitted a list of available charging station is displayed, the list is ordered by the distance of the station
-            from the desired location. Via a menu Robert can choose to order the station either via distance, price or charging type(super-fast,fast,normal);
-            or to display unavailable station and set the maximum distance from the chosen location.
-            Robert chooses a station obtaining more detailed information.
+            Once submitted, a list of available charging stations is displayed, the list is ordered by the distance of the station
+            from the desired location. Via a menu, Robert can choose to order the stations either via distance, price or charging type (super-fast, fast, normal); He can also set to display unavailable stations and set the maximum distance from the chosen location.
+            Robert chooses a station and obtains more detailed information.
       \item User books a charge:\\
-            Jessica, after choosing a station, decides to book it, the station location and booked time frame are displayed
-            and she is asked to confirm the booking via a popup. Jessica then receives a confirmation email with the details
+            Jessica, after choosing a station, decides to book a charge in it selecting the timeslot. Station location and booked time frame are displayed and she is asked to confirm the booking via a popup. Jessica then receives a confirmation email with the details
             of the charge (Location, time frame, socket id) and a confirmation pin to insert at the station.
       \item User cancels a charge:\\
-            Luke, after booking a charge wants to cancel it, he opens the app, select the booking he wants to cancel,
-            and press the Cancel button, a popup appear asking confirmation, if it is pressed the booking is removed,
-            the station returns available and a confirmation email is sent to the user; otherwise the booking is still valid.
+            Luke, after booking a charge, wants to cancel it. He opens the app, selects the booking he wants to cancel and presses the Cancel button. A popup appear asking confirmation: if it is pressed the booking is removed, the station returns available and a confirmation email is sent to the user; otherwise the booking is still valid.
       \item User charges the vehicle:\\
             Mary, after booking a charge, arrives at the station, she parks her vehicle at the designed socket
             and plugs her vehicle in, Mary then inserts the confirmation pin in the socket to start the charge.
@@ -72,13 +68,13 @@ In the following subsections the functions of each subsystem are described.
 
 \subsubsection{\ac{eMSP}}
 \paragraph{Accessing the \ac{eMSP}}
-In order to have a personalized experience the system needs accounts. So a registration and login process is present. When registering it's required to give the system Name, Surname, e-Mail, Password and a Payment Method. For the login, an authentication with e-Mail and password is required.
+In order to have features with the usage of personal data (like payment method) the system needs authentication. So a registration and login process is present. When registering it's required to give the system Name, Surname, birthday, e-Mail, Password and a Payment Method. For the login, an authentication with e-Mail and password is required.
 
 \paragraph{Performing a charge}
 The principal feature of the system is the ability to help the people to plan a charge for their vehicles efficiently. For this, people can see the availability of charging stations and choose where and in which time slot to charge the vehicle.
 Also, if a user changes his mind, there is the possibility to delete a previously booked charge with no charge.
 When the user arrives in the booked socket of the charging station, he has to insert the pin that the application displays in order to let the charging process begin.
-Always through the application, the user is able to pay for the service thanks to the previously inserted payment method.
+Always through the application, the user is able to pay for the service thanks to the previously setted payment method.
 The system also notifies the user when the charging process is completed.
 
 \paragraph{Retrieving informations about charging stations}
@@ -96,18 +92,6 @@ In order to manage the \ac{CPMS} an authentication with proper authorization is 
 \paragraph{Manage the energy source for a charging station}
 An authorized \ac{CPO} can manage stations choosing manually how to charge vehicles, so if he wants to use batteries or \ac{DSO}'s energy in base of their cost and environment impact. In base of these decisions, \acp{CPO} can decide the cost of a charge and special offers to increase visibility of the station in order to promote greener solutions. 
 Whenever the cost of the energy of some \ac{DSO} is parcticulary convenient the \ac{CPO} can also decide to store it in the batteries. If the \ac{CPO} wishes, the \ac{CPMS} can also work in automatic mode, so the system is able to make all the decisions written above.
- 
-
-% \paragraph{Choose manually to use the batteries}
-% \paragraph{Choose manually to use the \acp{DSO} energy}
-% \paragraph{Choose to make the \ac{CPMS} choose the energy source automatically}
-
-
-
-\paragraph{Providing charging station informations for utilizators}
-\paragraph{Providing charging station informations for maintainers}
-\paragraph{Acquire informations about \acp{DSO} price}
-
 
 
 \subsection{User characteristics}
