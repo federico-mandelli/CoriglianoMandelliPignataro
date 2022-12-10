@@ -27,6 +27,7 @@
 \subsubsection{Sequence diagrams}
 \todo[inline]{Per quanto riguarda il sistema CPMS, come si "registra" il CPO maintainer?\\Nell'UML forse conviene chiamare l'interfaccia eMSP e poi l'attore che la implementa eMall. In questo modo possiamo far sì che le charging sockets utilizzino quell'interfaccia per poter ricavare le info sulla carica quando un utente inserisce il codice.}
 Below there are some sequence diagrams to show how the basic actions should be over time.
+\todo[inline]{Correggere sequence perform a charge, c'è un sync message tra chargingSocket ed eMall "updateChargingStatus" che non restituisce controllo}
 \begin{figure}[!h]
     \begin{center}
         \includegraphics[keepaspectratio, width=16cm]{Sequence/RegisterEMall.png}
@@ -73,10 +74,19 @@ Below there are some sequence diagrams to show how the basic actions should be o
 \clearpage
 %Definition of use case diagrams, use cases and associated sequence/activity diagrams, and mapping on requirements
 \subsection{Performance requirements}
-
+The system in general needs to manage a large collection of electric car users/\acp{CPO} and it needs to supply the heaviest services (like computing the cheapest nearest stations) in a reasonable amount of time.
+Because of that the system shall guarantee a baseline load of 1000000 users/\acp{CPO} still with a response time not greater than 5 seconds. To achieve the goal, the system shall be able to decentralize all the computation as possible,
+trying to make the client responsible of the heaviest loads.
 \subsection{Design constraints}
 \subsubsection{Standards compliance}
+The system must meet the following standards:
+\begin{itemize}
+    \item \textbf{GPDR law}: The system must be compliant with the current GDPR law about users privacy;
+    \item \textbf{Android and iOS}: The system must be compatible with the current versions and reasonably still used previous ones of Android and iOS.
+\end{itemize}
 \subsubsection{Hardware limitations}
+Because the system consists of a smartphone app, the main hardware limitation is the computational capability of a smartphone processor. Hence the
+application must be compatible with a low computational capability.
 \subsubsection{Other constraints (TODO MAYBE)}
 
 \subsection{Software system attributes}
