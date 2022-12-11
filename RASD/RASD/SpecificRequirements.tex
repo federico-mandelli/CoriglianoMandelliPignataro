@@ -90,7 +90,7 @@ trying to make the client responsible of the heaviest loads.
 \subsubsection{Standards compliance}
 The system must meet the following standards:
 \begin{itemize}
-    \item \textbf{GPDR law}: The system must be compliant with the current GDPR law about users privacy;
+    \item \textbf{\ac{GDPR} law}: The system must be compliant with the current GDPR law about users privacy;
     \item \textbf{Android and iOS}: The system must be compatible with the current versions and reasonably still used previous ones of Android and iOS.
 \end{itemize}
 \subsubsection{Hardware limitations}
@@ -100,10 +100,23 @@ application must be compatible with a low computational capability.
 
 \subsection{Software system attributes}
 \subsubsection{Reliability}
+About the reliability, the system should prefer a fail safe scenarios, where the actual service can behave slower than expected but still consistent with the results.
+To do so the system should be distributed data wise but also performance wise, allowing a scalability factor while being open for maintenance without completely going down.
+Some good techniques are \ac{RACS} and \ac{RAPS} which put the reliability very high in the architecture.
 \subsubsection{Availability}
+Because as stated before a complete period of down would not be great for this type of service, eMall has to prefer the availability over the actual conformity of response time.
+Thus the availability should be as high as possible but greater than 99.99\% and must use some techniques to avoid down time during maintenance.
 \subsubsection{Security}
+Because the system will handle different personal user data, and because one of the standards that it has to follow is the \ac{GDPR} law, it is required a certain level
+of security around the system. So an encryption of the user passwords must be adopted and the access to the user's data must be restricted only to the user itself.
+It is important that not even the system administrator could access the user's data in respect of the privacy laws.\\
+It needs to be highlighted also that according to the \ac{GDPR} laws, the user has the right to revoke the consent about the usage of the data by the platform. This means that
+whenever a user decides to delete the account from the system, all the data must about the user must be deleted permanently.
 \subsubsection{Maintainability}
+As stated in the Reliability and Availability sections, a good pattern for the whole system would be to consider the maintenance as less invasive as possible, using duplicated data and services.
+Thus with this idea it would be not complicated to just maintain a single or a restricted amount of nodes per time. This way the user would only experience at worst slowdowns but never actually downtime.
 \subsubsection{Portability}
+The system should concretize in an APP for the user's smartphone, so it is important to develop the application as cross platform as possible. Doing so eventual updates and modifies won't need any modify to be actually portable from a device to another.
 \subsection{Requirements}
 \subsubsection{External Interface Requirements}
 \clearpage
