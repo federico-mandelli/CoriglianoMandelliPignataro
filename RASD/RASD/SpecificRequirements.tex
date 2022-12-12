@@ -16,12 +16,12 @@
 The \ac{eMSP} should be accessible to the user through an application installed on the mobile device.
 The first interface shown to the user is the \textit{login} page where the user have to input the username (or e-Mail) and password in order to authenticate.
 From the \textit{login} page there is also the the possibility to go to the \textit{register} page where the fields for inputting the necessary informations are present.
-After logging in, there are multiple views available to the user, corresponding of multiple tabs in the app, which are: 
+After logging in, there are multiple views available to the user, corresponding of multiple tabs in the app, which are:
 \begin{itemize}
     \item A map of the charging stations near the position of the user;
     \item A ranked list personalizable in base of parameters chosen by the user (nearer, cheaper, more environment friendly\ldots).
     \item A screen for enabling/disabling suggestions from the system, setting up the connection to the user online calendar and, when the connection is present, it also shows a view of the appointments on the calendar.
-\end{itemize} 
+\end{itemize}
 Clicking on one station (from the ranked list or the map) the specific informations about the station are shown, along with a calendar (and if the system is synchronized with the user calendar, it shows also the days with some appointment scheduled). Once selected the wanted date, a timeline of  the day is shown, with in green the available times and in red the moments when the station is full.
 
 A \ac{CPO} can be registered on the system by a special registration form providing partita IVA and a way to access the \ac{CPMS} in order to retrieve the charging stations infos.
@@ -67,13 +67,17 @@ The \ac{CPO}can also view and change the price of his service.
     \caption{Registered user use case}
 \end{figure}
 \subsubsection{Sequence diagrams}
-\todo[inline]{Per quanto riguarda il sistema CPMS, come si "registra" il CPO maintainer?\\Nell'UML forse conviene chiamare l'interfaccia eMSP e poi l'attore che la implementa eMall. In questo modo possiamo far sì che le charging sockets utilizzino quell'interfaccia per poter ricavare le info sulla carica quando un utente inserisce il codice.}
-Below there are some sequence diagrams to show how the basic actions should be over time.
 \todo[inline]{Correggere sequence perform a charge, c'è un sync message tra chargingSocket ed eMall "updateChargingStatus" che non restituisce controllo}
 \begin{figure}[!h]
     \begin{center}
         \includegraphics[keepaspectratio, width=16cm]{Sequence/RegisterEMall.png}
         \caption{Registration into \ac{eMall} sequence}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/RegisterCPO.png}
+        \caption{Registration of \ac{CPO} into \ac{eMall} sequence}
     \end{center}
 \end{figure}
 \begin{figure}[!h]
@@ -98,12 +102,6 @@ Below there are some sequence diagrams to show how the basic actions should be o
     \begin{center}
         \includegraphics[keepaspectratio, width=16cm]{Sequence/CancelCharge.png}
         \caption{Cancel a charge sequence}
-    \end{center}
-\end{figure}
-\begin{figure}[!h]
-    \begin{center}
-        \includegraphics[keepaspectratio, width=16cm]{Sequence/PerformCharge.png}
-        \caption{Perform a charge sequence}
     \end{center}
 \end{figure}
 \begin{figure}[!h]
