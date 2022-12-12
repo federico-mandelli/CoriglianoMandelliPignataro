@@ -1,5 +1,4 @@
 \subsection{External interfaces requirements}
-\subsubsection{User interfaces}
 \begin{enumerate}[label=\textbf{R\arabic*}]
     \item The \ac{eMSP} must allow the users to register (providing email, password, payment method and his infos);
     \item The \ac{CPMS} must allow the \acp{CPO} to register (providing email, password, id-station, partita iva, number of possible charging slots);
@@ -11,6 +10,23 @@
     \item The system must notify the user when the charging process is finished via a notification;
     \item The \ac{CPMS} must allow the \acp{CPO} to choose the mode (manual or automatic) of operation
 \end{enumerate}
+
+\subsubsection{User interfaces}
+\paragraph{\ac{eMSP}}
+The \ac{eMSP} should be accessible to the user through an application installed on the mobile device.
+The first interface shown to the user is the \textit{login} page where the user have to input the username (or e-Mail) and password in order to authenticate.
+From the \textit{login} page there is also the the possibility to go to the \textit{register} page where the fields for inputting the necessary informations are present.
+After logging in, there are multiple views available to the user, corresponding of multiple tabs in the app, which are: 
+\begin{itemize}
+    \item A map of the charging stations near the position of the user;
+    \item A ranked list personalizable in base of parameters chosen by the user (nearer, cheaper, more environment friendly\ldots).
+    \item A screen for enabling/disabling suggestions from the system, setting up the connection to the user online calendar and, when the connection is present, it also shows a view of the appointments on the calendar.
+\end{itemize} 
+Clicking on one station (from the ranked list or the map) the specific informations about the station are shown, along with a calendar (and if the system is synchronized with the user calendar, it shows also the days with some appointment scheduled). Once selected the wanted date, a timeline of  the day is shown, with in green the available times and in red the moments when the station is full.
+
+\paragraph{\ac{CPMS}}
+
+
 \subsubsection{Hardware interfaces}
 \subsubsection{Software interfaces}
 \subsubsection{Communication interfaces}
