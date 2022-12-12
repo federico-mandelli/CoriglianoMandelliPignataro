@@ -19,10 +19,10 @@ It is assumed that in S4,S5,S6,S7 the user is already logged in the system (S2)
             from the desired location. Via a menu, Robert can choose to order the stations either via distance, price or charging type (super-fast, fast, normal); He can also set to display unavailable stations and set the maximum distance from the chosen location.
             Robert chooses a station and obtains more detailed information.
       \item User books a charge:\\
-            Jessica, after choosing a station, decides to book a charge in it selecting the timeslot. Station location and booked time frame are displayed and she is asked to confirm the booking via a popup. Jessica then receives a confirmation email with the details
+            Jessica, after choosing a station, decides to book a charge in it selecting the timeslot. Station location and booked time frame are displayed and she is asked to confirm the booking via a popup. She proceeds to pay for the charge and receives a confirmation email with the details
             of the charge (Location, time frame, socket id) and a confirmation pin to insert at the station.
       \item User cancels a charge:\\
-            Luke, after booking a charge, wants to cancel it. He opens the app, selects the booking he wants to cancel and presses the Cancel button. A popup appear asking confirmation: if it is pressed the booking is removed, the station returns available and a confirmation email is sent to the user; otherwise the booking is still valid.
+            Luke, after booking a charge, wants to cancel it. He opens the app, selects the booking he wants to cancel and presses the Cancel button. A popup appear asking confirmation: if it is pressed the booking is removed, the station returns available, a refound is issued and a confirmation email is sent to the user; otherwise the booking is still valid.
       \item User charges the vehicle:\\
             Mary, after booking a charge, arrives at the station, she parks her vehicle at the designed socket
             and plugs her vehicle in, Mary then inserts the confirmation pin in the socket to start the charge.
@@ -36,20 +36,21 @@ It is assumed that in S4,S5,S6,S7 the user is already logged in the system (S2)
             it connects to the vehicle while driving and stores the last charge level and once the battery is below fifty percent Josh gets notified
             about the possibility to charge his vehicle in an available time-slot and near his movement.
             Josh liking the idea opens the app and confirms the booking.
-      \item Cpo subscribes to the system:\\
-            Judy, the CEO of a famous CPO, wants to subscribe it to eMAll to improve sales and to access the CPMS feature.
-            She opens a Website and select to sign up, she inserts the name, partita iva, a master password and the stations of the CPO.
-            For each station she has to insert the number of charging port, the presence of batteries and, if there are any,
+      \item Cpo adds stations to the CPMS
+            Frank, the responsible for a CPO, wants to adds stations to the CPMS in preparation of subscribing to eMall. For each station he has to insert the number of charging port, the presence of batteries and, if there are any,
             wether to use the CPMS automatic source selector or to choose the preferred energy source.
+      \item Cpo subscribes to the system:\\
+            Judy, the CEO of a famous CPO, wants to subscribe it to eMAll to improve sales.
+            She opens the eMall website and select to sign up, she inserts the name, partita iva, a master password and connects the CPMS of to the site via an API.
       \item Cpo updates info about its system:\\
-            The sysadmin of a CPO, Andy, after logging in with the master password has access to his CPO.
+            The sysadmin of a CPO, Andy, after logging in with the master password has access to his CPMS.
             Here he can change the number of stations, for each station he can update the number of socket and the energy source.
-            He can also create and update maintainer account inserting the ID and password. For each maintainer he can choose which station the maintainer can maintain.
+            He can also create and update maintainer account inserting the ID and password. For each maintainer he can choose which CPMS the maintainer can maintain.
       \item Cpo employee logs in the service:\\
             Brett a CPO employee wants to access the service, he connects to the site and inserts the ID
             and password, if correct he logs in; otherwise the procedure fails and must be repeated.
-      \item Maintainer maintains his assigned stations\\
-            Lisa, a maintainer at a cpo logs in the service, here she can see the info of each station assigned to her.
+      \item Maintainer maintains his assigned CPMS\\
+            Lisa, a maintainer at a cpo logs in the service, here she can see the info of each station of the CPMS assigned to her.
             For each station she can: check the status(functioning or not), choose the energy source, update the number of available sockets.
             She can monitor the consumes, profitability and the usage of a specified station.
 \end{enumerate}
