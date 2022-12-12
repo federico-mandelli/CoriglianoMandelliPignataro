@@ -24,8 +24,25 @@ After logging in, there are multiple views available to the user, corresponding 
 \end{itemize} 
 Clicking on one station (from the ranked list or the map) the specific informations about the station are shown, along with a calendar (and if the system is synchronized with the user calendar, it shows also the days with some appointment scheduled). Once selected the wanted date, a timeline of  the day is shown, with in green the available times and in red the moments when the station is full.
 
-\paragraph{\ac{CPMS}}
+A \ac{CPO} can be registered on the system by a special registration form providing partita IVA and a way to access the \ac{CPMS} in order to retrieve the charging stations infos.
 
+\paragraph{\ac{CPMS}}
+\todo[inline]{Choose the alternative}
+The \ac{CPMS} works as a local service in each charging station and the \ac{CPO}maintainer accesses the terminal where all the system can be managed. 
+
+The \ac{CPMS} works as a web application; A \ac{CPO}maintainer accesses directly the \ac{CPMS} and has the possibility to handle all the stations of the \ac{CPO}.
+
+Once accessed to the system, the \ac{CPO}maintainer has the possibility to view the system status, seeing the list of charging stations with their policy, the available sockets and the \ac{SoC} of batteries. Selecting a socket the schedule of the booked charges can be viewed.
+The \ac{CPO}maintainers can change the policy of each charging station; in parcticular they can:
+\begin{itemize}
+    \item Choose a parcticular energy provider from a list of \acp{DSO} with the optional opportunity to recharge batteries with this \ac{DSO};
+    \item Choose an energy provider in base of a list of requisites (cheapest, most environmental friendly, most available in terms of maximum energy that we take from the provider) with the optional opportunity to recharge batteries with this \ac{DSO};
+    \item Choose to use only the energy stored in the batteries and, when this ends, go into automatic mode;
+    \item Choose the automatic mode, which will choose autonomously which \ac{DSO} to use, when to use batteries and when to recharge them;
+\end{itemize}
+
+The \ac{CPO}can also view and change the price of his service.
+\todo[inline]{Check with assignment document for all the funcitons}
 
 \subsubsection{Hardware interfaces}
 \subsubsection{Software interfaces}
