@@ -58,7 +58,21 @@ In order to use the \ac{CPMS}, the \ac{CPO}maintainer (the only user of this sys
 
 \subsubsection{Software interfaces}
 \paragraph{\ac{eMSP}}
+The \ac{eMSP} does not provide any software interface because no external software should query this system.
+
+Anyway this system interfaces with electronic calendar systems and with the systems of the payment methods supported.
+
+\todo[inline]{Check if this should be described}
+
 \paragraph{\ac{CPMS}}
+The \ac{CPMS} should provide to the external world interfaces in order to:
+\begin{itemize}
+    \item Book the charges in a parcticular timeslot (accepting also a \textit{chargeID}, a PIN in order to authorize the charge once the user get in the station);
+    \item Get informations of a parcticular charging station (location, price of the charge, parameter of environmental friendliness, type of charges available);
+    \item Get the availability state of a parcticular socket;
+    \item Get the future availability of the sockets managed by the system;
+\end{itemize}
+
 
 \subsubsection{Communication interfaces}
 \paragraph{\ac{eMSP}}
