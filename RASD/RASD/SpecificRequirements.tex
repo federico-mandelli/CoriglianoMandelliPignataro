@@ -28,7 +28,7 @@ A \ac{CPO} can be registered on the system by a special registration form provid
 
 \paragraph{\ac{CPMS}}
 \todo[inline]{Choose the alternative}
-The \ac{CPMS} works as a local service in each charging station and the \ac{CPO}maintainer accesses the terminal where all the system can be managed. 
+The \ac{CPMS} works as a local service in each charging station and the \ac{CPO}maintainer accesses the terminal where all the system can be managed.
 
 The \ac{CPMS} works as a web application; A \ac{CPO}maintainer accesses directly the \ac{CPMS} and has the possibility to handle all the stations of the \ac{CPO}.
 
@@ -46,7 +46,7 @@ The \ac{CPO}can also view and change the price of his service.
 
 \subsubsection{Hardware interfaces}
 \paragraph{\ac{eMSP}}
-The user, in order to interact with the \ac{eMSP}, must have a device that is provided with \ac{GPS} and internet connection. Thanks to this, the user can search for close charging stations, see if those are available and can book or cancel a charge. 
+The user, in order to interact with the \ac{eMSP}, must have a device that is provided with \ac{GPS} and internet connection. Thanks to this, the user can search for close charging stations, see if those are available and can book or cancel a charge.
 A Bluetooth peripheral should also be available to the user when he is in the vehicle, in order to make a connection with it. Thanks to this the device can query the vehicle infos (such as avarage battery consumption per kilometer, estimated authonomy and \ac{SoC}) so that the system can suggest to the user when and where to charge the vehicle.
 
 \paragraph{\ac{CPMS}}
@@ -126,6 +126,18 @@ The \ac{CPMS} should provide to the external world interfaces in order to:
     \begin{center}
         \includegraphics[keepaspectratio, width=16cm]{Sequence/BookCharge.png}
         \caption{Book a charge sequence}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/PayCharge.png}
+        \caption{Pay a charge sequence}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/PerformCharge.png}
+        \caption{Perform a charge sequence}
     \end{center}
 \end{figure}
 \begin{figure}[!h]
