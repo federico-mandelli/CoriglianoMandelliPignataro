@@ -36,18 +36,20 @@ It is assumed that in S4,S5,S6,S7 the user is already logged in the system (S2)
             it connects to the vehicle while driving and stores the last charge level and once the battery is below fifty percent Josh gets notified
             about the possibility to charge his vehicle in an available time-slot and near his movement.
             Josh liking the idea opens the app and confirms the booking.
-      \item Cpo adds stations to the CPMS
-            Frank, the responsible for a CPO, wants to adds stations to the CPMS in preparation of subscribing to eMall. For each station he has to insert the number of charging port, the presence of batteries and, if there are any,
+      \item Cpo adds stations to the CPMS:\\
+            Frank, the responsible for a CPO, wants to add stations to the CPMS in preparation of subscribing to eMall. For each station he has to insert the number of charging port, the presence of batteries and, if there are any, the \ac{API} reference,
             wether to use the CPMS automatic source selector or to choose the preferred energy source.
       \item Cpo subscribes to the system:\\
             Judy, the CEO of a famous CPO, wants to subscribe it to eMAll to improve sales.
-            She opens the eMall website and select to sign up, she inserts the name, partita iva, a master password and connects the CPMS of to the site via an API.
+            She opens the eMall website and selects to sign up, she inserts the name, partita iva, a master password and connects the CPMS of to the site via an \ac{API}.
       \item Cpo updates info about its system:\\
             The sysadmin of a CPO, Andy, after logging in with the master password has access to his CPMS.
-            Here he can change the number of stations, for each station he can update the number of socket and the energy source.
+            \todo{Data la presenza di \ac{API} per le charging stations, deve per forza inserire queste info?}
+            Here he can change the number of stations, for each station he can update the number of sockets and the energy source.
             He can also create and update maintainer account inserting the ID and password. For each maintainer he can choose which CPMS the maintainer can maintain.
       \item Cpo employee logs in the service:\\
             Brett a CPO employee wants to access the service, he connects to the site and inserts the ID
+            \todo{Quale sito?}
             and password, if correct he logs in; otherwise the procedure fails and must be repeated.
       \item Maintainer maintains his assigned CPMS\\
             Lisa, a maintainer at a cpo logs in the service, here she can see the info of each station of the CPMS assigned to her.
