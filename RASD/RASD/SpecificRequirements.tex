@@ -6,7 +6,7 @@
           % Maybe not useful anymore R4
     \item The system must verify the correctness of the identification data for the \acp{CPO};
     \item The system must allow the user to login;
-    \item The system must allow the user to choose a specific station, a timeslot;
+    \item The system must allow the user to choose a specific station, a time-slot;
     \item The system must notify the user when the charging process is finished via a notification;
     \item The \ac{CPMS} must allow the \acp{CPO} to choose the mode (manual or automatic) of operation
 \end{enumerate}
@@ -14,67 +14,66 @@
 \subsubsection{User interfaces}
 \paragraph{\ac{eMSP}}
 The \ac{eMSP} should be accessible to the user through an application installed on the mobile device.
-The first interface shown to the user is the \textit{login} page where the user have to input the username (or e-Mail) and password in order to authenticate.
-From the \textit{login} page there is also the the possibility to go to the \textit{register} page where the fields for inputting the necessary informations are present.
+The first interface shown to the user, if not already done, is the \textit{login} page where the user have to input the username (or e-Mail) and password in order to authenticate.
+From the \textit{login} page there is also the the possibility to go to the \textit{register} page where the fields for inserting the necessary information are present.
 After logging in, there are multiple views available to the user, corresponding of multiple tabs in the app, which are:
 \begin{itemize}
-    \item A map of the charging stations near the position of the user;
-    \item A ranked list personalizable in base of parameters chosen by the user (nearer, cheaper, more environment friendly\ldots).
-    \item A screen for enabling/disabling suggestions from the system, setting up the connection to the user online calendar and, when the connection is present, it also shows a view of the appointments on the calendar.
+    \item A satellite map of the charging stations near the position of the user;
+    \item A ranked list personalizable based on parameters chosen by the user (distance, price, environmental friendliness\ldots).
+    \item A screen for enabling/disabling suggestions from the system, setting up the connection to the user online calendar.
 \end{itemize}
-Clicking on one station (from the ranked list or the map) the specific informations about the station are shown, along with a calendar (and if the system is synchronized with the user calendar, it shows also the days with some appointment scheduled). Once selected the wanted date, a timeline of  the day is shown, with in green the available times and in red the moments when the station is full.
+Selecting a station (from the ranked list or the satellite map) the specific information about the station are shown. The user can select the date and the time-slot from the available ones.
 
-A \ac{CPO} can be registered on the system by a special registration form providing partita IVA and a way to access the \ac{CPMS} in order to retrieve the charging stations infos.
+A \ac{CPO} can be registered on the system with a special registration form providing Company name, password and partita IVA. Once the \ac{CPO} is registered and logged in, he can insert the reference to the interface of a \ac{CPMS}.
+\todo[inline]{Add to the Definitions "partita IVA"}
+
 
 \paragraph{\ac{CPMS}}
 \todo[inline]{Choose the alternative}
-The \ac{CPMS} works as a local service in each charging station and the \ac{CPO}maintainer accesses the terminal where all the system can be managed.
-
-The \ac{CPMS} works as a web application; A \ac{CPO}maintainer accesses directly the \ac{CPMS} and has the possibility to handle all the stations of the \ac{CPO}.
+The \ac{CPMS} works as a web application; A \ac{CPO}maintainer accesses directly to the \ac{CPMS} and has the possibility to handle all the stations of the \ac{CPO}.
 
 Once accessed to the system, the \ac{CPO}maintainer has the possibility to view the system status, seeing the list of charging stations with their policy, the available sockets and the \ac{SoC} of batteries. Selecting a socket the schedule of the booked charges can be viewed.
-The \ac{CPO}maintainers can change the policy of each charging station; in parcticular they can:
+The \ac{CPO}maintainers can change the policy of each charging station; in particular they can:
 \begin{itemize}
-    \item Choose a parcticular energy provider from a list of \acp{DSO} with the optional opportunity to recharge batteries with this \ac{DSO};
-    \item Choose an energy provider in base of a list of requisites (cheapest, most environmental friendly, most available in terms of maximum energy that we take from the provider) with the optional opportunity to recharge batteries with this \ac{DSO};
+    \item Choose a particular energy provider from a list of \acp{DSO} with the optional opportunity to recharge charging station batteries with this \ac{DSO};
     \item Choose to use only the energy stored in the batteries and, when this ends, go into automatic mode;
     \item Choose the automatic mode, which will choose autonomously which \ac{DSO} to use, when to use batteries and when to recharge them;
 \end{itemize}
 
-The \ac{CPO}can also view and change the price of his service.
-\todo[inline]{Check with assignment document for all the funcitons}
+The \ac{CPO} can also view the price of his service and set the revenue percentage for a single charge.
+\todo[inline]{Check with assignment document for all the functions}
 
 \subsubsection{Hardware interfaces}
 \paragraph{\ac{eMSP}}
-The user, in order to interact with the \ac{eMSP}, must have a device that is provided with \ac{GPS} and internet connection. Thanks to this, the user can search for close charging stations, see if those are available and can book or cancel a charge.
-A Bluetooth peripheral should also be available to the user when he is in the vehicle, in order to make a connection with it. Thanks to this the device can query the vehicle infos (such as avarage battery consumption per kilometer, estimated authonomy and \ac{SoC}) so that the system can suggest to the user when and where to charge the vehicle.
+The user, in order to interact with the \ac{eMSP}, must have a device that is provided with a \ac{GPS} and internet connection. Thanks to this, the user can search for close charging stations, see if those are available and can book or cancel a charge.
+A Bluetooth peripheral should also be available to the user when he is in the vehicle, in order to make a connection with it. Thanks to this the device can query the vehicle infos (such as average battery consumption per kilometer, estimated autonomy and \ac{SoC}) so that the system can suggest to the user when and where to charge the vehicle.
 
 \paragraph{\ac{CPMS}}
-In order to use the \ac{CPMS}, the \ac{CPO}maintainer (the only user of this system) should have a personal computer with internet connection available so that it's possible to communicate changes to the system (i.e. change the energy source of a charging station or setting the new price for a recharge) and watch the system info.
+In order to use the \ac{CPMS}, the \ac{CPO}maintainer (the only type of user of this system) should have a personal computer with internet connection available so that it's possible to communicate changes to the system (i.e. change the energy source of a charging station or setting the new revenue for a charge) and watch the system info.
 
-\paragraph{\ac{Charging socket}}
-\todo[inline]{Should this be described or takes as is?}
+\paragraph{Charging socket}
 
+\todo[inline]{Add "We assume that Charging sockets have internet connection and an appropriate interface" to the assumptions}
 
 \subsubsection{Software interfaces}
 \paragraph{\ac{eMSP}}
 The \ac{eMSP} does not provide any software interface because no external software should query this system.
 
-Anyway this system interfaces with electronic calendar systems and with the systems of the payment methods supported.
-
-\todo[inline]{Check if this should be described}
+\todo[inline]{Add "The software utilizes payment APIs" to the assumptions}
 
 \paragraph{\ac{CPMS}}
-The \ac{CPMS} should provide to the external world interfaces in order to:
+The \ac{CPMS} should provide to the external world interfaces for:
 \begin{itemize}
-    \item Book the charges in a parcticular timeslot (accepting also a \textit{chargeID}, a PIN in order to authorize the charge once the user get in the station);
-    \item Get informations of a parcticular charging station (location, price of the charge, parameter of environmental friendliness, type of charges available);
-    \item Get the availability state of a parcticular socket;
+    \item Book the charges in a particular time-slot (accepting also a \textit{chargeID}, a PIN in order to authorize the charge once the user gets in the station);
+    \item Get information of a particular charging station (location, price of the charge, parameter of environmental friendliness, type of charges available);
+    \item Get the availability state of a particular socket;
     \item Get the future availability of the sockets managed by the system;
 \end{itemize}
 
+\todo[inline]{Compara software interfaces del CPMS con sequence per scoprire tutte le interfacce}
 
 \subsubsection{Communication interfaces}
+\todo[inline]{Take some hardware interfaces}
 \paragraph{\ac{eMSP}}
 \paragraph{\ac{CPMS}}
 

@@ -1,70 +1,70 @@
 \subsection{Product perspective}
 
 \subsubsection{Scenarios}
-It is assumed that in S4,S5,S6,S7 the user is already logged in the system (S2)
+It is assumed that in \ref{SCE:user-searches-stations},\ref{SCE:user-books-charge},\ref{SCE:user-pays-charge},\ref{SCE:user-cancels-charge}, \ref{SCE:user-gets-suggestions} the user is already logged in the system (\ref{SCE:user-logs-in})
 \begin{enumerate}[label=\textbf{S\arabic*}]
       \item User Signs up:\\
             Lucy, wanting to use the system, opens the app, she is prompted to login or register,
             she chooses to register herself and inserts her personal info (email, password, birthday, payment information, vehicle info);
             an email is sent with a link to confirm the activation of the account, if the link is clicked within
             the first 15 minutes the account is activated and the sign up is successful,
-            otherwise it is considered failed and the process must be repeated.
+            otherwise it is considered failed and the process must be repeated.\label{SCE:user-signs-up}
       \item User Logs in:\\
             Jay, after signing up, opens the app and he is prompted to insert his email and password,
             if the given information are correct the login is successful and he obtain access to his account
-            and the services of the app, otherwise the login is unsuccessful and it must be repeated.
+            and the services of the app, otherwise the login is unsuccessful and it must be repeated.\label{SCE:user-logs-in}
       \item User searches for stations:\\
-            Robert, once logged in, inserts the location and the time frame to search for charging stations.
+            Robert, opens the app, inserts the location and the time frame to search for charging stations.
             Once submitted, a list of available charging stations is displayed, the list is ordered by the distance of the station
-            from the desired location. Via a menu, Robert can choose to order the stations either via distance, price or charging type (super-fast, fast, normal); He can also set to display unavailable stations and set the maximum distance from the chosen location.
+            from the desired location. Via a menu, Robert can choose to order the stations either via distance, price or charging type (super-fast, fast, normal); He can also set to display unavailable stations and set the maximum distance from the chosen location.\label{SCE:user-searches-stations}
             Robert chooses a station and obtains more detailed information.
       \item User books a charge:\\
             Jessica, after choosing a station, decides to book a charge in it selecting the timeslot. Station location and booked time frame are displayed and she is asked to confirm the booking via a popup. She receives a confirmation email with the details
-            of the charge (Location, time frame, socket id) and a confirmation pin to insert at the station.
+            of the charge (Location, time frame, socket id) and a confirmation pin to insert at the station.\label{SCE:user-books-charge}
       \item User pays a charge:\\
-            John, after booking a charge, has to pay it before actually performing it. So he selects the wanted charge and proceeds with the payment. After that he receives an email that summarizes the payment details.
+            John, after booking a charge, has to pay it before actually performing it. So he selects the wanted charge and proceeds with the payment. After that he receives an email that summarizes the payment details.\label{SCE:user-pays-charge}
       \item User cancels a charge:\\
-            Luke, after booking a charge, wants to cancel it. He opens the app, selects the booking he wants to cancel and presses the Cancel button. A popup appear asking confirmation: if it is pressed the booking is removed, the station returns available, a refound is issued and a confirmation email is sent to the user; otherwise the booking is still valid.
+            Luke, after booking a charge, wants to cancel it. He opens the app, selects the booking he wants to cancel and presses the Cancel button. A popup appear asking confirmation: if it is pressed the booking is removed, the station returns available, a refound is issued and a confirmation email is sent to the user; otherwise the booking is still valid.\label{SCE:user-cancels-charge}
       \item User charges the vehicle:\\
             Mary, after booking a charge, arrives at the station, she parks her vehicle at the designed socket
             and plugs her vehicle in, Mary then inserts the confirmation pin in the socket to start the charge.
             The socket displays on a monitor the status and the finishing time of the charge.
             Once the charge is finished Mary receives a notification of finished charge,
-            she gets her vehicle and completes the charge.
+            she gets her vehicle and completes the charge.\label{SCE:user-charges-vehicle}
       \item User gets charging suggestion based on his calendar:\\
             Josh is a very busy man and also an avid google calendar user,
             setting up every event with correct time and location.
             The service accessing his calendar finds the closest available charging station to each vehicle movement,
             it connects to the vehicle while driving and stores the last charge level and once the battery is below fifty percent Josh gets notified
             about the possibility to charge his vehicle in an available time-slot and near his movement.
-            Josh liking the idea opens the app and confirms the booking.
-      \item Cpo adds stations to the CPMS:\\
-            Frank, the responsible for a CPO, wants to add stations to the CPMS in preparation of subscribing to eMall. For each station he has to insert the number of charging port, the presence of batteries and, if there are any, the \ac{API} reference,
-            wether to use the CPMS automatic source selector or to choose the preferred energy source.
-      \item Cpo subscribes to the system:\\
-            Judy, the CEO of a famous CPO, wants to subscribe it to eMAll to improve sales.
-            She opens the eMall website and selects to sign up, she inserts the name, partita iva, a master password and connects the CPMS of to the site via an \ac{API}.
-      \item Cpo updates info about its system:\\
-            The sysadmin of a CPO, Andy, after logging in with the master password has access to his CPMS.
-            \todo{Data la presenza di \ac{API} per le charging stations, deve per forza inserire queste info?}
-            Here he can change the number of stations, for each station he can update the number of sockets and the energy source.
-            He can also create and update maintainer account inserting the ID and password. For each maintainer he can choose which CPMS the maintainer can maintain.
-      \item Cpo employee logs in the service:\\
-            Brett a CPO employee wants to access the service, he connects to the site and inserts the ID
-            \todo{Quale sito?}
-            and password, if correct he logs in; otherwise the procedure fails and must be repeated.
-      \item Maintainer maintains his assigned CPMS\\
-            Lisa, a maintainer at a cpo logs in the service, here she can see the info of each station of the CPMS assigned to her.
+            Josh liking the idea opens the app and confirms the booking.\label{SCE:user-gets-suggestions}
+      \item \ac{CPO} adds stations to the \ac{CPMS}:\\
+            Frank, the responsible for a \ac{CPO}, wants to add stations to the \ac{CPMS} in preparation of subscribing to eMall. For each station he has to insert the number of charging port, the presence of batteries and, if there are any, the \ac{API} reference,
+            wether to use the \ac{CPMS} automatic source selector or to choose the preferred energy source.\label{SCE:cpo-adds-stations}
+      \item \ac{CPO} subscribes to the system:\\
+            Judy, the CEO of a famous \ac{CPO}, wants to subscribe it to eMAll to improve sales.
+            She opens the eMall website and selects to sign up, she inserts the name, partita iva, a master password and connects the \ac{CPMS} of to the site via an \ac{API}.\label{SCE:cpo-subscribes}
+      \item \ac{CPO} updates settings and strategy about its system:\\
+            The sysadmin of a \ac{CPO}, Andy, after logging in with the master password has access to his \ac{CPMS}.
+            Here he can change the energy source, create and update maintainer account inserting the ID and password. For each maintainer he can choose which \ac{CPMS} the maintainer can maintain.\label{SCE:cpo-updates-settings}
+      \item \ac{CPO}maintainer logs into his assigned \ac{CPMS}:\\
+            Brett a \ac{CPO} employee wants to access the service, he connects to the \ac{CPMS} and inserts the ID
+            and password, if correct he logs in; otherwise the procedure fails and must be repeated.\label{SCE:cpomaintainer-logs}
+      \item \ac{CPO} maintainer manages his assigned \ac{CPMS}\\
+            Lisa, a maintainer at a cpo logs in the service, here she can see the info of each station of the \ac{CPMS} assigned to her.
             For each station she can: check the status(functioning or not), choose the energy source, update the number of available sockets.
-            She can monitor the consumes, profitability and the usage of a specified station.
+            She can monitor the consumes, profitability and the usage of a specified station.\label{SCE:cpomaintainer-manages}
 \end{enumerate}
 
 \clearpage
 \todo[inline]{- Il CPO registra il suo servizio nel eMSP convalidato da partita IVA\\
-      - Il CPO indica all'eMSP l'accesso all'interfaccia del suo/dei suoi CPMS\\
-      - L'eMSP contatta l'interfaccia del/dei CPMS per ottenere info sulle charging stations\\
-      - L'utente paga PRIMA della recharge in base alle info del veicolo e solo dopo il pagamento gli viene assegnato un codice di ricarica che l'eMSP comunica al CPMS che lo comunica alla chargingStation che lo accetta per ricarica\\
+      - Il CPO indica all'eMSP l'accesso all'interfaccia del suo/dei suoi \ac{CPMS}\\
+      - L'eMSP contatta l'interfaccia del/dei \ac{CPMS} per ottenere info sulle charging stations\\
+      - L'utente paga PRIMA della recharge in base alle info del veicolo e solo dopo il pagamento gli viene assegnato un codice di ricarica che l'eMSP comunica al \ac{CPMS} che lo comunica alla chargingStation che lo accetta per ricarica\\
       - In caso di cancellazione viene effettuato rimborso\\
+      - Spostare policy energia a livello della charging station\\
+      - Inserire possibilità di imporre DSO alla charging station
+      - Eliminare strategia pseudo automatica etc..
       MODIFICARE L'UML DI CONSEGUENZA}
 \subsubsection{UML diagram}
 \begin{figure}[h!]
