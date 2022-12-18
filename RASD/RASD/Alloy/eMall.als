@@ -3,107 +3,150 @@ module eMall
 //open util/boolean 
 
 //-------SIG-----
-abstract sig Role{}
-one sig CPOMantainer extends Role{}
-one sig DEFAULTUSER extends Role{}
 
-sig User{
-	//name: one Str,
-	//surname: one Str,
- 	//birthday: one Date,
-	mail: one Str,
- 	//password: one Str,
- 	role: one Role,
-	emsps: some EMSP
-} 
-
-//batterylevel percentage of the battery, KWperKM to int easier
-sig Vehicle{
-//batteryLevel: one Int,
-location: one Location,
-//KWperKm: one Int,
-owner: some User
-}{ 
-//batteryLevel>=0 and batteryLevel<=100//inRange[batteryLevel, 0, 100]
-//inRange[KWperKm, 0, 100]
- all o:owner | o.role= DEFAULTUSER}
 
 
 sig CPO{
-cpms: some CPMS}
+cpms: set CPMS}
+
+
+sig EMSP{
+	users: set User,
+	charges: set Charge,
+	cpos:set CPO
+}
 
 //approximated to int
 sig CPMS{
-stations:some ChargingStation
+	stations:set ChargingStation,
+	maintainers:set Maintainer
+//Maybe a bool 
+}
+
+abstract sig Person{
+	//name: one Str,
+	//surname: one Str,
+ 	//birthday: one Date,
+//	mail: one Str,
+ 	//password: one Str,
+} 
+one sig User extends Person{
+	vehicles: set Vehicle
+}
+one sig Maintainer extends Person{}
+
+//batterylevel percentage of the battery, KWperKM to int easier
+sig Vehicle{
+	//batteryLevel: one Int,
+	//KWperKm: one Int,
+	location: one Location,
+}{ 
+//inRange[batteryLevel, 0, 100]
+//inRange[KWperKm, 0, 100]
+}
+
+sig ChargingStation{
+	position:one Location,
+	//batteryPresent: one Bool,
+	//batteryKWh: one Int,
+	sockets: set ChargingSocket,
+	strategy: one Strategy
+} 
+//{  batteryPresent.isTrue implies inRange[batteryKWh, 0, 100]}
+
+sig ChargingSocket{
+	chargingType: one ChargingType,
+	//available: one Bool,
+	//maximumPowerAmount: one Int,
+	energySource:one EnergySource
+}
+
+//amount the number of Kw to charge the car (approximated from a float)
+sig Charge{
+	//paid: one Bool,
+	station: one ChargingStation,
+	user: one User
+	//amount: one Int,
+	//date: one Date
 }
 
 abstract sig Strategy{}
 one sig Manual extends Strategy{}
 one sig Automatic extends Strategy{}
 
-//amount the number of Kw to charge the car (approximated from a float)
-sig Charge{
-//paid: one Bool,
-station: one ChargingStation,
-user: one User
-//amount: one Int,
-//date: one Date
-}
-
 abstract sig ChargingType{}
-one sig Rapid extends ChargingType{}
+one sig SuperFast extends ChargingType{}
 one sig Fast extends ChargingType{}
-one sig Slow extends ChargingType{}
+one sig Normal extends ChargingType{}
 
-//TODO add energy source
-sig EnergySource{}
-
-
-sig ChargingSocket{
-chargingStation: one ChargingStation,
-chargingType: one ChargingType,
-//available: one Bool,
-//maximumPowerAmount: one Int,
-energySource:one EnergySource}
-
-
-sig ChargingStation{
-position:one Location,
-sockets: some ChargingSocket,
-//batteryPresent: one Bool,
-//batteryKWh: one Int,
-strategy: one Strategy}
-//{  batteryPresent.isTrue implies inRange[batteryKWh, 0, 100]}
-
-
-abstract sig EMSP{
-cpms: set CPMS,
+abstract sig EnergySource{}
+one sig Battery extends EnergySource{
+//capacity: one Int
 }
+one sig DSO extends EnergySource{}
+
+
+
+
+
+
 //utils types
 
 //simplified model, days from 01/01/1900
 //sig Date{}
 
-sig Str{}
+//sig Str{}
 
 //simplified using int
 sig Location{  
-	//latitude: one Int,   
-	//longitude: one Int
-}{  //inRange[latitude, -90, 90] and   
-	//inRange[longitude, -180, 180]
+//	latitude: one Int,   
+//	longitude: one Int
+}{//  inRange[latitude, -90, 90] and   
+//	inRange[longitude, -180, 180]
 }
 
 //-------FACTS------
 
-fact uniqueMailForUser{
-	no disjoint u1,u2: User | u1.mail = u2.mail}
+//fact uniqueMailForUser{
+//	no disjoint u1,u2: User | u1.mail = u2.mail}
 
 fact uniqueLocationForStation{
 	no disjoint s1,s2: ChargingStation | s1.position = s2.position}
 
 fact uniqueCPOForCPMS{
-	no disjoint c1,c2: CPO | c1.cpms = c2.cpms}
+	no disjoint c1,c2: CPO, cp:CPMS | cp in c1.cpms and cp in c2.cpms}
+
+fact uniqueStationForCPMS{
+	no disjoint c1,c2: CPMS, s:ChargingStation | s in c1.stations and s in c2.stations}
+
+fact oneEMSP{//we do not care about others
+ 	
+}
+
+fact socketOnlyOneStation{
+	all c1,c2: ChargingStation, s:ChargingSocket | c1 != c2 implies not( s in c1.sockets and s in c2.sockets)}
+
+fact noVehicleWithoutUser{
+	all v:Vehicle|  v in User.vehicles}
+
+fact noCPMSWithoutCPO{
+	all c:CPMS|  c in CPO.cpms}
+
+fact noStationWithoutCPMS{
+	all s:ChargingStation|  s in CPMS.stations}
+
+fact noSocketWithoutStation{
+	all s:ChargingSocket|  s in ChargingStation.sockets}
+
+fact noChargeWithoutEMSP{
+	all c:Charge|  c in EMSP.charges}
+
+fact allChargeAreFromChargingStationInTheSystem{
+	all s:Charge.station | s in EMSP.cpos.cpms.stations 
+}
+
+//spiegare perche no cpms senza emsp non è un constraint 
+
 
 
 
@@ -112,5 +155,9 @@ pred inRange[x: Int, min: Int, max: Int]{
 	not min = none implies x>=min and    
 	not max = none implies x<=max }
 
-pred show() {}
-run show
+pred show() {
+#EMSP = 1
+#CPO=3
+#Charge=4
+}
+run show for 7
