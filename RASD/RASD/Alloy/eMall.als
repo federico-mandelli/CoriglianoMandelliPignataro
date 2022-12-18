@@ -2,6 +2,8 @@ module eMall
 //open util/integer 
 //open util/boolean 
 
+//only CPMS used in the system are added
+
 //-------SIG-----
 
 
@@ -148,12 +150,62 @@ fact allChargeAreFromChargingStationInTheSystem{
 //spiegare perche no cpms senza emsp non è un constraint 
 
 
+//Predicates (major actions)
 
-
+pred BookACharge(e, e1 :EMSP,c:Charge){
+	e1.cpos=e.cpos
+	e1.users=e.users
+//	one c:Charge|
+//c.user=u and c.station=cs and
+	e1.charges=e.charges +c
+}
+run BookACharge for 3 but exactly 2 EMSP
 
 pred inRange[x: Int, min: Int, max: Int]{ 
 	not min = none implies x>=min and    
 	not max = none implies x<=max }
+
+//Asserts
+
+assert uniqueLocationForStationCheck{
+ 	no disjoint s1,s2: ChargingStation | s1.position = s2.position}
+//check uniqueLocationForStationCheck for 50
+
+assert uniqueCPOForCPMSCheck{
+	no disjoint c1,c2: CPO, cp:CPMS | cp in c1.cpms and cp in c2.cpms}
+//check uniqueCPOForCPMSCheck  for 10
+
+assert uniqueStationForCPMSCheck{
+	no disjoint c1,c2: CPMS, s:ChargingStation | s in c1.stations and s in c2.stations}
+//check uniqueStationForCPMSCheck for 10
+
+assert socketOnlyOneStationCheck{
+	all c1,c2: ChargingStation, s:ChargingSocket | c1 != c2 implies not( s in c1.sockets and s in c2.sockets)}
+//check socketOnlyOneStationCheck for 10
+
+assert noVehicleWithoutUserCheck{
+	all v:Vehicle|  v in User.vehicles}
+//check noVehicleWithoutUserCheck for 10
+
+assert noCPMSWithoutCPOCheck{
+	all c:CPMS|  c in CPO.cpms}
+//check noCPMSWithoutCPOCheck for 10
+
+assert noStationWithoutCPMSCheck{
+	all s:ChargingStation|  s in CPMS.stations}
+//check noStationWithoutCPMSCheck for 10
+
+assert noSocketWithoutStationCheck{
+	all s:ChargingSocket|  s in ChargingStation.sockets}
+//check noSocketWithoutStationCheck for 10
+
+assert noChargeWithoutEMSPCheck{
+	all c:Charge|  c in EMSP.charges}
+//check noChargeWithoutEMSPCheck for 10
+
+assert allChargeAreFromChargingStationInTheSystemCheck{
+	all s:Charge.station | s in EMSP.cpos.cpms.stations }
+//check allChargeAreFromChargingStationInTheSystemCheck for 10
 
 pred show() {
 #EMSP = 1
