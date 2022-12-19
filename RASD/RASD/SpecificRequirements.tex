@@ -1,15 +1,4 @@
 \subsection{External interfaces requirements}
-\begin{enumerate}[label=\textbf{R\arabic*}]
-    \item The \ac{eMSP} must allow the users to register (providing email, password, payment method and his infos);
-    \item The \ac{CPMS} must allow the \acp{CPO} to register (providing email, password, id-station, partita iva, number of possible charging slots);
-    \item The system must allow the \acp{CPO} to modify the possible charging slots in their stations;
-          % Maybe not useful anymore R4
-    \item The system must verify the correctness of the identification data for the \acp{CPO};
-    \item The system must allow the user to login;
-    \item The system must allow the user to choose a specific station, a time-slot;
-    \item The system must notify the user when the charging process is finished via a notification;
-    \item The \ac{CPMS} must allow the \acp{CPO} to choose the mode (manual or automatic) of operation
-\end{enumerate}
 
 \subsubsection{User interfaces}
 \paragraph{\ac{eMSP}}
@@ -29,7 +18,6 @@ A \ac{CPO} can be registered on the system with a special registration form prov
 
 
 \paragraph{\ac{CPMS}}
-\todo[inline]{Choose the alternative}
 The \ac{CPMS} works as a web application; A \ac{CPO}maintainer accesses directly to the \ac{CPMS} and has the possibility to handle all the stations of the \ac{CPO}.
 
 Once accessed to the system, the \ac{CPO}maintainer has the possibility to view the system status, seeing the list of charging stations with their policy, the available sockets and the \ac{SoC} of batteries. Selecting a socket the schedule of the booked charges can be viewed.
@@ -49,9 +37,11 @@ The user, in order to interact with the \ac{eMSP}, must have a device that is pr
 A Bluetooth peripheral should also be available to the user when he is in the vehicle, in order to make a connection with it. Thanks to this the device can query the vehicle infos (such as average battery consumption per kilometer, estimated autonomy and \ac{SoC}) so that the system can suggest to the user when and where to charge the vehicle.
 
 \paragraph{\ac{CPMS}}
-In order to use the \ac{CPMS}, the \ac{CPO}maintainer (the only type of user of this system) should have a personal computer with internet connection available so that it's possible to communicate changes to the system (i.e. change the energy source of a charging station or setting the new revenue for a charge) and watch the system info.
+In order to use the \ac{CPMS}, the \ac{CPO}maintainer (the only type of user of this system) should have a personal computer with internet connection available so that it's possible to see the system info and communicate changes to the system (i.e. change the energy source of a charging station or setting the new revenue for a charge).
+\todo[inline]{Check that we will always set the revenue instead of the final price in order to be consistent}
 
 \paragraph{Charging socket}
+The Charging sockets should have a pad for inserting the pin that the user have to validate the charge.
 
 \todo[inline]{Add "We assume that Charging sockets have internet connection and an appropriate interface" to the assumptions}
 
@@ -73,18 +63,41 @@ The \ac{CPMS} should provide to the external world interfaces for:
 \todo[inline]{Compara software interfaces del CPMS con sequence per scoprire tutte le interfacce}
 
 \subsubsection{Communication interfaces}
-\todo[inline]{Take some hardware interfaces}
 \paragraph{\ac{eMSP}}
+The \ac{eMSP} should use internet connection in order to interact with the back-end of the system, query the different \acp{CPMS} and be connected to the electronic calendar. In order to communicate with the vehicle the user device should also be provided with bluetooth so that can retrieve data from the vehicle and use that for suggesting when and where to charge the vehicle.
+
 \paragraph{\ac{CPMS}}
+The \ac{eMSP} should be provided with a local connection in order to link all the infrastructure and make it managable by a user in the local connection.
+An internet connection should also be present in order to make the system reachable by the external world; in particular it is needed for queries and exteral functions made by users (like booking a charge, canceling a charge, seeing what timeslots are available) and in order to manage remotely the system from the \ac{CPO}maintainers.
 
 \subsection{Functional requirements}
 
 \begin{enumerate}[label=\textbf{R\arabic*}]
-    \item The system must provide information () about the stations nearby;
-    \item The system must reserve a position for a user who registered for a charge through the application;
-    \item The system mustn't have collisions in the booking of charges; (non si possono registrare più di X user per timeslot sovrapposti)
-    \item The system must take the service money from the user payment method after the charging is finished;
+    \item The \ac{eMSP} must allow the users to register (providing email, password, payment method and his infos);
+    \item The \ac{eMSP} must allow the user to login;
+    \item The \ac{eMSP} shall provide informations about a chosen station like types of sockets available, price for the charge, location, available timeslots;
+    \item The \ac{eMSP} shall reserve a position for a user who registered for a charge through the application;
+    \item The \ac{eMSP} shall allow only one user to book a socket in a particular time slot, so no booking collisions are allowed;
+    \item The \ac{eMSP} shall take the service money from the user when the time slot is booked;
+    \item The \ac{eMSP} shall allow the user to be refunded when a charge is canceled;
+    \item The \ac{eMSP} shall be able to connect to a calendar, retrieve informations about the appointments and parse them;
+    \item The \ac{eMSP} shall be able to use the informations about the appointments, the charging stations and the vehicle in order to proactively suggest to the user when and where to charge the vehicle;
+    \item The \ac{eMSP} must notify the user when the charging process is finished via a notification;
+    \item The \ac{eMSP} shall be able to communicate with different \acp{CPO};
+    \item The \ac{eMSP} must allow a \ac{CPO} to be registered by a \ac{CPO}maintainer (providing email, password, \ac{CPO} name, partita iva);
+    \item the \ac{eMSP} shall allow to add to an already registered \ac{CPO} a \ac{CPMS}, providing connection to the \ac{CPO}, number of charging sockets, type of charges;
+    \item The \ac{eMSP} must verify the correctness of the identification data for the \acp{CPO};
+    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to set the revenue wanted;
+    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to set special offers;
+    \item The \ac{CPMS} must allow the \acp{CPO}maintainer to choose the charging mode for a particular charging station (automatic, specific \ac{DSO}, cheapest \ac{DSO}, most environmental friendly \ac{DSO}, use of batteries);
+    \item The \ac{CPMS} must allow the \acp{CPO}maintainer to choose in manual mode whether to charge the batteries;
+    
+    % \item The system must allow the \acp{CPO} to modify the possible charging slots in their stations; % Maybe not useful anymore R4
+    % \item The system must allow the user to choose a specific station, a time-slot;
 \end{enumerate}
+
+\todo[inline]{What if a user finishes prematurely the charge? will he be refunded by the time of charge left?}
+
 \clearpage
 \subsubsection{Use case diagrams}
 \begin{figure}[!h]
@@ -185,7 +198,9 @@ The system must meet the following standards:
 \subsubsection{Hardware limitations}
 Because the system consists of a smartphone app, the main hardware limitation is the computational capability of a smartphone processor. Hence the
 application must be compatible with a low computational capability.
-\subsubsection{Other constraints (TODO MAYBE)}
+
+\subsubsection{Other constraints}
+\todo[inline]{TODO MAYBE}
 
 \subsection{Software system attributes}
 \subsubsection{Reliability}
@@ -206,6 +221,4 @@ As stated in the Reliability and Availability sections, a good pattern for the w
 Thus with this idea it would be not complicated to just maintain a single or a restricted amount of nodes per time. This way the user would only experience at worst slowdowns but never actually downtime.
 \subsubsection{Portability}
 The system should concretize in an APP for the user's smartphone, so it is important to develop the application as cross platform as possible. Doing so eventual updates and modifies won't need any modify to be actually portable from a device to another.
-\subsection{Requirements}
-\subsubsection{External Interface Requirements}
 \clearpage
