@@ -121,12 +121,9 @@ fact uniqueCPOForCPMS{
 fact uniqueStationForCPMS{
 	no disjoint c1,c2: CPMS, s:ChargingStation | s in c1.stations and s in c2.stations}
 
-fact oneEMSP{//we do not care about others
- 	
-}
-
 fact socketOnlyOneStation{
-	all c1,c2: ChargingStation, s:ChargingSocket | c1 != c2 implies not( s in c1.sockets and s in c2.sockets)}
+          all s:ChargingSocket| s in ChargingStation.sockets
+	no disjoint c1,c2: ChargingStation, s:ChargingSocket|(s in c1.sockets and s in c2.sockets)}
 
 fact noVehicleWithoutUser{
 	all v:Vehicle|  v in User.vehicles}
@@ -137,29 +134,77 @@ fact noCPMSWithoutCPO{
 fact noStationWithoutCPMS{
 	all s:ChargingStation|  s in CPMS.stations}
 
-fact noSocketWithoutStation{
-	all s:ChargingSocket|  s in ChargingStation.sockets}
+fact noUserWithoutEMSP{
+	all u:User|  u in EMSP.users}
 
 fact noChargeWithoutEMSP{
 	all c:Charge|  c in EMSP.charges}
 
+fact noChargeWithoutUserInTheEMSP{
+	all c:Charge| c in EMSP.charges and c.user in EMSP.users
+}
+
 fact allChargeAreFromChargingStationInTheSystem{
 	all s:Charge.station | s in EMSP.cpos.cpms.stations 
+}
+fact maintainersMantainStationOfTheSameCPO{
+	all m:Maintainer, c1,c2:CPO|(not c1=c2 and m in c1.cpms.maintainers) implies m not in c2.cpms.maintainers 
 }
 
 //spiegare perche no cpms senza emsp non è un constraint 
 
-
 //Predicates (major actions)
 
-pred BookACharge(e, e1 :EMSP,c:Charge){
-	e1.cpos=e.cpos
-	e1.users=e.users
-//	one c:Charge|
-//c.user=u and c.station=cs and
-	e1.charges=e.charges +c
+
+
+//the user creates a charge
+pred UserCreatesACharge(e,e1:EMSP,u:User, s:ChargingStation){
+one c:Charge  | u in e1.users and
+c.user=u and c.station=s and  (not (e1 = e)) and  e1.users=e.users and
+e1.cpos=e.cpos and e1.charges=e.charges+c
 }
-run BookACharge for 3 but exactly 2 EMSP
+run UserCreatesACharge for 3 but exactly 2 EMSP
+
+pred CPOSubscribeItselfToEMSP(e,e1:EMSP,cpo:CPO){
+ not (e1 = e)
+ e1.users=e.users
+e1.cpos=e.cpos+cpo
+}
+run CPOSubscribeItselfToEMSP for 3 but exactly 2 EMSP, exactly 2 CPO
+
+pred CPOAddCPMS(c,c1:CPO,cp:CPMS){
+ not (c1 = c)
+c.cpms=c1.cpms+cp
+}
+run CPOAddCPMS for 3 but exactly 2 CPO
+
+pred CPOAddMantainerToCPMS(c:CPO,cp,cp1:CPMS,m:Maintainer){
+ not (cp = cp1)
+ cp1 in c.cpms
+ cp in c.cpms
+ cp.stations=cp1.stations
+ cp.maintainers=cp1.maintainers+m
+}
+run CPOAddMantainerToCPMS for 3 but exactly 2 CPMS
+
+pred CPOAddStationToCPMS(c:CPO,cp,cp1:CPMS,s:ChargingStation){
+ not (cp = cp1)
+ cp1 in c.cpms
+ cp in c.cpms
+ cp.maintainers = cp1.maintainers
+ cp.stations=cp1.stations+s
+}
+run CPOAddStationToCPMS for 3 but exactly 2 CPO
+
+pred CPOAddSocketToStation( s,s1:ChargingStation,sk:ChargingSocket){
+ not (s = s1)
+  s.position=s1.position
+  s.strategy=s1.strategy
+  s1.sockets=s.sockets+sk
+}
+//run CPOAddSocketToStation for 3 but exactly 2 ChargingStation
+//does not work for limitation of the language, as a fact a socket can exist only in one station so the above pred does not found
+//an instance, this is due of the Add patter (s=new station, s1=old station) as for now this pred is never runned but supposed as consistent
 
 pred inRange[x: Int, min: Int, max: Int]{ 
 	not min = none implies x>=min and    
@@ -169,47 +214,54 @@ pred inRange[x: Int, min: Int, max: Int]{
 
 assert uniqueLocationForStationCheck{
  	no disjoint s1,s2: ChargingStation | s1.position = s2.position}
-//check uniqueLocationForStationCheck for 50
+check uniqueLocationForStationCheck for 10
 
 assert uniqueCPOForCPMSCheck{
 	no disjoint c1,c2: CPO, cp:CPMS | cp in c1.cpms and cp in c2.cpms}
-//check uniqueCPOForCPMSCheck  for 10
+check uniqueCPOForCPMSCheck  for 10
 
 assert uniqueStationForCPMSCheck{
 	no disjoint c1,c2: CPMS, s:ChargingStation | s in c1.stations and s in c2.stations}
-//check uniqueStationForCPMSCheck for 10
+check uniqueStationForCPMSCheck for 10
 
 assert socketOnlyOneStationCheck{
-	all c1,c2: ChargingStation, s:ChargingSocket | c1 != c2 implies not( s in c1.sockets and s in c2.sockets)}
-//check socketOnlyOneStationCheck for 10
+   all s:ChargingSocket| s in ChargingStation.sockets
+	no disjoint c1,c2: ChargingStation, s:ChargingSocket|(s in c1.sockets and s in c2.sockets)}
+check socketOnlyOneStationCheck for 10
 
 assert noVehicleWithoutUserCheck{
 	all v:Vehicle|  v in User.vehicles}
-//check noVehicleWithoutUserCheck for 10
+check noVehicleWithoutUserCheck for 10
 
 assert noCPMSWithoutCPOCheck{
 	all c:CPMS|  c in CPO.cpms}
-//check noCPMSWithoutCPOCheck for 10
+check noCPMSWithoutCPOCheck for 10
 
 assert noStationWithoutCPMSCheck{
 	all s:ChargingStation|  s in CPMS.stations}
-//check noStationWithoutCPMSCheck for 10
+check noStationWithoutCPMSCheck for 10
 
-assert noSocketWithoutStationCheck{
-	all s:ChargingSocket|  s in ChargingStation.sockets}
-//check noSocketWithoutStationCheck for 10
+assert noUserWithoutEMSP{
+	all u:User|  u in EMSP.users}
+check noUserWithoutEMSP for 10
 
 assert noChargeWithoutEMSPCheck{
 	all c:Charge|  c in EMSP.charges}
-//check noChargeWithoutEMSPCheck for 10
+check noChargeWithoutEMSPCheck for 10
+
+assert noChargeWithoutUserInTheEMSP{
+	all c:Charge| c in EMSP.charges and c.user in EMSP.users}
+check noChargeWithoutUserInTheEMSP for 10
 
 assert allChargeAreFromChargingStationInTheSystemCheck{
 	all s:Charge.station | s in EMSP.cpos.cpms.stations }
-//check allChargeAreFromChargingStationInTheSystemCheck for 10
+check allChargeAreFromChargingStationInTheSystemCheck for 10
+
+assert maintainersMantainStationOfTheSameCPO{
+	all m:Maintainer, c1,c2:CPO|(not c1=c2 and m in c1.cpms.maintainers) implies m not in c2.cpms.maintainers }
+check maintainersMantainStationOfTheSameCPO for 10
 
 pred show() {
 #EMSP = 1
-#CPO=3
-#Charge=4
 }
-run show for 7
+run show for 20
