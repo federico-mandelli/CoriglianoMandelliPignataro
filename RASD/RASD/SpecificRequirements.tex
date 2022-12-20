@@ -13,7 +13,7 @@ After logging in, there are multiple views available to the user, corresponding 
 \end{itemize}
 Selecting a station (from the ranked list or the satellite map) the specific information about the station are shown. The user can select the date and the time-slot from the available ones.
 
-A \ac{CPO} can be registered on the system with a special registration form providing Company name, password and partita IVA. Once the \ac{CPO} is registered and logged in, he can insert the reference to the interface of a \ac{CPMS}.
+A \ac{CPO} can be registered on the system with a special registration form providing Company name, password and \gls{partita IVA}. Once the \ac{CPO} is registered and logged in, he can insert the reference to the interface of a \ac{CPMS}.
 \todo[inline]{Add to the Definitions "partita IVA"}
 
 
@@ -73,24 +73,26 @@ An internet connection should also be present in order to make the system reacha
 \subsection{Functional requirements}
 
 \begin{enumerate}[label=\textbf{R\arabic*}]
-    \item The \ac{eMSP} must allow the users to register (providing email, password, payment method and his infos);
-    \item The \ac{eMSP} must allow the user to login;
+    \item The \ac{eMSP} shall allow the users to register (providing email, password, payment method and his infos);
+    \item The \ac{eMSP} shall allow the user to login;
     \item The \ac{eMSP} shall provide informations about a chosen station like types of sockets available, price for the charge, location, available timeslots;
     \item The \ac{eMSP} shall reserve a position for a user who registered for a charge through the application;
     \item The \ac{eMSP} shall allow only one user to book a socket in a particular time slot, so no booking collisions are allowed;
     \item The \ac{eMSP} shall take the service money from the user when the time slot is booked;
     \item The \ac{eMSP} shall allow the user to be refunded when a charge is canceled;
+    \item The \ac{eMSP} shall allow the user to see nearby charging stations ordered by distance, price or environmental friendliness;
     \item The \ac{eMSP} shall be able to connect to a calendar, retrieve informations about the appointments and parse them;
     \item The \ac{eMSP} shall be able to use the informations about the appointments, the charging stations and the vehicle in order to proactively suggest to the user when and where to charge the vehicle;
-    \item The \ac{eMSP} must notify the user when the charging process is finished via a notification;
+    \item The \ac{eMSP} shall notify the user when the charging process is finished via a notification;
     \item The \ac{eMSP} shall be able to communicate with different \acp{CPO};
-    \item The \ac{eMSP} must allow a \ac{CPO} to be registered by a \ac{CPO}maintainer (providing email, password, \ac{CPO} name, partita iva);
+    \item The \ac{eMSP} shall allow a \ac{CPO} to be registered by a \ac{CPO}maintainer (providing email, password, \ac{CPO} name, \gls{partita IVA});
     \item the \ac{eMSP} shall allow to add to an already registered \ac{CPO} a \ac{CPMS}, providing connection to the \ac{CPO}, number of charging sockets, type of charges;
-    \item The \ac{eMSP} must verify the correctness of the identification data for the \acp{CPO};
+    \item The \ac{eMSP} shall verify the correctness of the identification data for the \acp{CPO};
+    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to access to the system;
     \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to set the revenue wanted;
     \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to set special offers;
-    \item The \ac{CPMS} must allow the \acp{CPO}maintainer to choose the charging mode for a particular charging station (automatic, specific \ac{DSO}, cheapest \ac{DSO}, most environmental friendly \ac{DSO}, use of batteries);
-    \item The \ac{CPMS} must allow the \acp{CPO}maintainer to choose in manual mode whether to charge the batteries;
+    \item The \ac{CPMS} shall allow the \acp{CPO}maintainer to choose the charging mode for a particular charging station (automatic, specific \ac{DSO}, cheapest \ac{DSO}, most environmental friendly \ac{DSO}, use of batteries);
+    \item The \ac{CPMS} shall allow the \acp{CPO}maintainer to choose in manual mode whether to charge the batteries;
     
     % \item The system must allow the \acp{CPO} to modify the possible charging slots in their stations; % Maybe not useful anymore R4
     % \item The system must allow the user to choose a specific station, a time-slot;
