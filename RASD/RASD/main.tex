@@ -1,4 +1,6 @@
-\documentclass[12pt]{article}
+% \documentclass[12pt]{article}
+\documentclass{TitlePage/Configuration_Files/PoliMi3i_thesis}
+
 \usepackage[utf8]{inputenc}
 \usepackage{blindtext}
 \usepackage{acronym}
@@ -15,11 +17,14 @@
 %Import the settings
 \input{Settings}
 
+\input{TitlePage/titlePageSettings.tex}
+
 \input{Glossary}
 
-\begin{document}
 
-\todo[inline]{add front page with name and logo}
+\begin{document}
+\input{TitlePage/titlePage.tex}
+
 %Index
 \tableofcontents{}
 \clearpage
