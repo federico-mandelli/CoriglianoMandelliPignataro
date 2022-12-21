@@ -3,7 +3,7 @@
 \subsubsection{User interfaces}
 \paragraph{\ac{eMSP}}
 The \ac{eMSP} should be accessible to the user through an application installed on the mobile device.
-The first interface shown to the user, if not already done, is the \textit{login} page where the user have to input the username (or e-Mail) and password in order to authenticate.
+The first interface shown to the user, if not already done, is the \textit{login} page where the user have to input the username (or email) and password in order to authenticate.
 From the \textit{login} page there is also the the possibility to go to the \textit{register} page where the fields for inserting the necessary information are present.
 After logging in, there are multiple views available to the user, corresponding of multiple tabs in the app, which are:
 \begin{itemize}
@@ -73,29 +73,28 @@ An internet connection should also be present in order to make the system reacha
 \subsection{Functional requirements}
 
 \begin{enumerate}[label=\textbf{R\arabic*}]
-    \item The \ac{eMSP} shall allow the users to register (providing email, password, payment method and his infos);
-    \item The \ac{eMSP} shall allow the user to login;
-    \item The \ac{eMSP} shall provide informations about a chosen station like types of sockets available, price for the charge, location, available timeslots;
-    \item The \ac{eMSP} shall reserve a position for a user who registered for a charge through the application;
+    \item The \ac{eMSP} shall allow the users to register, providing name, surname, birthday, email, password, payment method;
+    \item The \ac{eMSP} shall allow the user to login with email and password;
+    \item The \ac{eMSP} shall provide informations about a selected station like types of sockets available, price for the charge, location, available timeslots;
+    \item The \ac{eMSP} shall reserve a socket in the right charging station with the wanted type of charge for a user who registered for a charge through the application;
     \item The \ac{eMSP} shall allow only one user to book a socket in a particular time slot, so no booking collisions are allowed;
     \item The \ac{eMSP} shall take the service money from the user when the time slot is booked;
-    \item The \ac{eMSP} shall allow the user to be refunded when a charge is canceled;
-    \item The \ac{eMSP} shall allow the user to see nearby charging stations ordered by distance, price or environmental friendliness;
+    \item The \ac{eMSP} shall refund the user when a charge is canceled;
+    \item The \ac{eMSP} shall allow the user to see nearby\footnote{This parameter may be setted by the user} charging stations ordered by distance, price or environmental friendliness;
     \item The \ac{eMSP} shall be able to connect to a calendar, retrieve informations about the appointments and parse them;
     \item The \ac{eMSP} shall be able to use the informations about the appointments, the charging stations and the vehicle in order to proactively suggest to the user when and where to charge the vehicle;
     \item The \ac{eMSP} shall notify the user when the charging process is finished via a notification;
     \item The \ac{eMSP} shall be able to communicate with different \acp{CPO};
-    \item The \ac{eMSP} shall allow a \ac{CPO} to be registered by a \ac{CPO}maintainer (providing email, password, \ac{CPO} name, \gls{partita IVA});
+    \item The \ac{eMSP} shall allow a \ac{CPO} to register, providing name, email, password, \gls{partita IVA};
     \item the \ac{eMSP} shall allow to add to an already registered \ac{CPO} a \ac{CPMS}, providing connection to the \ac{CPO}, number of charging sockets, type of charges;
     \item The \ac{eMSP} shall verify the correctness of the identification data for the \acp{CPO};
+    \item The \ac{CPMS} shall be reachable by \acp{eMSP} in order to perform/cancel a booking or query the system for retrieving informations;
+    \item The \ac{CPMS} shall allow the \ac{CPO} to modify the informations about their systems, such as adding/removing charging stations, adding/removing charging sockets, modifying the type of charge the sockets have, modify the availability/quantity of batteries, adding/removing possible \acp{DSO}.
     \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to access to the system;
     \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to set the revenue wanted;
     \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to set special offers;
-    \item The \ac{CPMS} shall allow the \acp{CPO}maintainer to choose the charging mode for a particular charging station (automatic, specific \ac{DSO}, cheapest \ac{DSO}, most environmental friendly \ac{DSO}, use of batteries);
-    \item The \ac{CPMS} shall allow the \acp{CPO}maintainer to choose in manual mode whether to charge the batteries;
-
-          % \item The system must allow the \acp{CPO} to modify the possible charging slots in their stations; % Maybe not useful anymore R4
-          % \item The system must allow the user to choose a specific station, a time-slot;
+    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose the charging mode for a particular charging station (automatic, specific \ac{DSO}, cheapest \ac{DSO}, most environmental friendly \ac{DSO}, use of batteries);
+    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose in manual mode whether to charge the batteries;
 \end{enumerate}
 
 \todo[inline]{What if a user finishes prematurely the charge? will he be refunded by the time of charge left?}
