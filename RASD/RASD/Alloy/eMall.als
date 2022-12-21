@@ -1,6 +1,4 @@
 module eMall
-//open util/integer 
-//open util/boolean 
 
 //only CPMS used in the system are added
 
@@ -22,7 +20,6 @@ sig EMSP{
 sig CPMS{
 	stations:set ChargingStation,
 	maintainers:set Maintainer
-//Maybe a bool 
 }
 
 abstract sig Person{
@@ -32,10 +29,10 @@ abstract sig Person{
 //	mail: one Str,
  	//password: one Str,
 } 
-one sig User extends Person{
+sig User extends Person{
 	vehicles: set Vehicle
 }
-one sig Maintainer extends Person{}
+sig Maintainer extends Person{}
 
 //batterylevel percentage of the battery, KWperKM to int easier
 sig Vehicle{
@@ -82,10 +79,10 @@ one sig Fast extends ChargingType{}
 one sig Normal extends ChargingType{}
 
 abstract sig EnergySource{}
-one sig Battery extends EnergySource{
+sig Battery extends EnergySource{
 //capacity: one Int
 }
-one sig DSO extends EnergySource{}
+sig DSO extends EnergySource{}
 
 
 
@@ -129,7 +126,8 @@ fact noVehicleWithoutUser{
 	all v:Vehicle|  v in User.vehicles}
 
 fact noCPMSWithoutCPO{
-	all c:CPMS|  c in CPO.cpms}
+//	all c:CPMS|  c in CPO.cpms
+}
 
 fact noStationWithoutCPMS{
 	all s:ChargingStation|  s in CPMS.stations}
@@ -159,16 +157,17 @@ fact maintainersMantainStationOfTheSameCPO{
 
 //the user creates a charge
 pred UserCreatesACharge(e,e1:EMSP,u:User, s:ChargingStation){
-one c:Charge  | u in e1.users and
-c.user=u and c.station=s and  (not (e1 = e)) and  e1.users=e.users and
-e1.cpos=e.cpos and e1.charges=e.charges+c
+one c:Charge  | u in e.users and
+c.user=u and c.station=s and  (not (e = e1)) and  e.users=e1.users and
+e.cpos=e1.cpos and e.charges=e1.charges+c
 }
 run UserCreatesACharge for 3 but exactly 2 EMSP
 
 pred CPOSubscribeItselfToEMSP(e,e1:EMSP,cpo:CPO){
  not (e1 = e)
- e1.users=e.users
-e1.cpos=e.cpos+cpo
+e.charges=e1.charges
+e.users= e1.users
+e.cpos=e1.cpos+cpo
 }
 run CPOSubscribeItselfToEMSP for 3 but exactly 2 EMSP, exactly 2 CPO
 
@@ -176,7 +175,7 @@ pred CPOAddCPMS(c,c1:CPO,cp:CPMS){
  not (c1 = c)
 c.cpms=c1.cpms+cp
 }
-run CPOAddCPMS for 3 but exactly 2 CPO
+run CPOAddCPMS for 3 but exactly 2 CPO, exactly 2 CPMS
 
 pred CPOAddMantainerToCPMS(c:CPO,cp,cp1:CPMS,m:Maintainer){
  not (cp = cp1)
@@ -196,8 +195,11 @@ pred CPOAddStationToCPMS(c:CPO,cp,cp1:CPMS,s:ChargingStation){
 }
 run CPOAddStationToCPMS for 3 but exactly 2 CPO
 
-pred CPOAddSocketToStation( s,s1:ChargingStation,sk:ChargingSocket){
+pred CPOAddSocketToStation(c:CPO,cp:CPMS, s,s1:ChargingStation,sk:ChargingSocket){
  not (s = s1)
+  cp in c.cpms
+  s in cp.stations
+  s1 in cp.stations
   s.position=s1.position
   s.strategy=s1.strategy
   s1.sockets=s.sockets+sk
@@ -233,10 +235,6 @@ assert noVehicleWithoutUserCheck{
 	all v:Vehicle|  v in User.vehicles}
 check noVehicleWithoutUserCheck for 10
 
-assert noCPMSWithoutCPOCheck{
-	all c:CPMS|  c in CPO.cpms}
-check noCPMSWithoutCPOCheck for 10
-
 assert noStationWithoutCPMSCheck{
 	all s:ChargingStation|  s in CPMS.stations}
 check noStationWithoutCPMSCheck for 10
@@ -263,5 +261,9 @@ check maintainersMantainStationOfTheSameCPO for 10
 
 pred show() {
 #EMSP = 1
+#CPO>2
+#Charge>2
+#Vehicle>2
+#User>2
 }
-run show for 20
+run show
