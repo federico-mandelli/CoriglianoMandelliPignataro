@@ -14,7 +14,6 @@ After logging in, there are multiple views available to the user, corresponding 
 Selecting a station (from the ranked list or the satellite map) the specific information about the station are shown. The user can select the date and the time-slot from the available ones.
 
 A \ac{CPO} can be registered on the system with a special registration form providing Company name, password and \gls{partita IVA}. Once the \ac{CPO} is registered and logged in, he can insert the reference to the interface of a \ac{CPMS}.
-\todo[inline]{Add to the Definitions "partita IVA"}
 
 
 \paragraph{\ac{CPMS}}
@@ -32,6 +31,7 @@ The \ac{CPO} can also view the price of his service and set the revenue percenta
 \todo[inline]{Check with assignment document for all the functions}
 
 \subsubsection{Hardware interfaces}
+\todo[inline]{Aggiorna Requirements con spiegazione di EnergySourceStrategy}
 \paragraph{\ac{eMSP}}
 The user, in order to interact with the \ac{eMSP}, must have a device that is provided with a \ac{GPS} and internet connection. Thanks to this, the user can search for close charging stations, see if those are available and can book or cancel a charge.
 A Bluetooth peripheral should also be available to the user when he is in the vehicle, in order to make a connection with it. Thanks to this the device can query the vehicle infos (such as average battery consumption per kilometer, estimated autonomy and \ac{SoC}) so that the system can suggest to the user when and where to charge the vehicle.
@@ -93,9 +93,9 @@ An internet connection should also be present in order to make the system reacha
     \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to set special offers;
     \item The \ac{CPMS} shall allow the \acp{CPO}maintainer to choose the charging mode for a particular charging station (automatic, specific \ac{DSO}, cheapest \ac{DSO}, most environmental friendly \ac{DSO}, use of batteries);
     \item The \ac{CPMS} shall allow the \acp{CPO}maintainer to choose in manual mode whether to charge the batteries;
-    
-    % \item The system must allow the \acp{CPO} to modify the possible charging slots in their stations; % Maybe not useful anymore R4
-    % \item The system must allow the user to choose a specific station, a time-slot;
+
+          % \item The system must allow the \acp{CPO} to modify the possible charging slots in their stations; % Maybe not useful anymore R4
+          % \item The system must allow the user to choose a specific station, a time-slot;
 \end{enumerate}
 
 \todo[inline]{What if a user finishes prematurely the charge? will he be refunded by the time of charge left?}

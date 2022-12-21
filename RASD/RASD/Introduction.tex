@@ -5,14 +5,6 @@
 % \acl{} Stampa solo l'acronimo completo.
 
 % Introduction
-\todo[inline]{
-    - Aggiungere nei world phenomena il ChargingType\\
-    - Inserire "vehicle type" all'interno dell'attore auto (Ho messo consumption per Km perchè altrimenti avremmo dovuto definire una sorta di lista di tipi di macchine)\\
-    - Controlla che gli Scenarios siano coerenti con l'UML\\
-    - Aggiorna Requirements con spiegazione di EnergySourceStrategy\\
-    - Update Scenarios with "Giochini di Emilio"
-    - Better explain in Requirements(not sure) how the system suggest a charge
-}
 
 \subsection{Purpose}
 Due to the recently increase of effort in the battle against the climate change, electric vehicles are slowly becoming the new technology for private transport that the people use everyday.
@@ -39,7 +31,7 @@ These decisions will affect the energy prices, so it is important that a system 
 
 % world phenomena
 \begin{enumerate}[label=\textbf{W\arabic*}]
-    \item People charge electric vehicles; \label{world:people-charge-vehicles} [\ref{goal:eMSP-helps-selecting}, \ref{goal:eMSP-booking-charge}, \ref{goal:eMSP-allow-charge}, \ref{goal:CPMS-handles-charge}]
+    \item People charge electric vehicles in different modes (NORMAL, FAST, SUPER-FAST); \label{world:people-charge-vehicles} [\ref{goal:eMSP-helps-selecting}, \ref{goal:eMSP-booking-charge}, \ref{goal:eMSP-allow-charge}, \ref{goal:CPMS-handles-charge}]
     \item People use web calendar; \label{world:people-use-calendars} [\ref{goal:eMSP-helps-selecting}, \ref{goal:eMSP-booking-charge}, \ref{goal:eMSP-allow-charge}]
     \item People pay for the charging service; \label{world:people-pay-service} [\ref{goal:eMSP-allow-charge}]
     \item \acp{DSO} supply energy to \acp{CPO}; \label{world:DSO-supply-energy} [\ref{goal:CPMS-manage-station}]
