@@ -2,29 +2,27 @@
 
 \subsubsection{User interfaces}
 \paragraph{\ac{eMSP}}
-The \ac{eMSP} should be accessible to the user through an application installed on the mobile device.
-The first interface shown to the user, if not already done, is the \textit{login} page where the user have to input the username (or email) and password in order to authenticate.
-From the \textit{login} page there is also the the possibility to go to the \textit{register} page where the fields for inserting the necessary information are present.
-After logging in, there are multiple views available to the user, corresponding of multiple tabs in the app, which are:
+The \ac{eMSP} should be accessible through an application installed on the mobile device.
+The first interface shown to the user, if not already done, is the \textit{login} page where the user has to input the email and password in order to authenticate.
+From the \textit{login} page there is also the possibility to go to the \textit{sign up} page where the fields for inserting the necessary information are shown.
+After logging in, there are multiple tabs in the app, which are:
 \begin{itemize}
-    \item A satellite map of the charging stations near the position of the user;
-    \item A ranked list personalizable based on parameters chosen by the user (distance, price, environmental friendliness\ldots).
-    \item A screen for enabling/disabling suggestions from the system, setting up the connection to the user online calendar.
+    \item A satellite map of the charging stations near user's position;
+    \item A personalizable ranked list based on parameters chosen by the user (distance, price, environmental friendliness\ldots).
+    \item A screen for enabling/disabling suggestions from the system and for setting up the connection to the user web calendar.
 \end{itemize}
-Selecting a station (from the ranked list or the satellite map) the specific information about the station are shown. The user can select the date and the time-slot from the available ones.
+By selecting a station (from the ranked list or the satellite map) the specific information about it are shown. The user can select the date and the time slot from the available ones.
 
-A \ac{CPO} can be registered on the system with a special registration form providing Company name, password and \gls{partita IVA}. Once the \ac{CPO} is registered and logged in, he can insert the reference to the interface of a \ac{CPMS}.
-
+A \ac{CPO} can register to the system with a special form providing Company name, password and \gls{partita IVA}. Once the \ac{CPO} is registered and logged in, he can insert/remove the \ac{API} reference to the interface of a \ac{CPMS}.
 
 \paragraph{\ac{CPMS}}
-The \ac{CPMS} works as a web application; A \ac{CPO}maintainer accesses directly to the \ac{CPMS} and has the possibility to handle all the stations of the \ac{CPO}.
-
-Once accessed to the system, the \ac{CPO}maintainer has the possibility to view the system status, seeing the list of charging stations with their policy, the available sockets and the \ac{SoC} of batteries. Selecting a socket the schedule of the booked charges can be viewed.
+The \ac{CPMS} works as a web application; When a \ac{CPO}maintainer logs in he has the possibility to handle all the added stations.\\
+In particular he can view: the system status, the list of charging stations and their policy, the available sockets and the \ac{SoC} of batteries.\\
 The \ac{CPO}maintainers can change the policy of each charging station; in particular they can:
 \begin{itemize}
-    \item Choose a particular energy provider from a list of \acp{DSO} with the optional opportunity to recharge charging station batteries with this \ac{DSO};
-    \item Choose to use only the energy stored in the batteries and, when this ends, go into automatic mode;
-    \item Choose the automatic mode, which will choose autonomously which \ac{DSO} to use, when to use batteries and when to recharge them;
+    \item Choose a the energy provider from a list of \acp{DSO};
+    \item Choose to use only the energy stored in the batteries and, once discharged, to go into automatic mode;
+    \item Choose the automatic mode, that will pick autonomously which \ac{DSO} to use, whether to use batteries and when to recharge them;
 \end{itemize}
 
 The \ac{CPO} can also view the price of his service and set the revenue percentage for a single charge.
@@ -67,34 +65,33 @@ The \ac{CPMS} should provide to the external world interfaces for:
 The \ac{eMSP} should use internet connection in order to interact with the back-end of the system, query the different \acp{CPMS} and be connected to the electronic calendar. In order to communicate with the vehicle the user device should also be provided with bluetooth so that can retrieve data from the vehicle and use that for suggesting when and where to charge the vehicle.
 
 \paragraph{\ac{CPMS}}
-The \ac{eMSP} should be provided with a local connection in order to link all the infrastructure and make it managable by a user in the local connection.
-An internet connection should also be present in order to make the system reachable by the external world; in particular it is needed for queries and exteral functions made by users (like booking a charge, canceling a charge, seeing what timeslots are available) and in order to manage remotely the system from the \ac{CPO}maintainers.
+The \ac{eMSP} should be provided with a local connection in order to link all the infrastructure and make it manageable by a user in the local connection.
+An internet connection should also be present in order to make the system reachable by the external world; in particular it is needed for queries and external functions made by users (like booking a charge, canceling a charge, seeing what time slots are available) and in order to manage remotely the system from the \ac{CPO}maintainers.
 
 \subsection{Functional requirements}
 
 \begin{enumerate}[label=\textbf{R\arabic*}]
     \item The \ac{eMSP} shall allow the users to register, providing name, surname, birthday, email, password, payment method;
     \item The \ac{eMSP} shall allow the user to login with email and password;
-    \item The \ac{eMSP} shall provide informations about a selected station like types of sockets available, price for the charge, location, available timeslots;
-    \item The \ac{eMSP} shall reserve a socket in the right charging station with the wanted type of charge for a user who registered for a charge through the application;
-    \item The \ac{eMSP} shall allow only one user to book a socket in a particular time slot, so no booking collisions are allowed;
-    \item The \ac{eMSP} shall take the service money from the user when the time slot is booked;
+    \item The \ac{eMSP} shall provide information about a selected station such as types of available sockets, price for the charge, location, available time slots;
+    \item The \ac{eMSP} shall reserve a socket in the right charging station with for a user who booked a charge through the application;
+    \item The \ac{eMSP} shall allow only one user to book a socket in a particular time slot, so no booking collisions shall occur;
+    \item The \ac{eMSP} shall allow the user to pay for a booked charge;
     \item The \ac{eMSP} shall refund the user when a charge is canceled;
-    \item The \ac{eMSP} shall allow the user to see nearby\footnote{This parameter may be setted by the user} charging stations ordered by distance, price or environmental friendliness;
-    \item The \ac{eMSP} shall be able to connect to a calendar, retrieve informations about the appointments and parse them;
-    \item The \ac{eMSP} shall be able to use the informations about the appointments, the charging stations and the vehicle in order to proactively suggest to the user when and where to charge the vehicle;
-    \item The \ac{eMSP} shall notify the user when the charging process is finished via a notification;
-    \item The \ac{eMSP} shall be able to communicate with different \acp{CPO};
+    \item The \ac{eMSP} shall allow the user to see nearby\footnote{This parameter may be set by the user} charging stations ordered by distance, price or environmental friendliness;
+    \item The \ac{eMSP} shall be able to connect to a web calendar, retrieve information about the appointments and parse them;
+    \item The \ac{eMSP} shall be able to use the information about the appointments, the charging stations and the vehicle in order to proactively suggest to the user when and where to charge the vehicle;
+    \item The \ac{eMSP} shall notify the user when the charging process is finished;
+    \item The \ac{eMSP} shall aggregate different \acp{CPO};
     \item The \ac{eMSP} shall allow a \ac{CPO} to register, providing name, email, password, \gls{partita IVA};
-    \item the \ac{eMSP} shall allow to add to an already registered \ac{CPO} a \ac{CPMS}, providing connection to the \ac{CPO}, number of charging sockets, type of charges;
+    \item the \ac{eMSP} shall allow to add to an already registered \ac{CPO} a \ac{CPMS}, providing \ac{API} reference to the \ac{CPMS};
     \item The \ac{eMSP} shall verify the correctness of the identification data for the \acp{CPO};
-    \item The \ac{CPMS} shall be reachable by \acp{eMSP} in order to perform/cancel a booking or query the system for retrieving informations;
-    \item The \ac{CPMS} shall allow the \ac{CPO} to modify the informations about their systems, such as adding/removing charging stations, adding/removing charging sockets, modifying the type of charge the sockets have, modify the availability/quantity of batteries, adding/removing possible \acp{DSO}.
+    \item The \ac{eMSP} shall allow the \ac{CPO} to set the wanted revenue percentage;
+    \item The \ac{CPMS} shall be reachable by \acp{eMSP} in order to perform/cancel a booking, or query the system;
     \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to access to the system;
-    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to set the revenue wanted;
-    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to set special offers;
-    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose the charging mode for a particular charging station (automatic, specific \ac{DSO}, cheapest \ac{DSO}, most environmental friendly \ac{DSO}, use of batteries);
-    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose in manual mode whether to charge the batteries;
+    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to modify the information about their systems, such as adding/removing charging stations, set stations sources and create/remove maintainers;
+    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose the energy source and strategy;
+    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose manual or automatic mode;
 \end{enumerate}
 
 \todo[inline]{What if a user finishes prematurely the charge? will he be refunded by the time of charge left?}
@@ -202,9 +199,10 @@ An internet connection should also be present in order to make the system reacha
 %Definition of use case diagrams, use cases and associated sequence/activity diagrams, and mapping on requirements
 \subsection{Performance requirements}
 The system in general needs to manage a large collection of electric car users/\acp{CPO} and it needs to supply the heaviest services (like computing the cheapest nearest stations) in a reasonable amount of time.
-Because of that the system shall guarantee a baseline load of 1000000 users/\acp{CPO} still with a response time not greater than 5 seconds. To achieve the goal, the system shall be able to decentralize all the computation as possible,
+Because of that the system shall guarantee a baseline load of 1000000 users/\acp{CPO} still with a response time not greater than 5 seconds. To achieve the goal, the system shall be able to decentralize all the computation as much as possible,
 trying to make the client responsible of the heaviest loads.
 \subsection{Design constraints}
+From this point we consider only the user side constraints as they represent the largest share of the system use base.
 \subsubsection{Standards compliance}
 The system must meet the following standards:
 \begin{itemize}
@@ -212,29 +210,22 @@ The system must meet the following standards:
     \item \textbf{Android and iOS}: The system must be compatible with the current versions and reasonably still used previous ones of Android and iOS.
 \end{itemize}
 \subsubsection{Hardware limitations}
-Because the system consists of a smartphone app, the main hardware limitation is the computational capability of a smartphone processor. Hence the
+Because the user side system consists of a smartphone app, the main hardware limitation is the computational capability of a smartphone processor. Hence the
 application must be compatible with a low computational capability.
-
-\subsubsection{Other constraints}
-\todo[inline]{TODO MAYBE}
 
 \subsection{Software system attributes}
 \subsubsection{Reliability}
-About the reliability, the system should prefer a fail safe scenarios, where the actual service can behave slower than expected but still consistent with the results.
-To do so the system should be distributed data wise but also performance wise, allowing a scalability factor while being open for maintenance without completely going down.
+The system shall be fail safe, while the actual service can behave slower than expected it shall be still consistent with the results.
+To do so the system shall be distributed data and performance wise, allowing a scalability factor while being open for maintenance without completely experiencing downtime.
 Some good techniques are \ac{RACS} and \ac{RAPS} which put the reliability very high in the architecture.
 \subsubsection{Availability}
-Because as stated before a complete period of down would not be great for this type of service, eMall has to prefer the availability over the actual conformity of response time.
+Because a period of downtime would be detrimental, eMall has to prefer the availability over the conformity of response time.
 Thus the availability should be as high as possible but greater than 99.99\% and must use some techniques to avoid down time during maintenance.
 \subsubsection{Security}
-Because the system will handle different personal user data, and because one of the standards that it has to follow is the \ac{GDPR} law, it is required a certain level
-of security around the system. So an encryption of the user passwords must be adopted and the access to the user's data must be restricted only to the user itself.
-It is important that not even the system administrator could access the user's data in respect of the privacy laws.\\
-It needs to be highlighted also that according to the \ac{GDPR} laws, the user has the right to revoke the consent about the usage of the data by the platform. This means that
-whenever a user decides to delete the account from the system, all the data must about the user must be deleted permanently.
+Because the system will handle personal data, it has to abide the \ac{GDPR} law; thus an encryption of the user's password must be adopted and the access to the user's data must be restricted only to himself.
+It is important that nobody else, not even the system administrator, can access the user's data in compliance of the privacy laws.\\
 \subsubsection{Maintainability}
-As stated in the Reliability and Availability sections, a good pattern for the whole system would be to consider the maintenance as less invasive as possible, using duplicated data and services.
-Thus with this idea it would be not complicated to just maintain a single or a restricted amount of nodes per time. This way the user would only experience at worst slowdowns but never actually downtime.
+As stated in the Reliability and Availability sections, a good pattern for the whole system would be to consider the maintenance as less invasive as possible. Thus it would not be complicated to maintain a single or a restricted amount of nodes per time. This way the users would only experience at worst slowdowns but never downtime.
 \subsubsection{Portability}
-The system should concretize in an APP for the user's smartphone, so it is important to develop the application as cross platform as possible. Doing so eventual updates and modifies won't need any modify to be actually portable from a device to another.
+The system should be as cross platform as possible to increase the maintainability over different type of platforms.
 \clearpage

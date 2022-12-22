@@ -39,7 +39,7 @@ It is assumed that in \ref{SCE:user-searches-stations},\ref{SCE:user-books-charg
             Josh liking the idea opens the app and he confirms the booking;\label{SCE:user-gets-suggestions}
       \item \ac{CPO} subscribes to the system:\\
             Judy, the CEO of a famous \ac{CPO}, wants to subscribe it to \ac{eMall} to improve sales.
-            She opens the eMall website and selects to sign up as \ac{CPO}, she inserts the name, email, \gls{partita IVA}, a master password and connects the \acp{CPMS} to the site via an \ac{API} reference;\label{SCE:cpo-signs-up}
+            She opens the eMall website and selects to sign up as \ac{CPO}, she inserts the name, email, \gls{partita IVA}, a master password and connects the \acp{CPMS} to the site via an \ac{API} reference along with the revenue percentage;\label{SCE:cpo-signs-up}
       \item \ac{CPO}maintainer logs into his assigned \ac{CPMS}:\\
             Brett a \ac{CPO} employee wants to access the service, he connects to the \ac{CPMS} and inserts the ID
             and password, if correct he logs in; otherwise the procedure fails and must be repeated;\label{SCE:cpomaintainer-logs-in}
@@ -94,11 +94,13 @@ Thus a \acp{CPO}maintainer can decide the cost of a charge and create special of
 \subsection{User characteristics}
 We consider the following actors in the \ac{eMall} system:
 \begin{enumerate}[label=\textbf{A\arabic*}]
-      \item \textbf{Unregistered user:} A user that needs to register before accessing all the \ac{eMall} or \ac{CPMS} services;
-      \item \textbf{Registered default user:} A user that has access to all the \ac{eMall} features.
-            This actor is associated to an electric vehicle and can visualize the nearest stations, book/cancel/pay a charge, visualize the status of a charge and activate the automatic suggestion service based on the agenda;
-      \item \textbf{Registered CPO maintainer user:} A user that has access to all the \ac{CPMS} features.
-            These features allow the maintainer to configure the \ac{CPMS} depending on the energy source strategy and visualize all charging stations statuses;
+      \item \textbf{Unregistered user:} A user that needs to register before accessing the \ac{eMall} services for users;
+      \item \textbf{Registered user:} A user that has access to all the \ac{eMall} features.
+            This actor can be associated to an electric vehicle and can visualize the nearest stations, book/cancel/pay a charge, visualize the status of a charge and activate the automatic suggestion service based on the agenda;
+      \item \textbf{Unregistered \ac{CPO}} A \ac{CPO} that needs to register before accessing the \ac{eMall} services for \acp{CPO};
+      \item \textbf{Registered \ac{CPO}} A \ac{CPO} that can add/remove to \ac{eMall} \acp{CPMS};
+      \item \textbf{Registered \ac{CPO}maintainer:} A user that has access to all the \ac{CPMS} features.
+            These \ac{CPMS} allows the maintainer to configure the energy source strategy, add other \ac{CPO}maintainers and to visualize all the charging stations statuses;
 \end{enumerate}
 
 \subsection{Assumptions dependencies and constraints}
@@ -107,8 +109,8 @@ We consider the following actors in the \ac{eMall} system:
       \item Users insert genuine data in the forms;
       \item Users(Including CPOs) do not use the system with malicious intent;
       \item All the electric vehicles can be charged by all the stations (no incompatibility);
-      \item All the user have an active internet and GPS connection always available while using the service;
-      \item Once installed a \ac{CPMS} the first login is done using default user and password and a a first \ac{CPO}maintainer is configured.
+      \item All the users have an active internet and GPS connection always available while using the service;
+      \item Once installed, the initial login to a \ac{CPMS} is done using the default user and password and the first \ac{CPO}maintainer is configured.
 \end{enumerate}
 \subsubsection{Constraint}
 \begin{enumerate}[label=\textbf{C\arabic*}]

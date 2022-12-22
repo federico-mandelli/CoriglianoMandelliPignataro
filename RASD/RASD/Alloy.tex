@@ -1,20 +1,20 @@
-In this section the system described will be modelled and validated using the AlloyTools framework, the analysis is divided in 4 main parts
+In this section the system described will be modelled and validated using AlloyTools. The analysis is divided in 4 main parts:
 \begin{itemize}
-    \item Static Analysis
-    \item Dynamic Analysis
-    \item Assertions
-    \item Word Generation
+    \item Static Analysis;
+    \item Dynamic Analysis;
+    \item Assertions;
+    \item Word Generation;
 \end{itemize}
-For this analysis the following assumption has been considered
+For this analysis the following assumptions have been considered:
 \begin{itemize}
-    \item The Float type (not defined) represent a decimal number
-    \item A CPO can be modelled without being a part of the EMSP
+    \item The Float type (not defined) represents a decimal number;
+    \item A \ac{CPO} can be modelled without being a part of the \ac{EMSP};
 \end{itemize}
 
 \subsection{Static Analysis}
-Here the model is created, all the classes are represented by a sig, for the purpose of this analysis only the relational property are considered, so the attribute of a basic type (such as Int,float,boolean,Data etc. etc.) are not considered.
-This decision has been taken to simplify the model view and coding, most system that could be used to implement this system already support this type of data, or can be easily implemented and limited in their value ranges.//
-As a guideline the type are written only in the declarations in a comment, they are defined by abstract type (not implemented) and their ranges are specified; this types are not considered in the rest of the document.
+Here the model is created, all the classes are represented by a \textbf{sig}. For the purpose of this analysis only the relational properties are considered, so the attributes of basic types (such as Int,float,boolean,Data etc...) are not considered.
+This decision has been taken to simplify the model view and coding. Most platforms that could be used to implement the system, already support this or similar types of data.\\
+As a guideline the types are written only in the declarations inside a comment; they are defined by unimplemented interfaces and their ranges are specified; this types are not considered in the rest of the document.
 
 \begin{verbatim}
 module eMall
@@ -25,35 +25,35 @@ sig CPO{
 cpms: set CPMS}
 
 sig EMSP{
-	users: set User,
-	charges: set Charge,
-	cpos:set CPO
+    users: set User,
+    charges: set Charge,
+    cpos:set CPO
 }
 
 sig CPMS{
-	stations:set ChargingStation,
-	maintainers:set Maintainer
+    stations:set ChargingStation,
+    maintainers:set Maintainer
 }
 
 abstract sig Person{
-	//name: one Str,
-	//surname: one Str,
- 	//birthday: one Date,
+    //name: one Str,
+    //surname: one Str,
+    //birthday: one Date,
     //mail: one Str,
- 	//password: one Str,
+    //password: one Str,
 } 
 sig User extends Person{
-	vehicles: set Vehicle
+    vehicles: set Vehicle
 }
 sig Maintainer extends Person{}
 
 sig Vehicle{
-	//batteryLevel: one Float,
-	//KWperKm: one Float,
-	location: one Location,
+    //batteryLevel: one Float,
+    //KWperKm: one Float,
+    location: one Location,
 }{ 
-//inRange[batteryLevel, 0, 100]
-//inRange[KWperKm, 0, 100]
+    //inRange[batteryLevel, 0, 100]
+    //inRange[KWperKm, 0, 100]
 }
 
 sig ChargingStation{
@@ -163,7 +163,7 @@ implies m not in c2.cpms.maintainers
 \end{verbatim}
 
 \subsection{Dynamic Programming}
-In this part the major operation are described and run, as a convection letter1 represent the old version (before the execution), while letter0 is the new version after the execution of the predicate.
+In this part the major operations are described and run; as a convention the letter 1 represents the old version (before the execution), while the letter 0 is the new version (after the execution of the predicate).
 
 \subsubsection{User books a charge}
 \begin{verbatim}
