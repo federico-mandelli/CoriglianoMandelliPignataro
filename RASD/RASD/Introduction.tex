@@ -7,23 +7,22 @@
 % Introduction
 
 \subsection{Purpose}
-Due to the recently increase of effort in the battle against the climate change, electric vehicles are slowly becoming the new technology for private transport that the people use everyday.
+Due to the recent increase of effort in the battle against climate change, electric vehicles are slowly becoming the new technology for private transport that   people use everyday.
 To sustain this type of strategy, we need to develop a clever and capillary charging system.\\
-\ac{eMall} is an \ac{eMSP} that aims to help the final user dealing with the charging need.
-To do so it will inform the user about the nearby charging stations, their cost and any special offer that they have.
-Also, it will allow the user to book/cancel/pay a charge and will notify the user when the charging process is terminated.
-With the integration of the user's calendar, the system will also suggest the user the best moment in the schedule to charge the vehicle.
+\ac{eMall} is an \ac{eMSP} that aims to help the final users dealing with their charging needs by informing the users about the nearby charging stations, their cost and any special offer that they might have.
+It will allow the users to book/cancel/pay a charge and it will notify the users when the charging process is terminated.\\
+With the integration of the user's calendar, the system will also suggest the best moment in the schedule to charge the vehicle.
 To have a fully integrated system, all the \acp{CPO} will have a technological support called \ac{CPMS} to interface the service with the physical charging stations and to manage all the energy sources like batteries and \acp{DSO}.
-Such \acp{CPMS} will be in charge of deciding the energy source and, in case of batteries in a charging station it will also manage their charging.
-These decisions will affect the energy prices, so it is important that a system like this allows also the \ac{CPO} maintainers to decide it.
+\acp{CPMS} will be in charge of deciding the energy source and, in case of batteries in a charging station, they will also manage their charging.
 \subsubsection{Goals}
 %\input{Introduzione}
 \begin{enumerate}[label=\textbf{G\arabic*}]
     \item The \ac{eMSP} shall help the user to select the station; \label{goal:eMSP-helps-selecting}
-    \item The \ac{eMSP} shall allow the user to book/cancel a charge; \label{goal:eMSP-booking-charge}
+    \item The \ac{eMSP} shall allow the user to book/pay/cancel a charge; \label{goal:eMSP-booking-charge}
     \item The \ac{eMSP} shall allow the user to perform a charge; \label{goal:eMSP-allow-charge}
     \item \acp{CPMS} shall handle the vehicle charging cycles; \label{goal:CPMS-handles-charge}
-    \item \acp{CPMS} shall manage the vehicle charging stations; \label{goal:CPMS-manage-station}
+          \todo[inline]{CPMS o charging stations}
+    \item \acp{CPMS} shall manage the charging stations; \label{goal:CPMS-manage-station}
 \end{enumerate}
 
 % Subsection where we enumerate all the world and shared phenomena
@@ -34,6 +33,7 @@ These decisions will affect the energy prices, so it is important that a system 
     \item People charge electric vehicles in different modes (NORMAL, FAST, SUPER-FAST); \label{world:people-charge-vehicles} [\ref{goal:eMSP-helps-selecting}, \ref{goal:eMSP-booking-charge}, \ref{goal:eMSP-allow-charge}, \ref{goal:CPMS-handles-charge}]
     \item People use web calendar; \label{world:people-use-calendars} [\ref{goal:eMSP-helps-selecting}, \ref{goal:eMSP-booking-charge}, \ref{goal:eMSP-allow-charge}]
     \item People pay for the charging service; \label{world:people-pay-service} [\ref{goal:eMSP-allow-charge}]
+          \todo[inline]{Anche G3?}
     \item \acp{DSO} supply energy to \acp{CPO}; \label{world:DSO-supply-energy} [\ref{goal:CPMS-manage-station}]
     \item Some \acp{CPO} own batteries; \label{world:CPO-own-batteries} [\ref{goal:CPMS-handles-charge}, \ref{goal:CPMS-manage-station}]
     \item \acp{CPO} decide whether to use batteries or \ac{DSO} supplied energy; \label{world:CPO-decide-energy} [\ref{goal:CPMS-handles-charge}, \ref{goal:CPMS-manage-station}]
@@ -61,10 +61,10 @@ These decisions will affect the energy prices, so it is important that a system 
 \subsubsection{Acronyms}
 \begin{multicols}{2}[]
     \begin{acronym}[RASD]
-        \acro{eMSP}{e-Mobility Service Providers}
-        \acro{CPO}{Charging Point Operators}
+        \acro{eMSP}{e-Mobility Service Provider}
+        \acro{CPO}{Charging Point Operator}
         \acro{CPMS}{Charge Point Management System}
-        \acro{DSO}{Distribution System Operators}
+        \acro{DSO}{Distribution System Operator}
         \acro{eMall}{e-Mobility for All}
         \acro{API}{Application Programming Interface}
         \acro{RACS}{Reliable Array of Cloned Services}
@@ -82,18 +82,18 @@ These decisions will affect the energy prices, so it is important that a system 
 \subsection{Document Structure}
 The document is divided in six main sections:
 \begin{itemize}
-    \item \textbf{Introduction}: The introduction section has the main goal of illustrating the problem to the reader and enumerating all the goals that
-          the system needs to achieve to solve the problem. Also, a part from the goals, there are more formal descriptions about the world (world phenomena) and the
+    \item \textbf{Introduction}: The introduction illustrates the problem to the reader and enumerates all the goals that
+          the system needs to achieve. There are also more formal descriptions about the world (world phenomena) and the
           interactions between the system and the world (shared phenomena). At the end of the introduction there is a reference subsection for definitions, revision history and reference documents;
-    \item \textbf{Overall Description}: It is an high level description of the dynamic interaction of stakeholders and the system. For this reason in this section there are
-          the main scenarios descriptions and a UML diagram which specifies all the relations from an upper model perspective. Also, there is a subsection that illustrates
+    \item \textbf{Overall Description}: It is an high level description of the dynamic interaction between stakeholders and the system. For this reason in this section there are
+          the main scenarios descriptions and a UML diagram which specifies all the relations from an upper model perspective. There is a subsection that illustrates
           the fundamental requirements of the system and another which specifies the type and description of any user. At the end of this section there is a collection of assumptions that are made over the complete project;
-    \item \textbf{Specific Requirements}: This section focuses on all the details introduced in the \textbf{Overall Description} section, so it formalizes all the requirements
-          about the system and all the scenarios. For this reason, use case diagrams and sequence diagrams are illustrated. There are also more constraints on the performance, design aspects and attributes of the software;
+    \item \textbf{Specific Requirements}: This section focuses on all the details introduced in the \textbf{Overall Description}, it formalizes all the requirements
+          about the system and all the scenarios. For this reason, use case and sequence diagrams are illustrated. More constraints on the performance, design aspects and attributes of the software are shown;
     \item \textbf{Formal Analysis with Alloy}: It represents a formal description in Alloy language of the problem, with some formal constraints that need to be satisfied (asserts).
-          This formalization is useful to validate the model itself and verify that all the assertions are granted.
-    \item \textbf{Effort Spent}: Resumes the total hours spent on the document formalization;
-    \item \textbf{References}: Resumes all the references documents that we used during the description.
+          This formalization is useful to validate the model itself and to verify that all the assertions are granted.
+    \item \textbf{Effort Spent}: Summarizes the total hours spent on the document formalization;
+    \item \textbf{References}: Summarizes all the references documents that we used during the description.
 \end{itemize}
 
 % \def\goalsToPhenomena{
