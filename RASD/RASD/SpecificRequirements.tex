@@ -2,7 +2,7 @@
 
 \subsubsection{User interfaces}
 \paragraph{\ac{eMSP}}
-The \ac{eMSP} should be accessible through an application installed on the mobile device of the user.
+The \ac{eMSP} should be accessible through an application installed on the mobile device.
 The first interface shown to the user, if not already done, is the \textit{login} page where the user has to input the email and password in order to authenticate.
 From the \textit{login} page there is also the possibility to go to the \textit{sign up} page where the fields for inserting the necessary information are shown.
 After logging in, there are multiple tabs in the app, which are:
@@ -29,34 +29,32 @@ The \ac{CPO} can also view the price of his service and set the revenue percenta
 
 \subsubsection{Hardware interfaces}
 \paragraph{\ac{eMSP}}
-The user, in order to interact with the \ac{eMSP}, must have a device that is provided with a \ac{GPS} and internet connection. Thanks to this, the user can search for close charging stations, see if those are available and can book a charge or cancel a previous one.
+The user, in order to interact with the \ac{eMSP}, must have a device that is provided with a \ac{GPS} and internet connection. Thanks to this, the user can search for close charging stations, see if those are available and can book or cancel a charge.
 A Bluetooth peripheral should also be available to the user when he is in the vehicle, in order to make a connection with it. Thanks to this the device can query the vehicle infos (such as average battery consumption per kilometer, estimated autonomy and \ac{SoC}) so that the system can suggest to the user when and where to charge the vehicle.
 
 \paragraph{\ac{CPMS}}
 In order to use the \ac{CPMS}, the \ac{CPO}maintainer (the only type of user of this system) should have a personal computer with internet connection available so that it's possible to see the system info and communicate changes to the system (i.e. change the energy source of a charging station or setting the new revenue for a charge).
 
-\todo[inline]{"The Charging sockets must have an input method for inserting the pin so that the user can validate the charge." added to assumptions/constraints}
-
 \subsubsection{Software interfaces}
 \paragraph{\ac{eMSP}}
-In order to provide all the functionalities, the \ac{eMSP} should provide the following software inferfaces:
+In order to provide all the functionalities, the \ac{eMSP} should provide the following software interfaces:
 \begin{itemize}
     \item Register to the \ac{eMSP} as a user providing name, email, password, birthday, payment info;
     \item Register to the \ac{eMSP} as a \ac{CPO} providing name, email, password, \gls{partita IVA};
-    \item Confirm the registration of a given user thanks to an ID;
-    \item Login to the \ac{eMSP} providing a correct email and password pair;
-    \item Retrieving data about charging stations, such as the nearest (providing location), the cheapest or a list of K charging stations
-    \item Book a charge providing charging station and timeslot information; \todo[inline]{and type of charge?}
+    \item Confirm the registration of a given user;
+    \item Login to the \ac{eMSP} providing correct email and password;
+    \item Retrieving data about charging stations, such as the nearest (providing a location), the cheapest or a list of K charging stations;
+    \item Book a charge providing charging station, time slot and type of charge;
     \item Cancel an already booked charge;
-    \item Paying a charge with the already setted payment method;
-    \item A \ac{CPO} can add a \ac{CPMS} providing a link to its interface;
+    \item Paying a charge with the already set payment method;
+    \item A \ac{CPO} can add a \ac{CPMS} providing a link to its \ac{API} interface;
 \end{itemize}
 
 \paragraph{\ac{CPMS}}
 The \ac{CPMS} should provide to the external world interfaces for:
 \begin{itemize}
     \item Login to the \ac{CPMS} providing an ID and a password;
-    \item Enable a charge on a charging station, passing the ID (a PIN in order to authorize the charge once the user gets in the station), the station and the timeslot;
+    \item Enable a charge on a charging station, passing the ID (a PIN in order to authorize the charge once the user gets in the station), the station and the time slot;
     \item Get information of a particular charging station (location, price of the charge, parameter of environmental friendliness, type of charges available);
     \item Get the availability state of a particular socket;
     \item Get the future availability of the sockets managed by the system;
@@ -76,7 +74,7 @@ An internet connection should also be present in order to make the system reacha
     \item The \ac{eMSP} shall allow the users to register, providing name, surname, birthday, email, password, payment method;\label{req:eMSP-user-registration}
     \item The \ac{eMSP} shall allow the user to login with email and password;\label{req:eMSP-user-login}
     \item The \ac{eMSP} shall provide information about a selected station such as types of available sockets, price for the charge, location, available time slots, parameter on environmental friendliness;\label{req:eMSP-info-station}
-    \item The \ac{eMSP} shall reserve a socket in the right charging station with for a user who booked a charge through the application;\label{req:eMSP-reserve-socket}
+    \item The \ac{eMSP} shall reserve a socket in the right charging station for a user who booked a charge through the application;\label{req:eMSP-reserve-socket}
     \item The \ac{eMSP} shall allow only one user to book a socket in a particular time slot, so no booking collisions shall occur;\label{req:eMSP-no-book-collisions}
     \item The \ac{eMSP} shall allow the user to pay for a booked charge;\label{req:eMSP-payment}
     \item The \ac{eMSP} shall refund the user when a charge is canceled;\label{req:eMSP-refund}
@@ -86,11 +84,11 @@ An internet connection should also be present in order to make the system reacha
     \item The \ac{eMSP} shall notify the user when the charging process is finished;\label{req:eMSP-notification}
     \item The \ac{eMSP} shall aggregate different \acp{CPO};\label{req:eMSP-compatible}
     \item The \ac{eMSP} shall allow a \ac{CPO} to register, providing name, email, password, \gls{partita IVA};\label{req:eMSP-cpo-registration}
-    \item the \ac{eMSP} shall allow to add to an already registered \ac{CPO} a \ac{CPMS}, providing \ac{API} reference to the \ac{CPMS};\label{req:eMSP-add-cpms}
+    \item the \ac{eMSP} shall allow to add to an already registered \ac{CPO} a \ac{CPMS}, providing its \ac{API} reference;\label{req:eMSP-add-cpms}
     \item The \ac{eMSP} shall verify the correctness of the identification data for the \acp{CPO};\label{req:eMSP-correct-cpo-info}
     \item The \ac{eMSP} shall allow the \ac{CPO} to set the wanted revenue percentage;\label{req:eMSP-set-revenue}
-    \item The \ac{eMSP} shall allow the \ac{CPO} to set special offers;\label{req:eMSP-set-special-offers}\todo[inline]{Check in the UML and sequence if this is possible}
-    \item The \ac{CPMS} shall be reachable by \acp{eMSP} in order to perform/cancel a booking, or query the system;\label{req:CPMS-reachable}
+    \item The \ac{eMSP} shall allow the \ac{CPO} to set special offers;\label{req:eMSP-set-special-offers}
+    \item The \ac{CPMS} shall be reachable by \acp{eMSP} in order to perform or cancel a booking, or query the system;\label{req:CPMS-reachable}
     \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to access to the system;\label{req:CPMS-accessible}
     \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to modify the information about their systems, such as adding/removing charging stations, set stations sources and create/remove maintainers;\label{req:CPMS-modify-cpo-infos}
     \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose the energy source and strategy;\label{req:CPMS-select-source-strategy}
@@ -128,8 +126,6 @@ An internet connection should also be present in order to make the system reacha
     \end{center}
     \caption{Linking table among goals and requirements}
 \end{table}
-
-\todo[inline]{What if a user finishes prematurely the charge? will he be refunded by the time of charge left?}
 
 \clearpage
 \subsubsection{Use case diagrams}

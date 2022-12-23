@@ -1,20 +1,20 @@
 \subsection{Product perspective}
 
 \subsubsection{Scenarios}
-It is assumed that in \ref{SCE:user-searches-stations},\ref{SCE:user-books-charge},\ref{SCE:user-pays-charge},\ref{SCE:user-cancels-charge},\ref{SCE:user-gets-suggestions}, the user is already logged in the system (\ref{SCE:user-logs-in}). In \ref{SCE:cpomaintainer-adds-stations} and \ref{SCE:cpomaintainer-manages} we assume that the \ac{CPO}maintainer is already logged in the \ac{CPMS}.
+It is assumed that in \ref{SCE:user-searches-stations},\ref{SCE:user-books-charge},\ref{SCE:user-pays-charge},\ref{SCE:user-cancels-charge},\ref{SCE:user-gets-suggestions}, the user is already logged in the system (\ref{SCE:user-logs-in}). In \ref{SCE:cpomaintainer-adds-stations} and \ref{SCE:cpomaintainer-manages} we assume that the \ac{CPO}maintainer is already logged in the \ac{CPMS} (\ref{SCE:cpomaintainer-logs-in}).
 \begin{enumerate}[label=\textbf{S\arabic*}]
       \item User Signs up:\\
             Lucy, wanting to use the system, opens the app, she is prompted to login or register,
-            she chooses to register herself and inserts her personal info (email, password, birthday, payment information, vehicle info);
+            she chooses to register herself and inserts her personal info (email, password, birthday, payment information);
             an email is sent with a link to confirm the activation of the account, if the link is clicked within
             the first 15 minutes the account is activated and the sign up is successful,
             otherwise it is considered failed and the process must be repeated;\label{SCE:user-signs-up}
       \item User Logs in:\\
-            Jay, after signing up, opens the app and he is prompted to insert his email and password,
-            if the given information are correct the login is successful and he obtains access to his account
+            Jay, after signing up, opens the app and he is prompted to insert his email and password.
+            If the given information are correct the login is successful and he obtains access to his account
             and the services of the app, otherwise the login is unsuccessful and it must be repeated;\label{SCE:user-logs-in}
       \item User searches for stations:\\
-            Robert, opens the app, inserts location and time frame to search for charging stations.
+            Robert opens the app and inserts location and time frame to search for charging stations.
             Once submitted, a list of available charging stations is displayed, the list is ordered by the distance of the station
             from the desired location. Via a menu, Robert can choose to order the stations either via distance, price, environmental friendliness or charging type (super-fast, fast, normal); he can also set to display unavailable stations and set the maximum distance from the chosen location;\label{SCE:user-searches-stations}
       \item User books a charge:\\
@@ -39,7 +39,7 @@ It is assumed that in \ref{SCE:user-searches-stations},\ref{SCE:user-books-charg
             Josh liking the idea opens the app and he confirms the booking;\label{SCE:user-gets-suggestions}
       \item \ac{CPO} subscribes to the system:\\
             Judy, the CEO of a famous \ac{CPO}, wants to subscribe it to \ac{eMall} to improve sales.
-            She opens the eMall website and selects to sign up as \ac{CPO}, she inserts the name, email, \gls{partita IVA}, a master password and connects the \acp{CPMS} to the site via an \ac{API} reference along with the revenue percentage;\label{SCE:cpo-signs-up}
+            She opens the eMall website and selects to sign up as \ac{CPO}, she inserts the name, email, \gls{partita IVA}, a master password and connects the \acp{CPMS} to the site via an \ac{API} reference along with the revenue percentages;\label{SCE:cpo-signs-up}
       \item \ac{CPO}maintainer logs into his assigned \ac{CPMS}:\\
             Brett a \ac{CPO} employee wants to access the service, he connects to the \ac{CPMS} and inserts the ID
             and password, if correct he logs in; otherwise the procedure fails and must be repeated;\label{SCE:cpomaintainer-logs-in}
@@ -50,8 +50,8 @@ It is assumed that in \ref{SCE:user-searches-stations},\ref{SCE:user-books-charg
             Andy, after logging in has access to his \ac{CPMS}.
             Here he can change the energy source and create maintainer accounts inserting the ID and password;\label{SCE:cpomaintainer-updates-settings}
       \item \ac{CPO}maintainer manages his assigned \ac{CPMS}\\
-            Lisa, a maintainer at a cpo logs in the service, here she can see the info of each station of the \ac{CPMS} assigned to her.
-            For each station she can: check the status(functioning or not), choose the energy source, monitor the consumes, profitability and the usage of a specified station.\label{SCE:cpomaintainer-manages}
+            Lisa, a maintainer at a \ac{CPO} logs in the service, here she can see the info of each station of the \ac{CPMS} assigned to her.
+            For each station she can: check the status (functioning or not), choose the energy source, monitor the consumes, profitability and the usage of a specified station.\label{SCE:cpomaintainer-manages}
 \end{enumerate}
 
 \clearpage
@@ -86,7 +86,7 @@ It is assumed that in \ref{SCE:user-searches-stations},\ref{SCE:user-books-charg
 \subsection{Product functions}
 In the following subsections the functions of each subsystem are described.
 
-\subsubsection{\ac{eMall}}
+\subsubsection{\acf{eMall}}
 \paragraph{Accessing the \ac{eMall}}
 In order to access the system features an authentication is required. When registering it's mandatory for users to insert Name, Surname, birthday, e-Mail, Password and a Payment Method whereas for \acp{CPO} the required information are Name, e-Mail, Password and \gls{partita IVA}. For the login, an authentication with e-Mail and password is required.
 
@@ -102,13 +102,13 @@ Whenever a user selects a charging station, location, price, a parameter on how 
 \paragraph{Suggesting recharge of the vehicle}
 The system offers proactive suggestions about the vehicle recharge via the connection between the vehicle, the electronic calendar and \ac{eMall}. It is able to suggest the user when and where to charge the vehicle to minimize the cost, the environment impact, and the distance from the scheduled appointments.
 
-\subsubsection{\ac{CPMS}}
+\subsubsection{\acf{CPMS}}
 \paragraph{Accessing the \ac{CPMS}}
 In order to manage the \ac{CPMS} an authentication with proper authorization is required. So a \acp{CPO}maintainer can login with ID and password.
 
 \paragraph{Managing the energy source for a charging station}
-An authorized \ac{CPO}maintainer can choose manually the energy source(battery or \ac{DSO}) for each station.
-Thus a \acp{CPO}maintainer can decide the cost of a charge and create special offers to increase visibility of the station or to promote greener solutions. If the \ac{CPO}maintainer wishes, the \ac{CPMS} can also work in automatic mode, so the system is able to make all the decisions autonomously.
+An authorized \ac{CPO}maintainer can choose manually the energy source (battery or \ac{DSO}) for each station.
+Thus a \acp{CPO}maintainer can decide the revenue percentage of a charge and create special offers to increase visibility of the station or to promote greener solutions. If the \ac{CPO}maintainer wishes, the \ac{CPMS} can also work in automatic mode, so the system is able to make all the decisions autonomously.
 
 
 \subsection{User characteristics}
@@ -119,11 +119,10 @@ We consider the following actors in the \ac{eMall} system:
             This actor can be associated to an electric vehicle and can visualize the nearest stations, book/cancel/pay a charge, visualize the status of a charge and activate the automatic suggestion service based on the agenda;
       \item \textbf{Unregistered \ac{CPO}} A \ac{CPO} that needs to register before accessing the \ac{eMall} services for \acp{CPO};
       \item \textbf{Registered \ac{CPO}} A \ac{CPO} that can add/remove to \ac{eMall} \acp{CPMS};
-      \item \textbf{Registered \ac{CPO}maintainer:} A user that has access to all the \ac{CPMS} features.
-            These \ac{CPMS} allows the maintainer to configure the energy source strategy, add other \ac{CPO}maintainers and to visualize all the charging stations statuses;
+      \item \textbf{Registered \ac{CPO}maintainer:} A user that has access to all the \ac{CPMS} features. These \ac{CPMS} allows the maintainer to configure the energy source strategy, add other \ac{CPO} maintainers and to visualize all the charging stations statuses;
 \end{enumerate}
 
-\subsection{Assumptions dependencies and constraints}
+\subsection{Assumptions and constraints}
 \subsubsection{Assumptions}
 \begin{enumerate}[label=\textbf{DA\arabic*}]
       \item Users insert genuine data in the forms;
@@ -138,6 +137,7 @@ We consider the following actors in the \ac{eMall} system:
 
 \subsubsection{Constraint}
 \begin{enumerate}[label=\textbf{C\arabic*}]
+      \item If a User wants to use a charging station he must have booked and paid a charge through the system;
       \item If a User wants to change the time slot of a charge he is required to cancel and re-book the charge;
 \end{enumerate}
 
