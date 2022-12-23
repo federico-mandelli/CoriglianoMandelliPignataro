@@ -71,28 +71,83 @@ An internet connection should also be present in order to make the system reacha
 \subsection{Functional requirements}
 
 \begin{enumerate}[label=\textbf{R\arabic*}]
-    \item The \ac{eMSP} shall allow the users to register, providing name, surname, birthday, email, password, payment method;
-    \item The \ac{eMSP} shall allow the user to login with email and password;
-    \item The \ac{eMSP} shall provide information about a selected station such as types of available sockets, price for the charge, location, available time slots;
-    \item The \ac{eMSP} shall reserve a socket in the right charging station with for a user who booked a charge through the application;
-    \item The \ac{eMSP} shall allow only one user to book a socket in a particular time slot, so no booking collisions shall occur;
-    \item The \ac{eMSP} shall allow the user to pay for a booked charge;
-    \item The \ac{eMSP} shall refund the user when a charge is canceled;
-    \item The \ac{eMSP} shall allow the user to see nearby\footnote{This parameter may be set by the user} charging stations ordered by distance, price or environmental friendliness;
-    \item The \ac{eMSP} shall be able to connect to a web calendar, retrieve information about the appointments and parse them;
-    \item The \ac{eMSP} shall be able to use the information about the appointments, the charging stations and the vehicle in order to proactively suggest to the user when and where to charge the vehicle;
-    \item The \ac{eMSP} shall notify the user when the charging process is finished;
-    \item The \ac{eMSP} shall aggregate different \acp{CPO};
-    \item The \ac{eMSP} shall allow a \ac{CPO} to register, providing name, email, password, \gls{partita IVA};
-    \item the \ac{eMSP} shall allow to add to an already registered \ac{CPO} a \ac{CPMS}, providing \ac{API} reference to the \ac{CPMS};
-    \item The \ac{eMSP} shall verify the correctness of the identification data for the \acp{CPO};
-    \item The \ac{eMSP} shall allow the \ac{CPO} to set the wanted revenue percentage;
-    \item The \ac{CPMS} shall be reachable by \acp{eMSP} in order to perform/cancel a booking, or query the system;
-    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to access to the system;
-    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to modify the information about their systems, such as adding/removing charging stations, set stations sources and create/remove maintainers;
-    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose the energy source and strategy;
-    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose manual or automatic mode;
+    \item The \ac{eMSP} shall allow the users to register, providing name, surname, birthday, email, password, payment method;\label{req:eMSP-user-registration}
+    \item The \ac{eMSP} shall allow the user to login with email and password;\label{req:eMSP-user-login}
+    \item The \ac{eMSP} shall provide information about a selected station such as types of available sockets, price for the charge, location, available time slots;\label{req:eMSP-info-station}
+    \item The \ac{eMSP} shall reserve a socket in the right charging station with for a user who booked a charge through the application;\label{req:eMSP-reserve-socket}
+    \item The \ac{eMSP} shall allow only one user to book a socket in a particular time slot, so no booking collisions shall occur;\label{req:eMSP-no-book-collisions}
+    \item The \ac{eMSP} shall allow the user to pay for a booked charge;\label{req:eMSP-payment}
+    \item The \ac{eMSP} shall refund the user when a charge is canceled;\label{req:eMSP-refund}
+    \item The \ac{eMSP} shall allow the user to see nearby\footnote{This parameter may be set by the user} charging stations ordered by distance, price or environmental friendliness;\label{req:eMSP-see-stations}
+    \item The \ac{eMSP} shall be able to connect to a web calendar, retrieve information about the appointments and parse them;\label{req:eMSP-connect-calendar}
+    \item The \ac{eMSP} shall be able to use the information about the appointments, the charging stations and the vehicle in order to proactively suggest to the user when and where to charge the vehicle;\label{req:eMSP-proactive-suggestions}
+    \item The \ac{eMSP} shall notify the user when the charging process is finished;\label{req:eMSP-notification}
+    \item The \ac{eMSP} shall aggregate different \acp{CPO};\label{req:eMSP-compatible}
+    \item The \ac{eMSP} shall allow a \ac{CPO} to register, providing name, email, password, \gls{partita IVA};\label{req:eMSP-cpo-registration}
+    \item the \ac{eMSP} shall allow to add to an already registered \ac{CPO} a \ac{CPMS}, providing \ac{API} reference to the \ac{CPMS};\label{req:eMSP-add-cpms}
+    \item The \ac{eMSP} shall verify the correctness of the identification data for the \acp{CPO};\label{req:eMSP-correct-cpo-info}
+    \item The \ac{eMSP} shall allow the \ac{CPO} to set the wanted revenue percentage;\label{req:eMSP-set-revenue}
+    \item The \ac{CPMS} shall be reachable by \acp{eMSP} in order to perform/cancel a booking, or query the system;\label{req:CPMS-reachable}
+    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to access to the system;\label{req:CPMS-accessible}
+    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to modify the information about their systems, such as adding/removing charging stations, set stations sources and create/remove maintainers;\label{req:CPMS-modify-cpo-infos}
+    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose the energy source and strategy;\label{req:CPMS-select-source-strategy}
+    \item The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose manual or automatic mode;\label{req:CPMS-select-mode}
 \end{enumerate}
+
+\todo[inline]{The \ac{eMSP} shall allow the \ac{CPO} to set special offers;}
+\todo[inline]{set "charge the batteries";}
+
+
+\begin{table}[h]
+    \begin{tabular}{|c||c|c|c|c|c|}
+    \hline
+Requirements/Goals: & \ref{goal:eMSP-helps-selecting} & \ref{goal:eMSP-booking-charge} & \ref{goal:eMSP-allow-charge} & \ref{goal:CPMS-handles-charge} & \ref{goal:CPMS-manage-station} \\
+    \hline
+    \hline
+    \ref{req:eMSP-user-registration} & X & X & X & & \\
+    \hline
+    \ref{req:eMSP-user-login} & X & X & X & & \\
+    \hline
+    \ref{req:eMSP-info-station} & X & & X & & \\
+    \hline
+    \ref{req:eMSP-reserve-socket} & & X & X & & \\
+    \hline
+    \ref{req:eMSP-no-book-collisions} & & X & X & & \\
+    \hline
+    \ref{req:eMSP-payment} & & X & & & \\
+    \hline
+    \ref{req:eMSP-refund} & & X & & & \\
+    \hline
+    \ref{req:eMSP-see-stations} & X & X & & & \\
+    \hline
+    \ref{req:eMSP-connect-calendar} & X & X & & & \\
+    \hline
+    \ref{req:eMSP-proactive-suggestions} & X & X & & & \\
+    \hline
+    \ref{req:eMSP-notification} & & & X & & \\
+    \hline
+    \ref{req:eMSP-compatible} & & X & & & \\
+    \hline
+    \ref{req:eMSP-cpo-registration} & & X & & X & \\
+    \hline
+    \ref{req:eMSP-add-cpms} & & X & & X & \\
+    \hline
+    \ref{req:eMSP-correct-cpo-info} & & X & & X & \\
+    \hline
+    \ref{req:eMSP-set-revenue} & & & & & X \\
+    \hline
+    \ref{req:CPMS-reachable} & X & X & X & X & \\
+    \hline
+    \ref{req:CPMS-accessible} & & & & X & X \\
+    \hline
+    \ref{req:CPMS-modify-cpo-infos} & & & & & X \\
+    \hline
+    \ref{req:CPMS-select-source-strategy} & & & & X & X \\
+    \hline
+    \ref{req:CPMS-select-mode} & & & & X & X \\
+    \hline
+    \end{tabular}
+\end{table}
 
 \todo[inline]{What if a user finishes prematurely the charge? will he be refunded by the time of charge left?}
 
