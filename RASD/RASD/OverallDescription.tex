@@ -62,6 +62,26 @@ It is assumed that in \ref{SCE:user-searches-stations},\ref{SCE:user-books-charg
             \caption{UML}
       \end{center}
 \end{figure}
+\subsubsection{State diagrams}
+\begin{figure}[h!]
+      \begin{center}
+            \includegraphics[keepaspectratio, width=16cm]{StateDiagrams/User.png}
+            \caption{User state diagram}
+      \end{center}
+\end{figure}
+\begin{figure}[h!]
+      \begin{center}
+            \includegraphics[keepaspectratio, width=16cm]{StateDiagrams/Charge.png}
+            \caption{Charge state diagram}
+      \end{center}
+\end{figure}
+\begin{figure}[h!]
+      \begin{center}
+            \includegraphics[keepaspectratio, width=16cm]{StateDiagrams/ChargingSocket.png}
+            \caption{Charging socket state diagram}
+      \end{center}
+\end{figure}
+\clearpage
 
 \subsection{Product functions}
 In the following subsections the functions of each subsystem are described.
@@ -110,7 +130,7 @@ We consider the following actors in the \ac{eMall} system:
       \item Users (Including \acp{CPO}) do not use the system with malicious intent;
       \item All the electric vehicles can be charged by all the stations (no incompatibility);
       \item All the users have an active internet and GPS connection always available while using the service;
-      \item 
+      \item
       \item Once installed, the initial login to a \ac{CPMS} is done using the default user and password and the first \ac{CPO}maintainer is configured;
       \item Charging sockets have internet connection and an appropriate interface;
       \item Charging sockets have an input method for inserting the pin so that the user can validate the charge;
