@@ -2,7 +2,7 @@
 
 \subsubsection{User interfaces}
 \paragraph{\ac{eMSP}}
-The \ac{eMSP} should be accessible through an application installed on the mobile device.
+The \ac{eMSP} should be accessible through an application installed on the mobile device of the user.
 The first interface shown to the user, if not already done, is the \textit{login} page where the user has to input the email and password in order to authenticate.
 From the \textit{login} page there is also the possibility to go to the \textit{sign up} page where the fields for inserting the necessary information are shown.
 After logging in, there are multiple tabs in the app, which are:
@@ -25,29 +25,22 @@ The \ac{CPO}maintainers can change the policy of each charging station; in parti
     \item Choose the automatic mode, that will pick autonomously which \ac{DSO} to use, whether to use batteries and when to recharge them;
 \end{itemize}
 
-The \ac{CPO} can also view the price of his service and set the revenue percentage for a single charge.
-\todo[inline]{Check with assignment document for all the functions}
+The \ac{CPO} can also view the price of his service and set the revenue percentage for a single charge. Finally, the \ac{CPO} can also create some special offers.
 
 \subsubsection{Hardware interfaces}
-\todo[inline]{Aggiorna Requirements con spiegazione di EnergySourceStrategy}
 \paragraph{\ac{eMSP}}
-The user, in order to interact with the \ac{eMSP}, must have a device that is provided with a \ac{GPS} and internet connection. Thanks to this, the user can search for close charging stations, see if those are available and can book or cancel a charge.
+The user, in order to interact with the \ac{eMSP}, must have a device that is provided with a \ac{GPS} and internet connection. Thanks to this, the user can search for close charging stations, see if those are available and can book a charge or cancel a previous one.
 A Bluetooth peripheral should also be available to the user when he is in the vehicle, in order to make a connection with it. Thanks to this the device can query the vehicle infos (such as average battery consumption per kilometer, estimated autonomy and \ac{SoC}) so that the system can suggest to the user when and where to charge the vehicle.
 
 \paragraph{\ac{CPMS}}
 In order to use the \ac{CPMS}, the \ac{CPO}maintainer (the only type of user of this system) should have a personal computer with internet connection available so that it's possible to see the system info and communicate changes to the system (i.e. change the energy source of a charging station or setting the new revenue for a charge).
-\todo[inline]{Check that we will always set the revenue instead of the final price in order to be consistent}
 
 \paragraph{Charging socket}
-The Charging sockets should have a pad for inserting the pin that the user have to validate the charge.
-
-\todo[inline]{Add "We assume that Charging sockets have internet connection and an appropriate interface" to the assumptions}
+The Charging sockets must have an input method for inserting the pin so that the user can validate the charge.
 
 \subsubsection{Software interfaces}
 \paragraph{\ac{eMSP}}
 The \ac{eMSP} does not provide any software interface because no external software should query this system.
-
-\todo[inline]{Add "The software utilizes payment APIs" to the assumptions}
 
 \paragraph{\ac{CPMS}}
 The \ac{CPMS} should provide to the external world interfaces for:
@@ -73,7 +66,7 @@ An internet connection should also be present in order to make the system reacha
 \begin{enumerate}[label=\textbf{R\arabic*}]
     \item The \ac{eMSP} shall allow the users to register, providing name, surname, birthday, email, password, payment method;\label{req:eMSP-user-registration}
     \item The \ac{eMSP} shall allow the user to login with email and password;\label{req:eMSP-user-login}
-    \item The \ac{eMSP} shall provide information about a selected station such as types of available sockets, price for the charge, location, available time slots;\label{req:eMSP-info-station}
+    \item The \ac{eMSP} shall provide information about a selected station such as types of available sockets, price for the charge, location, available time slots, parameter on environmental friendliness;\label{req:eMSP-info-station}
     \item The \ac{eMSP} shall reserve a socket in the right charging station with for a user who booked a charge through the application;\label{req:eMSP-reserve-socket}
     \item The \ac{eMSP} shall allow only one user to book a socket in a particular time slot, so no booking collisions shall occur;\label{req:eMSP-no-book-collisions}
     \item The \ac{eMSP} shall allow the user to pay for a booked charge;\label{req:eMSP-payment}
@@ -99,54 +92,34 @@ An internet connection should also be present in order to make the system reacha
 
 
 \begin{table}[h]
-    \begin{tabular}{|c||c|c|c|c|c|}
-    \hline
-Requirements/Goals: & \ref{goal:eMSP-helps-selecting} & \ref{goal:eMSP-booking-charge} & \ref{goal:eMSP-allow-charge} & \ref{goal:CPMS-handles-charge} & \ref{goal:CPMS-manage-station} \\
-    \hline
-    \hline
-    \ref{req:eMSP-user-registration} & X & X & X & & \\
-    \hline
-    \ref{req:eMSP-user-login} & X & X & X & & \\
-    \hline
-    \ref{req:eMSP-info-station} & X & & X & & \\
-    \hline
-    \ref{req:eMSP-reserve-socket} & & X & X & & \\
-    \hline
-    \ref{req:eMSP-no-book-collisions} & & X & X & & \\
-    \hline
-    \ref{req:eMSP-payment} & & X & & & \\
-    \hline
-    \ref{req:eMSP-refund} & & X & & & \\
-    \hline
-    \ref{req:eMSP-see-stations} & X & X & & & \\
-    \hline
-    \ref{req:eMSP-connect-calendar} & X & X & & & \\
-    \hline
-    \ref{req:eMSP-proactive-suggestions} & X & X & & & \\
-    \hline
-    \ref{req:eMSP-notification} & & & X & & \\
-    \hline
-    \ref{req:eMSP-compatible} & & X & & & \\
-    \hline
-    \ref{req:eMSP-cpo-registration} & & X & & X & \\
-    \hline
-    \ref{req:eMSP-add-cpms} & & X & & X & \\
-    \hline
-    \ref{req:eMSP-correct-cpo-info} & & X & & X & \\
-    \hline
-    \ref{req:eMSP-set-revenue} & & & & & X \\
-    \hline
-    \ref{req:CPMS-reachable} & X & X & X & X & \\
-    \hline
-    \ref{req:CPMS-accessible} & & & & X & X \\
-    \hline
-    \ref{req:CPMS-modify-cpo-infos} & & & & & X \\
-    \hline
-    \ref{req:CPMS-select-source-strategy} & & & & X & X \\
-    \hline
-    \ref{req:CPMS-select-mode} & & & & X & X \\
-    \hline
-    \end{tabular}
+    \begin{center}
+        \begin{tabular}{|c||c|c|c|c|c|}
+            \hline
+            Requirements/Goals:                   & \ref{goal:eMSP-helps-selecting} & \ref{goal:eMSP-booking-charge} & \ref{goal:eMSP-allow-charge} & \ref{goal:CPMS-handles-charge} & \ref{goal:CPMS-manage-station} \\\hline\hline
+            \ref{req:eMSP-user-registration}      & X                               & X                              & X                            &                                &                                \\\hline
+            \ref{req:eMSP-user-login}             & X                               & X                              & X                            &                                &                                \\\hline
+            \ref{req:eMSP-info-station}           & X                               &                                & X                            &                                &                                \\\hline
+            \ref{req:eMSP-reserve-socket}         &                                 & X                              & X                            &                                &                                \\\hline
+            \ref{req:eMSP-no-book-collisions}     &                                 & X                              & X                            &                                &                                \\\hline
+            \ref{req:eMSP-payment}                &                                 & X                              &                              &                                &                                \\\hline
+            \ref{req:eMSP-refund}                 &                                 & X                              &                              &                                &                                \\\hline
+            \ref{req:eMSP-see-stations}           & X                               & X                              &                              &                                &                                \\\hline
+            \ref{req:eMSP-connect-calendar}       & X                               & X                              &                              &                                &                                \\\hline
+            \ref{req:eMSP-proactive-suggestions}  & X                               & X                              &                              &                                &                                \\\hline
+            \ref{req:eMSP-notification}           &                                 &                                & X                            &                                &                                \\\hline
+            \ref{req:eMSP-compatible}             &                                 & X                              &                              &                                &                                \\\hline
+            \ref{req:eMSP-cpo-registration}       &                                 & X                              &                              & X                              &                                \\\hline
+            \ref{req:eMSP-add-cpms}               &                                 & X                              &                              & X                              &                                \\\hline
+            \ref{req:eMSP-correct-cpo-info}       &                                 & X                              &                              & X                              &                                \\\hline
+            \ref{req:eMSP-set-revenue}            &                                 &                                &                              &                                & X                              \\\hline
+            \ref{req:CPMS-reachable}              & X                               & X                              & X                            & X                              &                                \\\hline
+            \ref{req:CPMS-accessible}             &                                 &                                &                              & X                              & X                              \\\hline
+            \ref{req:CPMS-modify-cpo-infos}       &                                 &                                &                              &                                & X                              \\\hline
+            \ref{req:CPMS-select-source-strategy} &                                 &                                &                              & X                              & X                              \\\hline
+            \ref{req:CPMS-select-mode}            &                                 &                                &                              & X                              & X                              \\\hline
+        \end{tabular}
+    \end{center}
+    \caption{Linking table among goals and requirements}
 \end{table}
 
 \todo[inline]{What if a user finishes prematurely the charge? will he be refunded by the time of charge left?}
@@ -255,7 +228,8 @@ Requirements/Goals: & \ref{goal:eMSP-helps-selecting} & \ref{goal:eMSP-booking-c
 \subsection{Performance requirements}
 The system in general needs to manage a large collection of electric car users/\acp{CPO} and it needs to supply the heaviest services (like computing the cheapest nearest stations) in a reasonable amount of time.
 Because of that the system shall guarantee a baseline load of 1000000 users/\acp{CPO} still with a response time not greater than 5 seconds. To achieve the goal, the system shall be able to decentralize all the computation as much as possible,
-trying to make the client responsible of the heaviest loads.
+trying to make the client responsible of the heaviest loads.\\\\
+These requirements are balanced considering the actual percentage of electric vehicle users in Italy [0.56\%] (corresponds to about 330k users) and a level of confidence of 3.
 \subsection{Design constraints}
 From this point we consider only the user side constraints as they represent the largest share of the system use base.
 \subsubsection{Standards compliance}

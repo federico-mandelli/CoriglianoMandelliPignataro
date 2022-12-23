@@ -16,7 +16,7 @@ It is assumed that in \ref{SCE:user-searches-stations},\ref{SCE:user-books-charg
       \item User searches for stations:\\
             Robert, opens the app, inserts location and time frame to search for charging stations.
             Once submitted, a list of available charging stations is displayed, the list is ordered by the distance of the station
-            from the desired location. Via a menu, Robert can choose to order the stations either via distance, price or charging type (super-fast, fast, normal); he can also set to display unavailable stations and set the maximum distance from the chosen location;\label{SCE:user-searches-stations}
+            from the desired location. Via a menu, Robert can choose to order the stations either via distance, price, environmental friendliness or charging type (super-fast, fast, normal); he can also set to display unavailable stations and set the maximum distance from the chosen location;\label{SCE:user-searches-stations}
       \item User books a charge:\\
             Jessica, after choosing a station, decides to book a charge selecting the desired time slot and the charging speed. Station location and booked time frame are displayed and she is asked to confirm the booking via a popup. She receives a confirmation email with the details
             of the charge (Location, time frame, socket id) and a confirmation pin to insert at the station;\label{SCE:user-books-charge}
@@ -62,6 +62,26 @@ It is assumed that in \ref{SCE:user-searches-stations},\ref{SCE:user-books-charg
             \caption{UML}
       \end{center}
 \end{figure}
+\subsubsection{State diagrams}
+\begin{figure}[h!]
+      \begin{center}
+            \includegraphics[keepaspectratio, width=16cm]{StateDiagrams/User.png}
+            \caption{User state diagram}
+      \end{center}
+\end{figure}
+\begin{figure}[h!]
+      \begin{center}
+            \includegraphics[keepaspectratio, width=16cm]{StateDiagrams/Charge.png}
+            \caption{Charge state diagram}
+      \end{center}
+\end{figure}
+\begin{figure}[h!]
+      \begin{center}
+            \includegraphics[keepaspectratio, width=16cm]{StateDiagrams/ChargingSocket.png}
+            \caption{Charging socket state diagram}
+      \end{center}
+\end{figure}
+\clearpage
 
 \subsection{Product functions}
 In the following subsections the functions of each subsystem are described.
@@ -107,11 +127,16 @@ We consider the following actors in the \ac{eMall} system:
 \subsubsection{Assumptions}
 \begin{enumerate}[label=\textbf{DA\arabic*}]
       \item Users insert genuine data in the forms;
-      \item Users(Including CPOs) do not use the system with malicious intent;
+      \item Users (Including \acp{CPO}) do not use the system with malicious intent;
       \item All the electric vehicles can be charged by all the stations (no incompatibility);
       \item All the users have an active internet and GPS connection always available while using the service;
-      \item Once installed, the initial login to a \ac{CPMS} is done using the default user and password and the first \ac{CPO}maintainer is configured.
+      \item
+      \item Once installed, the initial login to a \ac{CPMS} is done using the default user and password and the first \ac{CPO}maintainer is configured;
+      \item Charging sockets have internet connection and an appropriate interface;
+      \item Charging sockets have an input method for inserting the pin so that the user can validate the charge;
+      \item The software utilizes payment \acp{API};
 \end{enumerate}
+
 \subsubsection{Constraint}
 \begin{enumerate}[label=\textbf{C\arabic*}]
       \item If a User wants to change the time slot of a charge he is required to cancel and re-book the charge;
