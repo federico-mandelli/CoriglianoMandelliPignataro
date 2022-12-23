@@ -9,7 +9,7 @@
 \subsection{Purpose}
 Due to the recent increase of effort in the battle against climate change, electric vehicles are slowly becoming the new technology for private transport that   people use everyday.
 To sustain this type of strategy, we need to develop a clever and capillary charging system.\\
-\ac{eMall} is an \ac{eMSP} that aims to help the final users dealing with their charging needs by informing the users about the nearby charging stations, their cost and any special offer that they might have.
+\ac{eMall} is an \ac{eMSP} that aims to help the final users dealing with their charging needs by informing the users about the nearby charging stations, their cost, their environmental friendliness and any special offer that they might have.
 It will allow the users to book/cancel/pay a charge and it will notify the users when the charging process is terminated.\\
 With the integration of the user's calendar, the system will also suggest the best moment in the schedule to charge the vehicle.
 To have a fully integrated system, all the \acp{CPO} will have a technological support called \ac{CPMS} to interface the service with the physical charging stations and to manage all the energy sources like batteries and \acp{DSO}.
@@ -30,26 +30,50 @@ To have a fully integrated system, all the \acp{CPO} will have a technological s
 
 % world phenomena
 \begin{enumerate}[label=\textbf{W\arabic*}]
-    \item People charge electric vehicles in different modes (NORMAL, FAST, SUPER-FAST); \label{world:people-charge-vehicles} [\ref{goal:eMSP-helps-selecting}, \ref{goal:eMSP-booking-charge}, \ref{goal:eMSP-allow-charge}, \ref{goal:CPMS-handles-charge}]
-    \item People use web calendar; \label{world:people-use-calendars} [\ref{goal:eMSP-helps-selecting}, \ref{goal:eMSP-booking-charge}, \ref{goal:eMSP-allow-charge}]
-    \item People pay for the charging service; \label{world:people-pay-service} [\ref{goal:eMSP-allow-charge}]
-          \todo[inline]{Anche G3?}
-    \item \acp{DSO} supply energy to \acp{CPO}; \label{world:DSO-supply-energy} [\ref{goal:CPMS-manage-station}]
-    \item Some \acp{CPO} own batteries; \label{world:CPO-own-batteries} [\ref{goal:CPMS-handles-charge}, \ref{goal:CPMS-manage-station}]
-    \item \acp{CPO} decide whether to use batteries or \ac{DSO} supplied energy; \label{world:CPO-decide-energy} [\ref{goal:CPMS-handles-charge}, \ref{goal:CPMS-manage-station}]
+    \item People charge electric vehicles in different modes (NORMAL, FAST, SUPER-FAST); \label{world:people-charge-vehicles}
+    \item People use web calendar; \label{world:people-use-calendars}
+    \item People pay for the charging service; \label{world:people-pay-service}
+    \item \acp{DSO} supply energy to \acp{CPO}; \label{world:DSO-supply-energy}
+    \item Some \acp{CPO} own batteries; \label{world:CPO-own-batteries}
+    \item \acp{CPO} decide whether to use batteries or \ac{DSO} supplied energy; \label{world:CPO-decide-energy}
 \end{enumerate}
 % shared phenomena
 \begin{enumerate}[label=\textbf{S\arabic*}]
     % system -> user
-    \item The \ac{eMSP} suggests the user to charge the vehicle; \label{shared:eMSP-suggests-charge} [\ref{goal:eMSP-helps-selecting}]
-    \item The \ac{eMSP} notifies the user when the charging process is finished; \label{shared:eMSP-notifies-charging-finished} [\ref{goal:eMSP-allow-charge}]
-    \item \acp{CPMS} acquire information about energy prizes from \acp{DSO}; \label{shared:CPMS-info-from-DSO} [\ref{goal:CPMS-manage-station}]
+    \item The \ac{eMSP} suggests the user to charge the vehicle; \label{shared:eMSP-suggests-charge}
+    \item The \ac{eMSP} notifies the user when the charging process is finished; \label{shared:eMSP-notifies-charging-finished}
+    \item \acp{CPMS} acquire information about energy prizes from \acp{DSO}; \label{shared:CPMS-info-from-DSO}
           % user -> system
-    \item The user books a charge using the \ac{eMSP}; \label{shared:user-books-charge} [\ref{goal:eMSP-booking-charge}]
-    \item The user asks the \ac{eMSP} for suggestions about charging station; \label{shared:user-asks-suggestions} [\ref{goal:eMSP-helps-selecting}]
-    \item The user pays for the service using the \ac{eMSP}; \label{shared:user-pays-service} [\ref{goal:eMSP-allow-charge}]
-    \item \acp{CPO} gather the energy source through the \ac{CPMS}; \label{shared:CPO-energy-through-CPMS} [\ref{goal:CPMS-handles-charge}, \ref{goal:CPMS-manage-station}]
+    \item The user books a charge using the \ac{eMSP}; \label{shared:user-books-charge}
+    \item The user asks the \ac{eMSP} for suggestions about charging station; \label{shared:user-asks-suggestions}
+    \item The user pays for the service using the \ac{eMSP}; \label{shared:user-pays-service}
+    \item \acp{CPO} gather the energy source through the \ac{CPMS}; \label{shared:CPO-energy-through-CPMS}
 \end{enumerate}
+
+
+\begin{table}[h]
+      \begin{center}
+          \begin{tabular}{|c||c|c|c|c|c|}
+          \hline
+      Phenomena/Goals: &\ref{goal:eMSP-helps-selecting} &\ref{goal:eMSP-booking-charge} &\ref{goal:eMSP-allow-charge} &\ref{goal:CPMS-handles-charge} &\ref{goal:CPMS-manage-station} \\\hline\hline
+              \ref{world:people-charge-vehicles} & X & X & X & X & \\\hline
+              \ref{world:people-use-calendars} & X & X & X & & \\\hline
+              \ref{world:people-pay-service} & & & X & & \\\hline
+              \ref{world:DSO-supply-energy} & & & & & X \\\hline
+              \ref{world:CPO-own-batteries} & & & & X & X \\\hline
+              \ref{world:CPO-decide-energy} & & & & X & X \\\hline\hline
+              \ref{shared:eMSP-suggests-charge} & X & & & & \\\hline
+              \ref{shared:eMSP-notifies-charging-finished} & & & X & & \\\hline
+              \ref{shared:CPMS-info-from-DSO} & & & & & X \\\hline
+              \ref{shared:user-books-charge} & & X & & & \\\hline
+              \ref{shared:user-asks-suggestions} & X & & & & \\\hline
+              \ref{shared:user-pays-service} & & & X & & \\\hline
+              \ref{shared:CPO-energy-through-CPMS} & & & & X & X \\\hline
+          \end{tabular}
+      \end{center}
+      \caption{Linking table among goals and phenomena}
+  \end{table}
+
 
 \subsection{Definitions, Acronyms, Abbreviations}
 \subsubsection{Definitions}
@@ -76,8 +100,10 @@ To have a fully integrated system, all the \acp{CPO} will have a technological s
 \end{multicols}
 
 \subsection{Revision history}
+\todo[inline]{Add revision history?}
 
 \subsection{Reference Documents}
+\todo[inline]{Add reference documents?}
 \newpage
 \subsection{Document Structure}
 The document is divided in six main sections:
