@@ -94,29 +94,29 @@ An internet connection should also be present in order to make the system reacha
 \begin{table}[h]
     \begin{center}
         \begin{tabular}{|c||c|c|c|c|c|}
-        \hline
-    Requirements/Goals: &\ref{goal:eMSP-helps-selecting} &\ref{goal:eMSP-booking-charge} &\ref{goal:eMSP-allow-charge} &\ref{goal:CPMS-handles-charge} &\ref{goal:CPMS-manage-station} \\\hline\hline
-            \ref{req:eMSP-user-registration} & X & X & X & & \\\hline
-            \ref{req:eMSP-user-login} & X & X & X & & \\\hline
-            \ref{req:eMSP-info-station} & X & & X & & \\\hline
-            \ref{req:eMSP-reserve-socket} & & X & X & & \\\hline
-            \ref{req:eMSP-no-book-collisions} & & X & X & & \\\hline
-            \ref{req:eMSP-payment} & & X & & & \\\hline
-            \ref{req:eMSP-refund} & & X & & & \\\hline
-            \ref{req:eMSP-see-stations} & X & X & & & \\\hline
-            \ref{req:eMSP-connect-calendar} & X & X & & & \\\hline
-            \ref{req:eMSP-proactive-suggestions} & X & X & & & \\\hline
-            \ref{req:eMSP-notification} & & & X & & \\\hline
-            \ref{req:eMSP-compatible} & & X & & & \\\hline
-            \ref{req:eMSP-cpo-registration} & & X & & X & \\\hline
-            \ref{req:eMSP-add-cpms} & & X & & X & \\\hline
-            \ref{req:eMSP-correct-cpo-info} & & X & & X & \\\hline
-            \ref{req:eMSP-set-revenue} & & & & & X \\\hline
-            \ref{req:CPMS-reachable} & X & X & X & X & \\\hline
-            \ref{req:CPMS-accessible} & & & & X & X \\\hline
-            \ref{req:CPMS-modify-cpo-infos} & & & & & X \\\hline
-            \ref{req:CPMS-select-source-strategy} & & & & X & X \\\hline
-            \ref{req:CPMS-select-mode} & & & & X & X \\\hline
+            \hline
+            Requirements/Goals:                   & \ref{goal:eMSP-helps-selecting} & \ref{goal:eMSP-booking-charge} & \ref{goal:eMSP-allow-charge} & \ref{goal:CPMS-handles-charge} & \ref{goal:CPMS-manage-station} \\\hline\hline
+            \ref{req:eMSP-user-registration}      & X                               & X                              & X                            &                                &                                \\\hline
+            \ref{req:eMSP-user-login}             & X                               & X                              & X                            &                                &                                \\\hline
+            \ref{req:eMSP-info-station}           & X                               &                                & X                            &                                &                                \\\hline
+            \ref{req:eMSP-reserve-socket}         &                                 & X                              & X                            &                                &                                \\\hline
+            \ref{req:eMSP-no-book-collisions}     &                                 & X                              & X                            &                                &                                \\\hline
+            \ref{req:eMSP-payment}                &                                 & X                              &                              &                                &                                \\\hline
+            \ref{req:eMSP-refund}                 &                                 & X                              &                              &                                &                                \\\hline
+            \ref{req:eMSP-see-stations}           & X                               & X                              &                              &                                &                                \\\hline
+            \ref{req:eMSP-connect-calendar}       & X                               & X                              &                              &                                &                                \\\hline
+            \ref{req:eMSP-proactive-suggestions}  & X                               & X                              &                              &                                &                                \\\hline
+            \ref{req:eMSP-notification}           &                                 &                                & X                            &                                &                                \\\hline
+            \ref{req:eMSP-compatible}             &                                 & X                              &                              &                                &                                \\\hline
+            \ref{req:eMSP-cpo-registration}       &                                 & X                              &                              & X                              &                                \\\hline
+            \ref{req:eMSP-add-cpms}               &                                 & X                              &                              & X                              &                                \\\hline
+            \ref{req:eMSP-correct-cpo-info}       &                                 & X                              &                              & X                              &                                \\\hline
+            \ref{req:eMSP-set-revenue}            &                                 &                                &                              &                                & X                              \\\hline
+            \ref{req:CPMS-reachable}              & X                               & X                              & X                            & X                              &                                \\\hline
+            \ref{req:CPMS-accessible}             &                                 &                                &                              & X                              & X                              \\\hline
+            \ref{req:CPMS-modify-cpo-infos}       &                                 &                                &                              &                                & X                              \\\hline
+            \ref{req:CPMS-select-source-strategy} &                                 &                                &                              & X                              & X                              \\\hline
+            \ref{req:CPMS-select-mode}            &                                 &                                &                              & X                              & X                              \\\hline
         \end{tabular}
     \end{center}
     \caption{Linking table among goals and requirements}
@@ -228,7 +228,8 @@ An internet connection should also be present in order to make the system reacha
 \subsection{Performance requirements}
 The system in general needs to manage a large collection of electric car users/\acp{CPO} and it needs to supply the heaviest services (like computing the cheapest nearest stations) in a reasonable amount of time.
 Because of that the system shall guarantee a baseline load of 1000000 users/\acp{CPO} still with a response time not greater than 5 seconds. To achieve the goal, the system shall be able to decentralize all the computation as much as possible,
-trying to make the client responsible of the heaviest loads.
+trying to make the client responsible of the heaviest loads.\\\\
+These requirements are balanced considering the actual percentage of electric vehicle users in Italy [0.56\%] (corresponds to about 330k users) and a level of confidence of 3.
 \subsection{Design constraints}
 From this point we consider only the user side constraints as they represent the largest share of the system use base.
 \subsubsection{Standards compliance}
