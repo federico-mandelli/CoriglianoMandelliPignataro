@@ -1,0 +1,58 @@
+\documentclass{TitlePage/Configuration_Files/PoliMi3i_thesis}
+
+\usepackage[utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage{acronym}
+\usepackage{enumitem}
+\usepackage{readarray}
+\usepackage{pgffor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{xurl}
+
+\def\fixcheck{%
+    \def\tikzifinpicture##1##2{##2}%
+}%
+
+%Import the settings
+
+\input{TitlePage/titlePageSettings.tex}
+
+\input{Settings}
+
+\input{Glossary}
+
+\begin{document}
+
+\pagestyle{empty}
+\input{TitlePage/titlePage.tex}
+
+%Index
+\tableofcontents{}
+\clearpage
+\pagestyle{fancy}
+\setcounter{page}{1} % Set page counter to 1
+
+
+\section{Introduction}
+\input{Introduction}
+
+\section{Architectural design}
+\input{ArchitecturalDesign}
+
+\section{User interfaces}
+\input{UserInterface}
+
+\section{Requirements traceability}
+\input{RequirementsTraceability}
+
+\section{Implementation, Integration and Test plan}
+\input{ImplementationIntegrationTest}
+
+\section{Effort spent}
+\input{Effort.tex}
+
+\section{References}
+\input{Reference}
+
+\end{document}

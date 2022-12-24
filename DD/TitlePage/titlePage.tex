@@ -1,0 +1,26 @@
+\fancypagestyle{plain}{%
+	\fancyhf{} % Clear all header and footer fields
+	\fancyhead[RO,RE]{\thepage} %RO=right odd, RE=right even
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}}
+
+%----------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------
+\thispagestyle{empty}%
+% \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the preamble pages
+
+\puttitle{
+	title=DD - Software Engineering 2, % Title of the thesis
+	name={\\ \bfseries{Emilio Corigliano (10627041)}\\ \bfseries{Federico Mandelli (10611353)}\\ \bfseries{Matteo Pignataro (10667498)}}, % Author Name and Surname
+	course=Computer Science and Engineering, % Study Programme (in Italian)
+	advisor= Prof. Matteo Camilli, % Supervisor name
+	coadvisor={Prof.ssa Elisabetta Di Nitto, Prof. Matteo Giovanni Rossi}, % Co-Supervisor name, remove this line if there is none
+	academicyear={2022-23},  % Academic Year
+} % These info will be put into your Title page 
+
+%----------------------------------------------------------------------------
+%	PREAMBLE PAGES: ABSTRACT (inglese e italiano), EXECUTIVE SUMMARY
+%----------------------------------------------------------------------------
+% \startpreamble
+\clearpage
