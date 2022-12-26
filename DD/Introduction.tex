@@ -1,7 +1,41 @@
 \subsection{Purpose}
+Due to the recent increase of effort in the battle against climate change, electric vehicles are slowly becoming the new technology for private transport that   people use everyday.
+To sustain this type of strategy, we need to develop a clever and capillary charging system.\\
+\acf{eMall} is an \acf{eMSP} that aims to help the final users dealing with their charging needs by informing the users about the nearby charging stations, their cost, their environmental friendliness and any special offer that they might have.
+It will allow the users to book, cancel and pay for a charge and it will notify them when the charging process is terminated.\\
+With the integration of the user's calendar, the system will also suggest the best moment in the schedule to charge the vehicle.
+To have a fully integrated system, all the \acfp{CPO} will have a technological support called \acf{CPMS} to interface the service with the physical charging stations and to manage all the energy sources like batteries and \acfp{DSO}.
 \subsection{Scope}
+
 \subsection{Definitions, Acronyms, Abbreviations}
+\subsubsection{Acronyms}
+\begin{multicols}{2}[]
+    \begin{acronym}[DDacronyms]
+        \acro{eMall}{e-Mobility for All}
+        \acro{eMSP}{e-Mobility Service Provider}
+        \acro{CPO}{Charging Point Operator}
+        \acro{CPMS}{Charge Point Management System}
+        \acro{DSO}{Distribution System Operator}
+        \acro{API}{Application Programming Interface}
+        \acro{RACS}{Reliable Array of Cloned Services}
+        \acro{RAPS}{Reliable Array of Partitioned Services}
+        \acro{GDPR}{General Data Protection Regulation}
+        \acro{SoC}{State of Charge}
+        \acro{GPS}{Global Positioning System}
+        \acro{RASD}{Requirement Analysis and Specification Document}
+    \end{acronym}
+\end{multicols}
 \subsection{Reference documents}
 \subsection{Document structure}
+The document is divided in seven main sections:
+\begin{itemize}
+    \item \textbf{Introduction}: After a brief purpose section, it illustrates the summary of main architectural choices and collects all the acronyms and definitions present on the document;
+    \item \textbf{Architectural Design}: At first it introduces the major interfaces of system, and then illustrates the collection of components, interfaces and the dynamic usage of them. The document includes also infrastructure details at system level;
+    \item \textbf{User Interface Design}: This section includes UI mockups and explains the relation between them and the previously mentioned interfaces and components;
+    \item \textbf{Requirements traceability}: Maps the requirements collected inside the \ac{RASD} and the corresponding design elements;
+    \item \textbf{Implementation, Integration and Test Plan}: Describes the plans to follow to implement, integrate and test the whole system and its sub parts;
+    \item \textbf{Effort Spent}: Summarizes the total hours spent on the document formalization;
+    \item \textbf{References}: Summarizes all the reference documents that we used during the description.
+\end{itemize}
 
 \clearpage
