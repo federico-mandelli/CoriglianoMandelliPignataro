@@ -6,6 +6,11 @@ It will allow the users to book, cancel and pay for a charge and it will notify 
 With the integration of the user's calendar, the system will also suggest the best moment in the schedule to charge the vehicle.
 To have a fully integrated system, all the \acfp{CPO} will have a technological support called \acf{CPMS} to interface the service with the physical charging stations and to manage all the energy sources like batteries and \acfp{DSO}.
 \subsection{Scope}
+The document focuses on the design aspects of the \ac{eMall} and \ac{CPMS} systems and illustrates the architectural choices behind the implementation of them. Follows a summary about the main design topics of each system:
+\begin{itemize}
+    \item \textbf{\ac{eMall}}: It is a 3-tier architecture where the business logic and the data logic are separated. The third tier is the client that needs to be as \textbf{FAT} as possible. The whole architectural pattern is the \ac{MVC} due to its flexibility and scalability;
+    \item \textbf{\ac{CPMS}}: It is a client-server 2-tier architecture due to the low user base and all in one system. The architectural pattern is the \ac{MVC}.
+\end{itemize}
 
 \subsection{Definitions, Acronyms, Abbreviations}
 \subsubsection{Acronyms}
@@ -23,6 +28,7 @@ To have a fully integrated system, all the \acfp{CPO} will have a technological 
         \acro{SoC}{State of Charge}
         \acro{GPS}{Global Positioning System}
         \acro{RASD}{Requirement Analysis and Specification Document}
+        \acro{MVC}{Model View Controller}
     \end{acronym}
 \end{multicols}
 \subsection{Reference documents}
