@@ -1,14 +1,43 @@
+
 \subsection{Overview}
 The architecture of the system is composed of two main components: the \ac{eMSP} and the \ac{CPMS}.
 
-The \ac{eMSP} follows the three-tier pattern with fat-clients. This architecture is chosen for different reasons:
+\subsubsection{\ac{eMSP} overview}
+The \ac{eMSP} follows the three-tier pattern with fat-clients as seen in \autoref{fig:eMSP-overview-architecture}. This architecture is chosen for different reasons:
 \begin{itemize}
     \item Makes the system more scalable;
     \item Allows the separation between business logic and data so that we can apply different levels of dependability to different decoupled systems and we can manage how data is accessed in a more granular way;
-    \item There will be a lot of data to be handled in this system (such as booked charges, all the infos about \acp{CPO}, etc.); for this, a dedicated and optimized infrastructure is chosen to be the best choice.
+    \item There will be a lot of data to be handled in this system (such as booked charges, all the infos about \acp{CPO}, etc.); for this, a dedicated and optimized infrastructure is chosen to be the best choice;
     \item With fat-clients the number of messages transmitted are fewer and lighter: an initial elaboration can be done on the smart devices of the user without sending a lot of raw data to the remote application server. The local on-the-edge elaboration is not considered as a problem given the computational power of smartphones.
 \end{itemize}
+The software pattern applied for this architecture will be the \ac{MVC} pattern.
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=0.75\textwidth]{Graphics/DD-overview-eMSP.drawio.png}
+        \caption{\ac{eMSP} architectural overview}
+        \label{fig:eMSP-overview-architecture}
+    \end{center}
+\end{figure}
 
+\todo[inline]{Better explaination of each component and interaction among components}
+
+\subsubsection{\ac{CPMS} overview}
+The \ac{CPMS} follows the two-tier pattern with thin-clients as seen in \autoref{fig:CPMS-overview-architecture}. This architecture is chosen for different reasons:
+\begin{itemize}
+    \item The system is simpler to implement with respect to the three-tier architecture;
+    \item The system shouldn't handle so much data, so it isn't necessary to have a dedicated architecture for the data layer;
+    \item Clients are thin because they only have to view infos about charging stations and can send simple events (for example \textit{use \ac{DSO} X for charging station Y}, \textit{set revenue percentage to Z}, etc.).
+\end{itemize}
+Also for this system we will use the \ac{MVC} pattern.
+
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=0.75\textwidth]{Graphics/DD-overview-CPMS.drawio.png}
+        \caption{\ac{CPMS} architectural overview}
+        \label{fig:CPMS-overview-architecture}
+    \end{center}
+\end{figure}
+\todo[inline]{Better explaination of each component and interaction among components}
 
 
 \subsection{Component view}
