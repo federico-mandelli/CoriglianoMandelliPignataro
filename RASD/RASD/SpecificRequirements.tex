@@ -320,6 +320,37 @@ An internet connection should also be present in order to make the system reacha
     \caption{A \ac{CPO} sets the revenue percentage}
 \end{table}
 
+% CPO sets a special offer
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & \ac{CPO}                                                     \\
+            \hline
+            Entry conditions: & The \ac{CPO} is already logged into the system.              \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The \ac{CPO} selects the option to create a special offer for his charging stations;
+                \item The \ac{CPO} sets the various parameters of the offer, such as validity period, discount, condition (applicable only after a given amount of charge, applicable only in some charging stations in order to balance the load of charging stations and so on\dots);
+                \item The system verifies the validity of the parameters set;
+                \item The system shows a successful message.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & There is a new special offer in the system. \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The values inserted aren't valid: the system returns an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{A \ac{CPO} sets a special offer}
+\end{table}
+
 % User gets nearby charging stations
 \begin{table}[h]
     \begin{center}
@@ -643,10 +674,6 @@ An internet connection should also be present in order to make the system reacha
     \caption{\ac{CPO}maintainer sets station energy source}
 \end{table}
 
-\todo[inline]{Other use cases to do:\\
-    - CPO sets a special offer\\
-}
-
 \clearpage
 \subsubsection{Use case diagrams}
 \begin{figure}[!h]
@@ -659,7 +686,6 @@ An internet connection should also be present in order to make the system reacha
 \end{figure}
 \begin{figure}[!h]
     \includegraphics[keepaspectratio, width=16cm]{UseCase/RegisteredCPO.png}
-    \todo[inline]{Adding set special offers in "Registered \ac{CPO}" use case diagram}
     \caption{Registered \ac{CPO}}
 \end{figure}
 \begin{figure}[!h]
