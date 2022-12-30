@@ -234,7 +234,7 @@ An internet connection should also be present in order to make the system reacha
             \hline
             Actor:            & User or \ac{CPO}                                                                                                                                                                                                                                                                                             \\
             \hline
-            Entry conditions: & The actor is not yet logged in.                                                                                                                                                                                                                                                                              \\
+            Entry conditions: & The actor is not already logged in.                                                                                                                                                                                                                                                                          \\
             \hline
             Event flow:       &
             \begin{enumerate}
@@ -448,13 +448,199 @@ An internet connection should also be present in order to make the system reacha
     \caption{User cancels a charge}
 \end{table}
 
+% User performs a charge
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & User                                           \\
+            \hline
+            Entry conditions: & The user has already booked and paid a charge. \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The user plugs the charging connector into the vehicle;
+                \item The user inserts the charge ID into the Charging Socket;
+                \item The charging socket starts the charge;
+                \item The charging socket sends the user an email when the charging process is done.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & The vehicle is charged.                        \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The charge ID is not valid: the charging socket displays an error message;
+                \item The charging connector is not connected: the charging socket displays an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{User charges vehicle}
+\end{table}
+
+% System suggests charge via calendar
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & eMall                                                       \\
+            \hline
+            Entry conditions: & The user smartphone is connected via bluetooth  to the car. \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The system acquires the car position;
+                \item The system acquires the car battery status;
+                \item The system checks the user's calendar and computes the best nearest stations;
+                \item If the car is below 50\% of battery charge the system notifies the user with a charging suggestion.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & The user gets notified with a charging suggestion.          \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The bluetooth connection is not present: the system utilizes the last recorded position;
+                \item The system does not have access to the user's calendar: the system doesn't suggest any charge.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{System suggests charge via calendar}
+\end{table}
+
+% CPO maintainer logs into CPMS
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & \ac{CPO}maintainer                                   \\
+            \hline
+            Entry conditions: & \ac{CPO}maintainer is not already logged in.         \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The \ac{CPO}maintainer presses the \textit{Login} button;
+                \item The \ac{CPO}maintainer inserts ID and password;
+                \item The \ac{CPMS} validates the credentials;
+                \item The \ac{CPMS} lets the \ac{CPO}maintainer access the available features.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & The \ac{CPO}maintainer is logged into the \ac{CPMS}. \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The \ac{CPO}maintainer inserts wrong credentials: The \ac{CPMS} notifies it with an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{\ac{CPO}maintainer logs into a \ac{CPMS}}
+\end{table}
+
+% CPOmaintainer inserts station into CPMS
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor: \ac{CPO}maintainer &                                                              \\
+            \hline
+            Entry conditions:         & The \ac{CPO}maintainer is already logged into the \ac{CPMS}. \\
+            \hline
+            Event flow:               &
+            \begin{enumerate}
+                \item The \ac{CPO}maintainer presses the \textit{Stations} button;
+                \item The \ac{CPMS} provides all the stations previously inserted;
+                \item The \ac{CPO}maintainer inserts the \ac{API} reference to a charging station;
+                \item The \ac{CPO}maintainer presses the \textit{Insert} button;
+                \item The \ac{CPMS} checks the station and inserts it.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:           & A new station is inserted into the \ac{CPMS}.                \\
+            \hline
+            Exceptions:               &
+            \begin{itemize}
+                \item The inserted station is already present in the \ac{CPMS}: the \ac{CPMS} returns an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{\ac{CPO}maintainer inserts a station into a \ac{CPMS}}
+\end{table}
+
+%CPOmaintainer sets station strategy
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor: \ac{CPO}maintainer &                                                              \\
+            \hline
+            Entry conditions:         & The \ac{CPO}maintainer is already logged into the \ac{CPMS}. \\
+            \hline
+            Event flow:               &
+            \begin{enumerate}
+                \item The \ac{CPO}maintainer presses the \textit{Stations} button;
+                \item The \ac{CPMS} provides all the stations previously inserted;
+                \item The \ac{CPO}maintainer inserts the strategy near the desired station;
+                \item The \ac{CPO}maintainer presses the \textit{Set} button near the desired station;
+                \item The \ac{CPMS} verifies the data and sets the strategy.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:           & The station strategy is set.                                 \\
+            \hline
+            Exceptions:               &
+            \begin{itemize}
+                \item The station doesn't exist: the \ac{CPMS} returns an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{\ac{CPO}maintainer sets station strategy}
+\end{table}
+
+% CPOmaintainer sets station source
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor: \ac{CPO}maintainer &                                                              \\
+            \hline
+            Entry conditions:         & The \ac{CPO}maintainer is already logged into the \ac{CPMS}. \\
+            \hline
+            Event flow:               &
+            \begin{enumerate}
+                \item The \ac{CPO}maintainer presses the \textit{Stations} button;
+                \item The \ac{CPMS} provides all the stations previously inserted;
+                \item The \ac{CPO}maintainer inserts the desired source near the desired station;
+                \item The \ac{CPO}maintainer presses the \textit{Set} button near the desired station;
+                \item The \ac{CPMS} verifies the data and sets the energy source;
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:           & The station source is set.                                   \\
+            \hline
+            Exceptions:               &
+            \begin{itemize}
+                \item The station doesn't exist: the \ac{CPMS} returns an error message;
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{\ac{CPO}maintainer sets station energy source}
+\end{table}
+
 \todo[inline]{Other use cases to do:\\
     - CPO sets a special offer\\
-    - user performs a charge\\
-    - system suggests charge via calendar\\
-    - CPOmaintainer logs into CPMS\\
-    - CPOmaintainer adds stations to CPMS\\
-    - CPOmaintainer manages CPMS\\
 }
 
 \clearpage
@@ -559,15 +745,22 @@ An internet connection should also be present in order to make the system reacha
 \end{figure}
 \begin{figure}[!h]
     \begin{center}
-        \includegraphics[keepaspectratio, width=16cm]{Sequence/cpomaintainer-manages.png}
-        \caption{\ac{CPO} maintainer manages a \ac{CPMS}}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/cpomaintainer-sets-station-strategy.png}
+        \caption{\ac{CPO} maintainer sets station strategy in \ac{CPMS}}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/cpomaintainer-sets-station-source.png}
+        \caption{\ac{CPO} maintainer sets station source in \ac{CPMS}}
     \end{center}
 \end{figure}
 
 \clearpage
 %Definition of use case diagrams, use cases and associated sequence/activity diagrams, and mapping on requirements
 \subsection{Performance requirements}
-The system in general needs to manage a large collection of electric car users/\acp{CPO} and it needs to supply the heaviest services (like computing the cheapest nearest stations) in a reasonable amount of time.
+The system in general needs to manage a large collection of electric vehicle users/\acp{CPO} and it needs to supply the heaviest services (like computing the cheapest nearest stations) in a reasonable amount of time.
 Because of that the system shall guarantee a baseline load of 1000000 users/\acp{CPO} still with a response time not greater than 5 seconds. To achieve the goal, the system shall be able to decentralize all the computation as much as possible,
 trying to make the client responsible of the heaviest loads.\\\\
 These requirements are balanced considering the actual percentage of electric vehicle users in Italy [0.56\%] (corresponds to about 330k users) and a level of confidence of 3.
