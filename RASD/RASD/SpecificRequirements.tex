@@ -129,210 +129,334 @@ An internet connection should also be present in order to make the system reacha
 
 \clearpage
 \subsubsection{Use cases}
-    % \begin{table}[h]
-    %     \begin{center}
-    %         \begin{tabular}{|c||p{10cm}|}
-    %             \hline
-    %             Actor: & \\
-    %             \hline
-    %             Entry conditions: &  \\
-    %             \hline
-    %             Event flow: & 
-    %             \begin{enumerate}
-    %                 \item 
-    %             \end{enumerate}
-    %             \\
-    %             \hline
-    %             Exit condition: &  \\
-    %             \hline
-    %             Exceptions: &
-    %             \begin{itemize}
-    %                 \item 
-    %             \end{itemize}
-    %             \\
-    %             \hline
-    %         \end{tabular}
-    %     \end{center}
-    %     \caption{}
-    % \end{table}
+% \begin{table}[h]
+%     \begin{center}
+%         \begin{tabular}{|c||p{10cm}|}
+%             \hline
+%             Actor: & \\
+%             \hline
+%             Entry conditions: &  \\
+%             \hline
+%             Event flow: & 
+%             \begin{enumerate}
+%                 \item 
+%             \end{enumerate}
+%             \\
+%             \hline
+%             Exit condition: &  \\
+%             \hline
+%             Exceptions: &
+%             \begin{itemize}
+%                 \item 
+%             \end{itemize}
+%             \\
+%             \hline
+%         \end{tabular}
+%     \end{center}
+%     \caption{}
+% \end{table}
 
 
-    % Unregistered user
-    \begin{table}[h]
-        \begin{center}
-            \begin{tabular}{|c||p{10cm}|}
-                \hline
-                Actor: & User\\
-                \hline
-                Entry conditions: & The user doesn't have any account on the platform \\
-                \hline
-                Event flow: & 
-                \begin{enumerate}
-                    \item The user presses the \textit{Register} button;
-                    \item The user enters name, surname, birthday, email, password, payment method;
-                    \item The user presses the confirmation button;
-                    \item The system sends a confirmation email to the provided email address;
-                    \item The user presses a link in the confirmation email;
-                    \item The system shows a success message;
-                \end{enumerate}
-                \\
-                \hline
-                Exit condition: & The user now have an active account \\
-                \hline
-                Exceptions: &
-                \begin{itemize}
-                    \item The user takes more than 15 minutes to press the confirmation email: In this case the account won't be created, the system will notify the user and all the process should be redone;
-                    \item The user inserts an email already registered to the system: the system notifies the user without letting the process continue;
-                    \item The user doesn't insert some required information: the system notifies the user without letting the process continue;
-                \end{itemize}
-                \\
-                \hline
-            \end{tabular}
-        \end{center}
-        \caption{Unregistered user}
-    \end{table}
-    
-    % Unregistered CPO
-    \begin{table}[h]
-        \begin{center}
-            \begin{tabular}{|c||p{10cm}|}
-                \hline
-                Actor: & \ac{CPO} \\
-                \hline
-                Entry conditions: & The \ac{CPO} isn't registered yet \\
-                \hline
-                Event flow: & 
-                \begin{enumerate}
-                    \item The \ac{CPO} selects the \textit{Register as \ac{CPO}} option;
-                    \item The \ac{CPO} enters company name, email, password and \gls{partita IVA};
-                    \item The system sends a confirmation email to the provided email address;
-                    \item The \ac{CPO} presses a link in the confirmation email;
-                    \item The system shows a success message;
-                \end{enumerate}
-                \\
-                \hline
-                Exit condition: & The \ac{CPO} is now registered to the platform \\
-                \hline
-                Exceptions: &
-                \begin{itemize}
-                    \item The \ac{CPO} takes more than 15 minutes to press the confirmation email: In this case the account won't be created, the system will notify the \ac{CPO} and all the process should be redone;
-                    \item The \ac{CPO} inserts an email already registered to the system: the system notifies the \ac{CPO} without letting the process continue;
-                    \item The \ac{CPO} doesn't insert some required information: the system notifies the \ac{CPO} without letting the process continue;
-                    \item The \gls{partita IVA} isn't valid or can't be verified: the system notifies the \ac{CPO} without letting the process continue;
-                \end{itemize}
-                \\
-                \hline
-            \end{tabular}
-        \end{center}
-        \caption{Unregistered \ac{CPO}}
-    \end{table}
-    
-    % User/CPO logs in
-    \begin{table}[h]
-        \begin{center}
-            \begin{tabular}{|c||p{10cm}|}
-                \hline
-                Actor: & User or \ac{CPO}\\
-                \hline
-                Entry conditions: & The actor is not yet logged in\\
-                \hline
-                Event flow: & 
-                \begin{enumerate}
-                    \item The actor presses the login button;
-                    \item The actor inserts email and password;
-                    \item The system validates the credentials;
-                    \item The system let the actor access their available features;
-                \end{enumerate}
-                \\
-                \hline
-                Exit condition: & The actor is logged in into the system and can perform their specific actions (i.e. for the user: searching near stations, booking a charge, deleting a charge, paying for a charge and view previously booked charges; for the \ac{CPO}: adding a \ac{CPMS}, removing a \ac{CPMS}, setting revenue percentage, setting special offers) \\
-                \hline
-                Exceptions: &
-                \begin{itemize}
-                    \item The user inserts wrong credentials: The system notifies it with an error message;
-                \end{itemize}
-                \\
-                \hline
-            \end{tabular}
-        \end{center}
-        \caption{User or \ac{CPO} logs in}
-    \end{table}
+% Unregistered user
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & User                                               \\
+            \hline
+            Entry conditions: & The user doesn't have any account on the platform. \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The user presses the \textit{Register} button;
+                \item The user enters name, surname, birthday, email, password, payment method;
+                \item The user presses the confirmation button;
+                \item The system sends a confirmation email to the provided email address;
+                \item The user presses a link in the confirmation email;
+                \item The system shows a success message.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & The user now has an active account.                \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The user takes more than 15 minutes to press the confirmation email: In this case the account won't be created, the system will notify the user and all the process should be redone;
+                \item The user inserts an already registered email to the system: the system notifies the user without letting the process continue;
+                \item The user doesn't insert some required information: the system notifies the user without letting the process continue.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{Unregistered user}
+\end{table}
 
-    % CPO adds a CPMS
-    \begin{table}[h]
-        \begin{center}
-            \begin{tabular}{|c||p{10cm}|}
-                \hline
-                Actor: & \ac{CPO} \\
-                \hline
-                Entry conditions: & The \ac{CPO} is already logged in the system \\
-                \hline
-                Event flow: & 
-                \begin{enumerate}
-                    \item The \ac{CPO} selects the option to add a \ac{CPMS};
-                    \item The \ac{CPO} inserts the \ac{API} reference in the form and sends it;
-                    \item The system checks if it exists and if it is reachable;
-                    \item The system adds the \ac{CPMS} to the available \acp{CPMS} and retrieves all the charging stations attached to the \ac{CPMS}.
-                \end{enumerate}
-                \\
-                \hline
-                Exit condition: & A \ac{CPMS} is added to the system and can be reached for booking of charges or queries by users. \\
-                \hline
-                Exceptions: &
-                \begin{itemize}
-                    \item The API reference doesn't exist, the \ac{CPMS} isn't reachable or the \ac{CPMS} was already added to the system previously: the system returns an error message with the specific reason.
-                \end{itemize}
-                \\
-                \hline
-            \end{tabular}
-        \end{center}
-        \caption{\ac{CPO} adds a \ac{CPMS} to the system}
-    \end{table}
+% Unregistered CPO
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & \ac{CPO}                                        \\
+            \hline
+            Entry conditions: & The \ac{CPO} isn't registered yet.              \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The \ac{CPO} selects the \textit{Register as \ac{CPO}} option;
+                \item The \ac{CPO} enters company name, email, password and \gls{partita IVA};
+                \item The system sends a confirmation email to the provided email address;
+                \item The \ac{CPO} presses a link in the confirmation email;
+                \item The system shows a success message.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & The \ac{CPO} is now registered to the platform. \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The \ac{CPO} takes more than 15 minutes to press the confirmation email: In this case the account won't be created, the system will notify the \ac{CPO} and all the process should be redone;
+                \item The \ac{CPO} inserts an already registered email to the system: the system notifies the \ac{CPO} without letting the process continue;
+                \item The \ac{CPO} doesn't insert some required information: the system notifies the \ac{CPO} without letting the process continue;
+                \item The \gls{partita IVA} isn't valid or can't be verified: the system notifies the \ac{CPO} without letting the process continue.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{Unregistered \ac{CPO}}
+\end{table}
 
-    % CPO sets the revenue percentage
-    \begin{table}[h]
-        \begin{center}
-            \begin{tabular}{|c||p{10cm}|}
-                \hline
-                Actor: & \ac{CPO} \\
-                \hline
-                Entry conditions: & The \ac{CPO} is already logged into the system. \\
-                \hline
-                Event flow: & 
-                \begin{enumerate}
-                    \item The \ac{CPO} selects the option to insert the wanted revenue percentage for a charge performed on a charging station owned by the \ac{CPO};
-                    \item The \ac{CPO} inputs the wanted revenue percentage;
-                    \item The system checks the inputted value;
-                    \item The system shows a successful message;
-                \end{enumerate}
-                \\
-                \hline
-                Exit condition: & The revenue percentage is changed to the new inputted value \\
-                \hline
-                Exceptions: &
-                \begin{itemize}
-                    \item The value inserted is not a positive value (i.e. the value is below 0\%): the system returns an error message.
-                \end{itemize}
-                \\
-                \hline
-            \end{tabular}
-        \end{center}
-        \caption{A \ac{CPO} sets the revenue percentage}
-    \end{table}
+% User/CPO logs in
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & User or \ac{CPO}                                                                                                                                                                                                                                                                                             \\
+            \hline
+            Entry conditions: & The actor is not yet logged in.                                                                                                                                                                                                                                                                              \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The actor presses the login button;
+                \item The actor inserts email and password;
+                \item The system validates the credentials;
+                \item The system lets the actor access the available features.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & The actor is logged into the system and can perform some specific actions (i.e. for the user: search near stations, book a charge, cancel a charge, pay for a charge and view previously booked charges; for the \ac{CPO}: add a \ac{CPMS}, remove a \ac{CPMS}, set revenue percentage, set special offers). \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The user inserts wrong credentials: The system notifies it with an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{User or \ac{CPO} logs in}
+\end{table}
 
-    \todo[inline]{Other use cases to do:\\
+% CPO adds a CPMS
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & \ac{CPO}                                                                                         \\
+            \hline
+            Entry conditions: & The \ac{CPO} is already logged in the system.                                                    \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The \ac{CPO} selects the option to add a \ac{CPMS};
+                \item The \ac{CPO} inserts the \ac{API} reference in the form and sends it;
+                \item The system checks if it exists and if it is reachable;
+                \item The system adds the \ac{CPMS} to the available \acp{CPMS} and retrieves all the charging stations attached to the \ac{CPMS}.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & A \ac{CPMS} is added to the system and can be reached to book charges or other queries by users. \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The API reference doesn't exist, the \ac{CPMS} isn't reachable or the \ac{CPMS} was already added to the system previously: the system returns an error message with the specific reason.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{\ac{CPO} adds a \ac{CPMS} to the system}
+\end{table}
+
+% CPO sets the revenue percentage
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & \ac{CPO}                                                     \\
+            \hline
+            Entry conditions: & The \ac{CPO} is already logged into the system.              \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The \ac{CPO} selects the option to insert the wanted revenue percentage for a charge performed on a charging station owned by the \ac{CPO};
+                \item The \ac{CPO} inputs the wanted revenue percentage;
+                \item The system checks the inputted value;
+                \item The system shows a successful message.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & The revenue percentage is changed to the new inputted value. \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The value inserted is not a positive value (i.e. the value is below 0\%): the system returns an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{A \ac{CPO} sets the revenue percentage}
+\end{table}
+
+% User gets nearby charging stations
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & User                                            \\
+            \hline
+            Entry conditions: & The user is already logged into the system.     \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The user presses the \textit{Map} button;
+                \item The user inserts the location and time frame;
+                \item The user presses the \textit{Search} button;
+                \item The system shows a ordered list of k best nearby stations.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & The user has a list of ordered nearby stations. \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The inserted time frame isn't correct: the system returns an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{The user searches for nearby stations}
+\end{table}
+
+% User books a charge
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & User                                                                                    \\
+            \hline
+            Entry conditions: & The user is already logged into the system and he has already searched for the station. \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The user inserts the time frame;
+                \item The user presses the \textit{Book} button;
+                \item The system shows the charge ID and sends the user an email with the details.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & The user has now a booked charge.                                                       \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The inserted time frame isn't correct: the system returns an error message;
+                \item The inserted time frame is not available: the system returns an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{User books a charge}
+\end{table}
+
+% User pays for a charge
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & User                                                                                       \\
+            \hline
+            Entry conditions: & The user is already logged into the system and there is an already existing booked charge. \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The user presses the \textit{Pay} button near the booked charge;
+                \item The system asks for a confirmation;
+                \item The user presses the \textit{Confirm} button;
+                \item The system performs the payment, marks the charge as enabled and sends a confirmation email.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & A booked charge is paid.                                                                   \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The charge does not exist: the system returns an error message;
+                \item The charge does not belong to the user: the system returns an error message;
+                \item The payment fails: the system returns an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{User pays for a charge}
+\end{table}
+
+% User cancels a charge
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & User                                                                                       \\
+            \hline
+            Entry conditions: & The user is already logged into the system and there is an already existing booked charge. \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The user presses the \textit{Cancel} button near the booked charge;
+                \item The system asks for a confirmation;
+                \item The user presses the \textit{Confirm} button;
+                \item The system cancels the charge and in case of an already paid one, it refunds the user;
+                \item The system sends a confirmation email.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & A previously booked charge is canceled.                                                    \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The charge does not exist: the system returns an error message;
+                \item The charge does not belong to the user: the system returns an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{User cancels a charge}
+\end{table}
+
+\todo[inline]{Other use cases to do:\\
     - CPO sets a special offer\\
-    - user gets the nearby charging stations\\
-    - user books a charge\\
-    - user pays for a charge\\
     - user performs a charge\\
-    - user cancels a charge\\
     - system suggests charge via calendar\\
     - CPOmaintainer logs into CPMS\\
     - CPOmaintainer adds stations to CPMS\\
     - CPOmaintainer manages CPMS\\
-    }
-    
+}
+
 \clearpage
 \subsubsection{Use case diagrams}
 \begin{figure}[!h]
@@ -365,7 +489,6 @@ An internet connection should also be present in order to make the system reacha
     \begin{center}
         \includegraphics[keepaspectratio, width=16cm]{Sequence/cpo-signs-up.png}
         \caption{Registration of \ac{CPO} into \ac{eMall} sequence}
-        \todo[inline]{Splitting "Registration of \ac{CPO}" and "setting revenue percentage" sequence diagrams}
     \end{center}
 \end{figure}
 \begin{figure}[!h]
@@ -378,6 +501,12 @@ An internet connection should also be present in order to make the system reacha
     \begin{center}
         \includegraphics[keepaspectratio, width=16cm]{Sequence/cpo-adds-cpms-to-emall.png}
         \caption{\ac{CPO} adds a \ac{CPMS} into eMall}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/cpo-sets-revenue-percentage.png}
+        \caption{\ac{CPO} sets the revenue percentage}
     \end{center}
 \end{figure}
 \begin{figure}[!h]
