@@ -3,14 +3,29 @@
 The architecture of the system is composed of two main components: the \ac{eMSP} and the \ac{CPMS}.
 
 \subsubsection{\ac{eMSP} overview}
-The \ac{eMSP} follows the three-tier pattern with fat-clients as seen in \autoref{fig:eMSP-overview-architecture}. This architecture is chosen for different reasons:
+The \ac{eMSP} is a \textbf{three-tier} architecture with \textbf{fat-clients} as seen in \autoref{fig:eMSP-overview-architecture}. This architecture is chosen for different reasons:
 \begin{itemize}
     \item Makes the system more scalable;
     \item Allows the separation between business logic and data so that we can apply different levels of dependability to different decoupled systems and we can manage how data is accessed in a more granular way;
     \item There will be a lot of data to be handled in this system (such as booked charges, all the infos about \acp{CPO}, etc.); for this, a dedicated and optimized infrastructure is chosen to be the best choice;
+    \item The database will only be accessible by the middleware, constituting an additional layer of security;
     \item With fat-clients the number of messages transmitted are fewer and lighter: an initial elaboration can be done on the smart devices of the user without sending a lot of raw data to the remote application server. The local on-the-edge elaboration is not considered as a problem given the computational power of smartphones.
 \end{itemize}
-The software pattern applied for this architecture will be the \ac{MVC} pattern.
+The software pattern applied for this architecture will be the \textbf{\ac{MVC} pattern}. This is the best suit for our application because, being it a web application, we want the components to be as modular as possible in order to simplify their distribution. 
+Also, the separation among view logic and business logic enables us to turn the client application in a fat one, moving the whole view logic in the client application. \todo{ha senso come commento?} 
+
+The following paragraphs will describe the principal components of this pattern and their architectural distribution.
+
+\paragraph{Model}
+The model is the logical representation of the persistent data. This is stored in a database system and will only be directly accessible by the server application. 
+
+\paragraph{View}
+The view logic will be completely delegated to the client application, representing in different ways the data retrieved from the model.
+
+\paragraph{Controller}
+The controller will have to manage all the client requests, interacting with the model, modifying it and returning to the view the changed/retrieved data.
+In our application, for the most part, the business logic will be in the server application. Just the part of retrieving and processing the vehicle data and the calendar appointments (in the case of a request for smart suggestions of the application) will be handled by the client application so that the communication with the application server will be as simple as possible.
+
 \begin{figure}[!h]
     \begin{center}
         \includegraphics[keepaspectratio, width=0.75\textwidth]{Graphics/DD-overview-eMSP.drawio.png}
@@ -19,10 +34,8 @@ The software pattern applied for this architecture will be the \ac{MVC} pattern.
     \end{center}
 \end{figure}
 
-\todo[inline]{Better explaination of each component and interaction among components}
-
 \subsubsection{\ac{CPMS} overview}
-The \ac{CPMS} follows the two-tier pattern with thin-clients as seen in \autoref{fig:CPMS-overview-architecture}. This architecture is chosen for different reasons:
+The \ac{CPMS} follows the \textbf{two-tier} pattern with \textbf{thin-clients} as seen in \autoref{fig:CPMS-overview-architecture}. This architecture is chosen for different reasons:
 \begin{itemize}
     \item The system is simpler to implement with respect to the three-tier architecture;
     \item The system shouldn't handle so much data, so it isn't necessary to have a dedicated architecture for the data layer;
