@@ -21,12 +21,12 @@ The \ac{eMSP} is a \textbf{three-tier} architecture with \textbf{fat-clients} as
     \item With fat-clients the number of messages transmitted are fewer and lighter: an initial elaboration can be done on the smart devices of the user without sending a lot of raw data to the remote application server. The local on-the-edge elaboration is not considered as a problem given the computational power of smartphones.
 \end{itemize}
 The software pattern applied for this architecture will be the \textbf{\ac{MVC} pattern}. This is the best suit for our application because, being it a web application, we want the components to be as modular, flexible and scalable as possible in order to simplify their distribution.
-Also, the separation among view logic and business logic enables us to turn the client application in a fat one, moving the whole view logic in the client application. \todo{ha senso come commento?} 
+Also, the separation among view logic and business logic enables us to turn the client application in a fat one, moving the whole view logic in the client application. \todo{ha senso come commento?}
 
 The following paragraphs will describe the principal components of this pattern and their architectural distribution.
 
 \paragraph{Model}
-The model is the logical representation of the persistent data. This is stored in a database system and will only be directly accessible by the server application. 
+The model is the logical representation of the persistent data. This is stored in a database system and will only be directly accessible by the server application.
 
 \paragraph{View}
 The view logic will be completely delegated to the client application, representing in different ways the data retrieved from the model.
@@ -63,7 +63,17 @@ The \ac{CPMS} server, on the other hand, will deal also with charging requests f
         \label{fig:UML}
     \end{center}
 \end{figure}
-In the class diagram illustrated in \autoref{fig:UML} a model (not a functional) view of the system is represented. The \ac{eMall} and \ac{CPMS} interfaces show what the two systems are expected to implement, whereas for the ChargingInterface it is assumed an already existing implementation.
+In the class diagram illustrated in \autoref{fig:UML} a model (not functional) view of the system is represented. The \ac{eMall} and \ac{CPMS} interfaces show what the two systems are expected to implement, whereas for the ChargingInterface it is assumed an already existing implementation.
+
+\subsubsection{Component diagrams}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Component/eMall.png}
+        \caption{eMall component diagram}
+        \label{fig:eMSP-component}
+    \end{center}
+\end{figure}
+\clearpage
 \subsection{Deployment view}
 \subsection{Runtime view}
 \subsection{Component interfaces}
