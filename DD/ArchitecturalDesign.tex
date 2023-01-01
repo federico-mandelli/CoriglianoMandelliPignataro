@@ -68,12 +68,35 @@ In the class diagram illustrated in \autoref{fig:UML} a model (not functional) v
 \subsubsection{Component diagrams}
 \begin{figure}[!h]
     \begin{center}
-        \includegraphics[keepaspectratio, width=16cm]{Component/eMall.png}
+        \includegraphics[keepaspectratio, width=16cm]{Component/Component.png}
         \caption{eMall component diagram}
         \label{fig:eMSP-component}
     \end{center}
 \end{figure}
 \clearpage
+The two systems implement different interfaces and represent the \textit{Controller} and \textit{Model} parts of the \ac{MVC} pattern.
+
+\paragraph{\textbf{\ac{eMall}}}
+The main components for the \ac{eMall} system are:
+\begin{itemize}
+    \item \textbf{StationsGetterService}:
+    \item \textbf{RegistrationService}:
+    \item \textbf{ChargeManagerService}:
+    \item \textbf{\ac{CPMS}ManagerService}:
+    \item \textbf{\ac{CPO}ManagerService}:
+    \item \textbf{\ac{CPMS}StationsGetterService}:
+    \item \textbf{AuthenticationService}:
+    \item \textbf{\ac{eMall}Model}:
+\end{itemize}
+\paragraph{\textbf{\ac{CPMS}}}
+The main components for the \ac{CPMS} system are:
+\begin{itemize}
+    \item \textbf{\ac{CPMS}RegistrationService}:
+    \item \textbf{\ac{CPMS}StationManager}:
+    \item \textbf{\ac{CPMS}AuthenticationService}:
+    \item \textbf{ChargingStationAPIService}:
+    \item \textbf{\ac{CPMS}Model}:
+\end{itemize}
 \subsection{Deployment view}
 \subsection{Runtime view}
 \subsection{Component interfaces}
