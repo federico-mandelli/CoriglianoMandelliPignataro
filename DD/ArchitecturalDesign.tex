@@ -79,14 +79,21 @@ The two systems implement different interfaces and represent the \textit{Control
 \paragraph{\textbf{\ac{eMall}}}
 The main components for the \ac{eMall} system are:
 \begin{itemize}
-    \item \textbf{StationsGetterService}:
-    \item \textbf{RegistrationService}:
-    \item \textbf{ChargeManagerService}:
-    \item \textbf{\ac{CPMS}ManagerService}:
-    \item \textbf{\ac{CPO}ManagerService}:
-    \item \textbf{\ac{CPMS}StationsGetterService}:
-    \item \textbf{AuthenticationService}:
-    \item \textbf{\ac{eMall}Model}:
+    \item \textbf{StationsService}: It is the component responsible for handling all the stations research requests (like \textit{getNearestStations}, \textit{getCheapestStation}, \textit{getTopKStationsNearby});
+    \item \textbf{RegistrationService}: It is the component responsible for handling the registration details along with the parameters checking during the registration phase;
+    \item \textbf{ChargeManagerService}: It is the component responsible for handling all the charge booking/payment/cancellation processes. It interfaces with the payment \ac{API} and with the charging station \ac{API};
+    \item \textbf{\ac{CPMS}ManagerService}: It is the component responsible for handling the \ac{CPMS} operations from the \acp{CPO} users;
+    \item \textbf{\ac{CPO}ManagerService}: It is the component responsible for handling the \acp{CPO} requests (like \textit{SetRevenuePercentage} and \textit{setSpecialOffer});
+    \item \textbf{\ac{CPMS}StationsService}: It is the component responsible for providing the list of charging stations from the \ac{CPMS};
+    \item \textbf{AuthenticationService}: It is the component responsible for authorizing every operation over the model component. At this level it is implemented part of the controller (of the \ac{MVC} pattern) to check that operation is legit for the account type;
+    \item \textbf{Payment \ac{API}}: It is a component that interfaces the \ac{eMall} system with the external payment \acp{API};
+    \item \textbf{ChargingStation \ac{API}}: It is a component that interfaces the \ac{eMall} system with the charging stations \acp{API}. Without this component, operations like \textit{bookCharge}, \textit{enableCharge} and \textit{inhibitCharge} couldn't be done;
+    \item \textbf{\ac{eMall}Model}: It is the core component. It stores all the \ac{eMall} data and interfaces them with the other system components.
+\end{itemize}
+There are some apparently similar components, but there are some slight differences:
+\begin{itemize}
+    \item The \ac{CPO}ManagerService is conceptually different from the \ac{CPMS}ManagerService because the CPMS manager service alters the stations collection of the model according to the interface with the inserted \ac{CPMS};
+    \item The \ac{CPMS} StationsService is different from the ChargingStation \ac{API} because the \ac{CPMS} StationService interfaces with the inserted \acp{CPMS} and the ChargingStation \ac{API} interfaces the \ac{eMall} with the charging stations to handle the charge booking/enabling and canceling features.
 \end{itemize}
 \paragraph{\textbf{\ac{CPMS}}}
 The main components for the \ac{CPMS} system are:
@@ -94,7 +101,7 @@ The main components for the \ac{CPMS} system are:
     \item \textbf{\ac{CPMS}RegistrationService}:
     \item \textbf{\ac{CPMS}StationManager}:
     \item \textbf{\ac{CPMS}AuthenticationService}:
-    \item \textbf{ChargingStationAPIService}:
+    \item \textbf{ChargingStation \ac{API}}:
     \item \textbf{\ac{CPMS}Model}:
 \end{itemize}
 
