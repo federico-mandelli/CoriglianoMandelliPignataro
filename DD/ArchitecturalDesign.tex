@@ -6,7 +6,7 @@ The architecture of the system is composed of two main components: the \ac{eMSP}
 
 \begin{figure}[!h]
     \begin{center}
-        \includegraphics[keepaspectratio, width=0.75\textwidth]{Graphics/DD-overview-eMSP.drawio.png}
+        \includegraphics[keepaspectratio, width=0.75\textwidth]{Graphics/DD-eMSP-overview.drawio.png}
         \caption{\ac{eMSP} architectural overview}
         \label{fig:eMSP-overview-architecture}
     \end{center}
@@ -39,7 +39,7 @@ In our application, for the most part, the business logic will be in the server 
 
 \begin{figure}[!h]
     \begin{center}
-        \includegraphics[keepaspectratio, width=0.75\textwidth]{Graphics/DD-overview-CPMS.drawio.png}
+        \includegraphics[keepaspectratio, width=0.75\textwidth]{Graphics/DD-CPMS-overview.drawio.png}
         \caption{\ac{CPMS} architectural overview}
         \label{fig:CPMS-overview-architecture}
     \end{center}
@@ -97,7 +97,40 @@ The main components for the \ac{CPMS} system are:
     \item \textbf{ChargingStationAPIService}:
     \item \textbf{\ac{CPMS}Model}:
 \end{itemize}
+
 \subsection{Deployment view}
+\subsubsection{\ac{eMSP}}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=0.9\textwidth]{Graphics/DD-eMSP-deployment.drawio.png}
+        \caption{eMall deployment view diagram}
+        \label{fig:eMSP-deployment}
+    \end{center}
+\end{figure}
+
+\begin{itemize}
+    \item protocol application server - CPMS
+    \item protocol user device - server
+    \item 1 load balancer
+    \item 2 application servers
+    \item disaster recovery DB
+\end{itemize}
+
+\subsubsection{\ac{CPMS}}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=0.9\textwidth]{Graphics/DD-CPMS-deployment.drawio.png}
+        \caption{CPMS deployment view diagram}
+        \label{fig:CPMS-deployment}
+    \end{center}
+\end{figure}
+
+\begin{itemize}
+    \item protocol eMSP - application server
+    \item protocol CPO maintainer - application server
+\end{itemize}
+\clearpage
+
 \subsection{Runtime view}
 \subsection{Component interfaces}
 \subsection{Selected architectural styles and patterns}
