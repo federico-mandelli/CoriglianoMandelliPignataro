@@ -21,7 +21,6 @@ The \ac{eMSP} is a \textbf{three-tier} architecture with \textbf{fat-clients} as
     \item With fat-clients the number of messages transmitted are fewer and lighter: an initial elaboration can be done on the smart devices of the user without sending a lot of raw data to the remote application server. The local on-the-edge elaboration is not considered as a problem given the computational power of smartphones.
 \end{itemize}
 The software pattern applied for this architecture will be the \textbf{\ac{MVC} pattern}. This is the best suit for our application because, being it a web application, we want the components to be as modular, flexible and scalable as possible in order to simplify their distribution.
-Also, the separation among view logic and business logic enables us to turn the client application in a fat one, moving the whole view logic in the client application. \todo{ha senso come commento?}
 
 The following paragraphs will describe the principal components of this pattern and their architectural distribution.
 
@@ -29,11 +28,11 @@ The following paragraphs will describe the principal components of this pattern 
 The model is the logical representation of the persistent data. This is stored in a database system and will only be directly accessible by the server application.
 
 \paragraph{View}
-The view logic will be completely delegated to the client application, representing in different ways the data retrieved from the model.
+The view logic will be completely delegated to the client application, representing in different ways the data retrieved from the model (e.g. the charging stations sorting based on the user selected preferences).
 
 \paragraph{Controller}
 The controller will have to manage all the client requests, interacting with the model, modifying it and returning to the view the changed/retrieved data.
-In our application, for the most part, the business logic will be in the server application. Just the part of retrieving and processing the vehicle data and the calendar appointments (in the case of a request for smart suggestions of the application) will be handled by the client application so that the communication with the application server will be as simple as possible.
+In our application, for the most part, the business logic will be in the server application. Just the part of retrieving and processing the vehicle data the calendar appointments (in the case of a request for smart suggestions of the application) will be handled by the client application so that the communication with the application server will be as simple as possible.
 
 \subsubsection{\ac{CPMS} overview}
 
@@ -63,6 +62,7 @@ The \ac{CPMS} server, on the other hand, will deal also with charging requests f
         \label{fig:UML}
     \end{center}
 \end{figure}
+\todo[inline]{Charging stations devono essere connesse solo con il CPMS, l'eMall per parlarci deve passare dal CPMS.}
 In the class diagram illustrated in \autoref{fig:UML} a model (not functional) view of the system is represented. The \ac{eMall} and \ac{CPMS} interfaces show what the two systems are expected to implement, whereas for the ChargingInterface it is assumed an already existing implementation.
 
 \subsubsection{Component diagrams}
@@ -74,6 +74,7 @@ In the class diagram illustrated in \autoref{fig:UML} a model (not functional) v
     \end{center}
 \end{figure}
 \clearpage
+\todo[inline]{Inserire come mai ci sono interfacce di mezzo (PaymentAPI) e non direttamente il collegamento con le interfacce esterne: perchè convertono le interfacce.}
 The two systems implement different interfaces and represent the \textit{Controller} and \textit{Model} parts of the \ac{MVC} pattern.
 
 \paragraph{\textbf{\ac{eMall}}}
@@ -118,10 +119,10 @@ The main components for the \ac{CPMS} system are:
 The system has been designed in order to avoid \acp{SPOF}, in order to be used by an high availability service, and to support security policies. So the components of the system are:
 \begin{itemize}
     \item Mobile device: It is the device used by users or \acp{CPO} to interact with the \ac{eMall} system. It is provided with internet connection, bluetooth peripheral and the \ac{eMall} client application installed. Uses \ac{HTTPS} to communicate with the server or the calendar in order to exploit all the layer of security implemented by it, following, in this way, also the \ac{GDPR} law. Uses bluetooth (or whatever protocol used by vehicles to create a PAN) in order to retrieve vehicle infos.
-    \item Application server: server that receives all the requests from the clients and hosts the business logic. There are two redundant application servers in order to increase reliability and availability while also avoiding down-times while maintaining the \ac{eMall} service. 
+    \item Application server: server that receives all the requests from the clients and hosts the business logic. There are two redundant application servers in order to increase reliability and availability while also avoiding down-times while maintaining the \ac{eMall} service.
     \item Load balancer: balances the load of the requests on the different application servers and handles the case if one application server is down. In order to avoid this being a \ac{SPOF} we use a redundant load balancer to take over in case of a down of the main one.
-    \item Firewall: Each firewall in the server is used to isolate different zones. A first firewall interfaces the external world to the load balancer in order to filter dangerous requests. 
-    Blacklist rule table is implemented for the impossibility to implement an allowlist. For the firewall that interfaces the application server to the database an allowlist rule table is implemented because the only traffic permitted to the database is the one coming from the application servers. \todo[inline]{firewall on top of application server?}
+    \item Firewall: Each firewall in the server is used to isolate different zones. A first firewall interfaces the external world to the load balancer in order to filter dangerous requests.
+          Blacklist rule table is implemented for the impossibility to implement an allowlist. For the firewall that interfaces the application server to the database an allowlist rule table is implemented because the only traffic permitted to the database is the one coming from the application servers. \todo[inline]{firewall on top of application server?}
     \item Database: A redundant database system is implemented where the secondary database should always be synced with the primary in order to be ready for substituting the primary one in case of failure. Also a disaster recovery database is necessary since data is of primary importance in this application.
 \end{itemize}
 \todo[inline]{Protocol used: (application server - CPMS) and (user device - server)}
@@ -136,7 +137,7 @@ The system has been designed in order to avoid \acp{SPOF}, in order to be used b
 \end{figure}
 
 \begin{itemize}
-    \item \ac{CPO} maintainer computer: 
+    \item \ac{CPO} maintainer computer:
 \end{itemize}
 \todo[inline]{Protocol used: (eMSP - application server) and (CPOMaintainer - application server)}
 \todo[inline]{Redundancy also in CPMS? is it necessary?}
