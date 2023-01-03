@@ -115,13 +115,16 @@ The main components for the \ac{CPMS} system are:
     \end{center}
 \end{figure}
 
+The system has been designed in order to avoid \acp{SPOF}, in order to be used by an high availability service, and to support security policies. So the components of the system are:
 \begin{itemize}
-    \item protocol application server - CPMS
-    \item protocol user device - server
-    \item 1 load balancer
-    \item 2 application servers
-    \item disaster recovery DB
+    \item Mobile device: It is the device used by users or \acp{CPO} to interact with the \ac{eMall} system. It is provided with internet connection, bluetooth peripheral and the \ac{eMall} client application installed. Uses \ac{HTTPS} to communicate with the server or the calendar in order to exploit all the layer of security implemented by it, following, in this way, also the \ac{GDPR} law. Uses bluetooth (or whatever protocol used by vehicles to create a PAN) in order to retrieve vehicle infos.
+    \item Application server: server that receives all the requests from the clients and hosts the business logic. There are two redundant application servers in order to increase reliability and availability while also avoiding down-times while maintaining the \ac{eMall} service. 
+    \item Load balancer: balances the load of the requests on the different application servers and handles the case if one application server is down. In order to avoid this being a \ac{SPOF} we use a redundant load balancer to take over in case of a down of the main one.
+    \item Firewall: Each firewall in the server is used to isolate different zones. A first firewall interfaces the external world to the load balancer in order to filter dangerous requests. 
+    Blacklist rule table is implemented for the impossibility to implement an allowlist. For the firewall that interfaces the application server to the database an allowlist rule table is implemented because the only traffic permitted to the database is the one coming from the application servers. \todo[inline]{firewall on top of application server?}
+    \item Database: A redundant database system is implemented where the secondary database should always be synced with the primary in order to be ready for substituting the primary one in case of failure. Also a disaster recovery database is necessary since data is of primary importance in this application.
 \end{itemize}
+\todo[inline]{Protocol used: (application server - CPMS) and (user device - server)}
 
 \subsubsection{\ac{CPMS}}
 \begin{figure}[!h]
@@ -133,9 +136,10 @@ The main components for the \ac{CPMS} system are:
 \end{figure}
 
 \begin{itemize}
-    \item protocol eMSP - application server
-    \item protocol CPO maintainer - application server
+    \item \ac{CPO} maintainer computer: 
 \end{itemize}
+\todo[inline]{Protocol used: (eMSP - application server) and (CPOMaintainer - application server)}
+\todo[inline]{Redundancy also in CPMS? is it necessary?}
 \clearpage
 
 \subsection{Runtime view}
