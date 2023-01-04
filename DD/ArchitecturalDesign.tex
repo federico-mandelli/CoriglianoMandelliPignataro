@@ -86,6 +86,7 @@ The main components for the \ac{eMall} system are:
     \item \textbf{\ac{CPO}ManagerComponent}: It is the component responsible for handling the \acp{CPO} requests (like \textit{SetRevenuePercentage} and \textit{setSpecialOffer});
     \item \textbf{\ac{CPMS} \ac{API}}: It is the component responsible for interfacing the \ac{eMall} with the CPMS interfaces;
     \item \textbf{AuthenticationComponent}: It is the component responsible for authorizing every operation over the model component. At this level it is implemented part of the controller (of the \ac{MVC} pattern) to check that operation is legit for the account type;
+    \item \textbf{Mail \ac{API}}: It is the component responsible for sending the feedback emails to the user every time an important operation is done;
     \item \textbf{Payment \ac{API}}: It is a component that interfaces the \ac{eMall} system with the external payment \acp{API};
     \item \textbf{\ac{eMall}Model}: It is the core component. It stores all the \ac{eMall} data and interfaces them with the other system components.
 \end{itemize}
@@ -103,7 +104,7 @@ The main components for the \ac{CPMS} system are:
     \item \textbf{\ac{CPMS}ChargingStation \ac{API}}: It is the component that interfaces the \ac{CPMS} system with the external Charging Stations;
     \item \textbf{\ac{CPMS}Model}: It is the core component. It stores all the \ac{CPMS} data and interfaces them with the other system components.
 \end{itemize}
-In the component diagrams, there are components (\textit{Payment\ac{API}}, \textit{\ac{CPMS}\ac{API}}, \\\textit{\ac{CPMS}ChargingStationAPI}) that could be bypassed, letting the main components interface the external \acp{API}. These components are integrated because they offer the possibility to contain the external interface standards in one single component. This creates the possibility for developers to create an internal interfacing standard different from the external ones.
+In the component diagrams, there are components (\textit{Payment\ac{API}}, \textit{\ac{CPMS}\ac{API}}, \textit{Mail\ac{API}}, \\\textit{\ac{CPMS}ChargingStationAPI}) that could be bypassed, letting the main components interface the external \acp{API}. These components are integrated because they offer the possibility to contain the external interface standards in one single component. This creates the possibility for developers to create an internal interfacing standard different from the external ones.
 
 \subsection{Deployment view}
 \todo[inline]{Menzionare Costi}
