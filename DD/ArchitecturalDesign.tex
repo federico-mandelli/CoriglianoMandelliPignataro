@@ -73,7 +73,6 @@ In the class diagram illustrated in \autoref{fig:UML} a model (not functional) v
     \end{center}
 \end{figure}
 \clearpage
-\todo[inline]{Inserire come mai ci sono interfacce di mezzo (PaymentAPI) e non direttamente il collegamento con le interfacce esterne: perchè convertono le interfacce.}
 The two systems implement different interfaces and represent the \textit{Controller} and \textit{Model} parts of the \ac{MVC} pattern.
 
 \paragraph{\textbf{\ac{eMall}}}
@@ -104,6 +103,7 @@ The main components for the \ac{CPMS} system are:
     \item \textbf{\ac{CPMS}ChargingStation \ac{API}}: It is the component that interfaces the \ac{CPMS} system with the external Charging Stations;
     \item \textbf{\ac{CPMS}Model}: It is the core component. It stores all the \ac{CPMS} data and interfaces them with the other system components.
 \end{itemize}
+In the component diagrams, there are components (\textit{Payment\ac{API}}, \textit{\ac{CPMS}\ac{API}}, \\\textit{\ac{CPMS}ChargingStationAPI}) that could be bypassed, letting the main components interface the external \acp{API}. These components are integrated because they offer the possibility to contain the external interface standards in one single component. This creates the possibility for developers to create an internal interfacing standard different from the external ones.
 
 \subsection{Deployment view}
 \todo[inline]{Menzionare Costi}
