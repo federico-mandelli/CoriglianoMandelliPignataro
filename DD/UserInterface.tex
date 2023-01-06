@@ -1,4 +1,4 @@
-In this section mockups of the user interfaces are presented; an app for the final Users and a site for the \acs{CPO}\\
+In this section mockups of the user interfaces are presented; an app for the final Users and a site for the \acp{CPO}\\
 \subsection{User}
 The user is whoever wants to use the service to book and manage charges trough the app. The mockups only represent the idea of the app, the actual design could differ based on the OS on which the app is implemented (different operating systems could provide different gestures/features to enhance the users experience).\\
 It is assumed that the user has already installed the correct version of the app compatible with his/hers operating system.\\
@@ -100,7 +100,33 @@ In this section the detail of the charge are displayed and the user can cancel t
 \subsection{CPO}
 This section show the interface for the \ac{CPO}.
 \subsubsection{Login}
+\begin{figure}[H]
+    \centering
+    \includegraphics[keepaspectratio, width=15cm]{SiteInterface/Login.png}
+    \caption{\ac{CPO} Login}
+    \label{site:Login}
+\end{figure}
+Once the \ac{CPO} connects to the site this page is displayed. Here the \ac{CPO} can log into the system inserting the email and password provided during the registration. When the user press the submit button, if the information provided are correct, the \hyperref[site:Homepage]{homepage} is loaded.\\
+If the \ac{CPO} is not registered it can by pressing the Sign Up button which loads the \hyperref[site:Register]{register page}.
 \subsubsection{Register}
+\begin{figure}[H]
+    \centering
+    \includegraphics[keepaspectratio, width=15cm]{SiteInterface/Register.png}
+    \caption{\ac{CPO} Register}
+    \label{site:Register}
+\end{figure}
+In this page the \ac{CPO} can register itself to the service by providing the asked information, pressing the submit button and completing the registration; once the procedure is finished the \hyperref[site:Login]{login page} is displayed and the user is asked to log in the system.
 \subsubsection{Home Page}
+\begin{figure}[H]
+    \centering
+    \includegraphics[keepaspectratio, width=15cm]{SiteInterface/Homepage.png}
+    \caption{\ac{CPO} access the site functions}
+    \label{site:Homepage}
+\end{figure}
+In this page the \ac{CPO} can change the revenue, create discounts and add cpms reference.\\
+To change the Revenue the user has to insert the new revenue in the field and press the submit revenue button, the revenue will be updated and the page refreshed.\\
+To create new discounts the user hast to insert the percentage of discounts, the end date of the discount and press the submit discount button, the discount will be updated and the page refreshed.\\
+To add new Cpms the user has to insert the IP to the cpms ( if more than one separated by a comma) and press the submit api reference button, the api reference will be updated and the page refreshed.\\
+
 
 \clearpage
