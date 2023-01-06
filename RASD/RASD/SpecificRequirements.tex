@@ -13,7 +13,7 @@ After logging in, there are multiple tabs in the app, which are:
 \end{itemize}
 By selecting a station (from the ranked list or the satellite map) the specific information about it are shown. The user can select the date and the time slot from the available ones.
 
-A \ac{CPO} can register to the system with a special form providing Company name, email, password and \gls{partita IVA}. Once the \ac{CPO} is registered and logged in, he can insert/remove the \ac{API} reference to the interface of a \ac{CPMS}.
+A \ac{CPO} can register to the system with a special form providing Company name, email, password, \ac{IBAN} and \gls{partita IVA}. Once the \ac{CPO} is registered and logged in, he can insert/remove the \ac{API} reference to the interface of a \ac{CPMS}.
 
 \paragraph{\ac{CPMS}}
 The \ac{CPMS} works as a web application; When a \ac{CPO}maintainer logs in he has the possibility to handle all the added stations.\\
@@ -40,7 +40,7 @@ In order to use the \ac{CPMS}, the \ac{CPO}maintainer (the only type of user of 
 In order to provide all the functionalities, the \ac{eMSP} should provide the following software interfaces:
 \begin{itemize}
     \item Register to the \ac{eMSP} as a user providing name, email, password, birthday, payment info;
-    \item Register to the \ac{eMSP} as a \ac{CPO} providing name, email, password, \gls{partita IVA};
+    \item Register to the \ac{eMSP} as a \ac{CPO} providing name, email, password, \ac{IBAN} and \gls{partita IVA};
     \item Confirm the registration of a given user;
     \item Login to the \ac{eMSP} providing correct email and password;
     \item Retrieving data about charging stations, such as the nearest (providing a location), the cheapest or a list of K charging stations;
@@ -83,7 +83,7 @@ An internet connection should also be present in order to make the system reacha
     \item The \ac{eMSP} shall be able to use the information about the appointments, the charging stations and the vehicle in order to proactively suggest to the user when and where to charge the vehicle;\label{req:eMSP-proactive-suggestions}
     \item The \ac{eMSP} shall notify the user when the charging process is finished;\label{req:eMSP-notification}
     \item The \ac{eMSP} shall aggregate different \acp{CPO};\label{req:eMSP-compatible}
-    \item The \ac{eMSP} shall allow a \ac{CPO} to register, providing name, email, password, \gls{partita IVA};\label{req:eMSP-cpo-registration}
+    \item The \ac{eMSP} shall allow a \ac{CPO} to register, providing name, email, password, \ac{IBAN} and \gls{partita IVA};\label{req:eMSP-cpo-registration}
     \item the \ac{eMSP} shall allow to add to an already registered \ac{CPO} a \ac{CPMS}, providing its \ac{API} reference;\label{req:eMSP-add-cpms}
     \item The \ac{eMSP} shall verify the correctness of the identification data for the \acp{CPO};\label{req:eMSP-correct-cpo-info}
     \item The \ac{eMSP} shall allow the \ac{CPO} to set the wanted revenue percentage;\label{req:eMSP-set-revenue}
@@ -204,7 +204,7 @@ An internet connection should also be present in order to make the system reacha
             Event flow:       &
             \begin{enumerate}
                 \item The \ac{CPO} selects the \textit{Register as \ac{CPO}} option;
-                \item The \ac{CPO} enters company name, email, password and \gls{partita IVA};
+                \item The \ac{CPO} enters company name, email, password, \ac{IBAN} and \gls{partita IVA};
                 \item The system sends a confirmation email to the provided email address;
                 \item The \ac{CPO} presses a link in the confirmation email;
                 \item The system shows a success message.
@@ -218,6 +218,7 @@ An internet connection should also be present in order to make the system reacha
                 \item The \ac{CPO} takes more than 15 minutes to press the confirmation email: In this case the account won't be created, the system will notify the \ac{CPO} and all the process should be redone;
                 \item The \ac{CPO} inserts an already registered email to the system: the system notifies the \ac{CPO} without letting the process continue;
                 \item The \ac{CPO} doesn't insert some required information: the system notifies the \ac{CPO} without letting the process continue;
+                \item The \ac{IBAN} isn't valid or can't be verified: the system notifies the \ac{CPO} without letting the process continue.
                 \item The \gls{partita IVA} isn't valid or can't be verified: the system notifies the \ac{CPO} without letting the process continue.
             \end{itemize}
             \\
