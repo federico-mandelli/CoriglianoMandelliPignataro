@@ -107,8 +107,8 @@ The main components for the \ac{CPMS} system are:
 In the component diagrams, there are components (\textit{Payment\ac{API}}, \textit{\ac{CPMS}\ac{API}}, \textit{Mail\ac{API}}, \\\textit{\ac{CPMS}ChargingStationAPI}) that could be bypassed, letting the main components interface the external \acp{API}. These components are integrated because they offer the possibility to contain the external interface standards in one single component. This creates the possibility for developers to create an internal interfacing standard different from the external ones.
 
 \subsection{Deployment view}
-\todo[inline]{Menzionare Costi}
 
+\todo[inline]{Menzionare Costi}
 \subsubsection{\ac{eMSP}}
 \begin{figure}[!h]
     \begin{center}
@@ -212,6 +212,43 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
 \todo[inline]{A partire dalla figura di user-executes-authorized-command, diamo per scontato di avere lo user che chiede ed il suo tipo (user/CPO). Quindi le varie funzioni possono utilizzare questa informazione. DA SCRIVERE}
 \clearpage
 \subsection{Component interfaces}
+
+
 \subsection{Selected architectural styles and patterns}
+\begin{itemize}
+    \item Bridge pattern \cite{ref:bridge-pattern}: It consists in decoupling completely two systems by having two interfaces. In \autoref{fig:bridge-pattern} there is a simplification of the architecture in order to highlight the usage of this pattern.
+    Instead of having a great system with the composition of an \ac{eMSP} and a \ac{CPMS} we exploit their interfaces in order to implement in a decoupled way these two systems. So, the \ac{eMSP} implementation (i.e. \ac{eMall}) will interact with a \ac{CPMS} implementation through his interface.
+\end{itemize}
+
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Graphics/DD-bridge-pattern.drawio.png}
+        \caption{Bridge pattern representation in the system}
+        \label{fig:bridge-pattern}
+    \end{center}
+\end{figure}
+
+\subsubsection{\ac{eMSP} architectural styles and patterns}
+\begin{itemize}
+    \item \acl{MVC} pattern \cite{ref:MVC-pattern}: It consists in grouping the system in three clusters: \begin{itemize}
+        \item the model, with all the persistent data of the system;
+        \item the view, with the logic to present the model;
+        \item the controller, with the business logic for elaborating requests from the view and manipulating the model.
+    \end{itemize}
+    In this context, the pattern makes easy to separate and decouple the model (distributed on the database), the view (distributed on the client application) and the controller. 
+    This last component is then divided into two classes: 
+    the first, distributed on the client, consists in the elaboration of the data retrieved from the calendar or the vehicle in order to send to the server very small requests; 
+    the second, distributed on the application server, takes care of handling the requests made by the client and interacting with the model.
+    \item Three-tier architecture \cite{ref:multitier-pattern}: 
+    \item \ac{DAO} pattern \cite{ref:dao-pattern}: This pattern permits to map directly the relational tables in the database to objects in the application. It permits to decouple more the application layer and the data layer.
+\end{itemize}
+
+\subsubsection{\ac{CPMS} architectural styles and patterns}
+\begin{itemize}
+    \item \acl{MVC} pattern \cite{ref:MVC-pattern}: 
+    \item Two-tier architecture \cite{ref:multitier-pattern}: 
+\end{itemize}
+
+
 \subsection{Other design decisions}
 \clearpage
