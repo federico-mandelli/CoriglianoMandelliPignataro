@@ -290,6 +290,37 @@ An internet connection should also be present in order to make the system reacha
     \caption{\ac{CPO} adds a \ac{CPMS} to the system}
 \end{table}
 
+% CPO removes CPMS
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & \ac{CPO}                                      \\
+            \hline
+            Entry conditions: & The \ac{CPO} is already logged in the system. \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The \ac{CPO} selects the option to remove a \ac{CPMS};
+                \item The \ac{CPO} selects the \ac{API} reference he want's to disconnect;
+                \item The system checks if it exists;
+                \item The system removes the \ac{CPMS} reference.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & A \ac{CPMS} is removed from the system.       \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The API reference doesn't exist: the system returns an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{\ac{CPO} removes a \ac{CPMS} from the system}
+\end{table}
+
 % CPO sets the revenue percentage
 \begin{table}[h]
     \begin{center}
@@ -751,6 +782,12 @@ An internet connection should also be present in order to make the system reacha
     \begin{center}
         \includegraphics[keepaspectratio, width=16cm]{Sequence/cpo-adds-cpms-to-emall.png}
         \caption{\ac{CPO} adds a \ac{CPMS} into \ac{eMall}}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/cpo-removes-cpms.png}
+        \caption{\ac{CPO} removes a \ac{CPMS} from \ac{eMall}}
     \end{center}
 \end{figure}
 \begin{figure}[!h]

@@ -142,8 +142,8 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
 \begin{itemize}
     \item \ac{CPO} maintainer computer: This device is connected through a \ac{VPN} to a \ac{VPN} server. It runs the management software for the \ac{CPMS} the maintainer wants to administrate on top of an Ubuntu operative system, the most used linux distro according to \cite{ref:most-popular-linux-distro}.
           In our architecture this is the thin client, in fact the \ac{CPMS} management software just handles the view of the information retrieved and sends commands to the application server. All the business logic will be contained in the application server.
-    \item \ac{VPN} server: It permits the \ac{CPO} maintainer computers, the charging stations and the application server to share the same network in order to simplify the communication among the components. 
-    The OpenVPN protocol \cite{ref:openvpn-site} has been chosen because it is an open source project and is very widely used in many different applications. This system provides failover as described in \cite{ref:redundant-VPN-servers}.
+    \item \ac{VPN} server: It permits the \ac{CPO} maintainer computers, the charging stations and the application server to share the same network in order to simplify the communication among the components.
+          The OpenVPN protocol \cite{ref:openvpn-site} has been chosen because it is an open source project and is very widely used in many different applications. This system provides failover as described in \cite{ref:redundant-VPN-servers}.
     \item Application server: This is the component that handles all the commands issued to the system and redirects them to the charging stations if needed. It is surrounded by firewalls so that we can enforce security policies, such as blocking particular public IPs or allow only some internal IPs corresponding to the charging stations or the \ac{CPO} maintainer computers. This system is redundant in order to assure the continuity of availability during maintenance.
     \item Firewalls:
 \end{itemize}
@@ -153,7 +153,6 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
 
 \subsection{Runtime view}
 \todo[inline]{Implementare CPO rimuove CPMS da eMall anche nel RASD.}
-\todo[inline]{Aggiungere IBAN per CPO ai sequence e UML}
 \todo[inline]{Controllare che ci sia l'assunzione nel RASD per cui alla prima accensione il primo CPOmaintainer viene impostato.}
 \begin{figure}[!h]
     \begin{center}
@@ -181,6 +180,13 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
         \includegraphics[keepaspectratio, width=16cm]{Sequence/cpo-adds-cpms.png}
         \caption{\ac{CPO} adds \ac{CPMS} into \ac{eMall}}
         \label{fig:cpo-adds-cpms}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/cpo-removes-cpms.png}
+        \caption{\ac{CPO} removes \ac{CPMS} from \ac{eMall}}
+        \label{fig:cpo-removes-cpms}
     \end{center}
 \end{figure}
 \begin{figure}[!h]
@@ -287,17 +293,17 @@ There are some particular design decisions that need to be clarified:
 
 \subsubsection{\ac{eMSP} architectural styles and patterns}
 \begin{itemize}
-    \item \acl{MVC} pattern \cite{ref:MVC-pattern}: It consists in grouping the system in three clusters: 
-    \begin{itemize}
-        \item the model, with all the persistent data of the system;
-        \item the view, with the logic to present the model;
-        \item the controller, with the business logic for elaborating requests from the view and manipulating the model.
-    \end{itemize}
-    In this context, the pattern makes easy to separate and decouple the model (distributed on the database), the view (distributed on the client application) and the controller.
-    This last component is then divided into two classes:
-    the first, distributed on the client, consists in the elaboration of the data retrieved from the calendar or the vehicle in order to send to the server very small requests;
-    the second, distributed on the application server, takes care of handling the requests made by the client and interacting with the model.
-    \item Three-tier architecture \cite{ref:multitier-pattern}: In order to increase modularity and manageability of the system, the division among presentation, application and data tiers is used. This also makes it possible to improve just one tier without having to touch the other two. 
+    \item \acl{MVC} pattern \cite{ref:MVC-pattern}: It consists in grouping the system in three clusters:
+          \begin{itemize}
+              \item the model, with all the persistent data of the system;
+              \item the view, with the logic to present the model;
+              \item the controller, with the business logic for elaborating requests from the view and manipulating the model.
+          \end{itemize}
+          In this context, the pattern makes easy to separate and decouple the model (distributed on the database), the view (distributed on the client application) and the controller.
+          This last component is then divided into two classes:
+          the first, distributed on the client, consists in the elaboration of the data retrieved from the calendar or the vehicle in order to send to the server very small requests;
+          the second, distributed on the application server, takes care of handling the requests made by the client and interacting with the model.
+    \item Three-tier architecture \cite{ref:multitier-pattern}: In order to increase modularity and manageability of the system, the division among presentation, application and data tiers is used. This also makes it possible to improve just one tier without having to touch the other two.
     \item \ac{DAO} pattern \cite{ref:dao-pattern}: This pattern permits to map directly the relational tables in the database to objects in the application. It permits to decouple more the application layer and the data layer.
 \end{itemize}
 
@@ -313,7 +319,7 @@ There are some particular design decisions that need to be clarified:
 In both the \ac{eMSP} and \ac{CPMS} systems there is a particular care during design for avoiding \acp{SPOF}. Being \ac{eMall} a large service that has to compete with other similar services, this quality can also be an asset of the service. Also, with a lot of potential people using the service in the same time, a downtime would mean a great loss in terms of money and public image. The assumption is that the cost for having and maintaining a redundant system is balanced by the achieved availability of the system.
 The application of these decisions can be seen in \autoref{fig:eMSP-deployment} and \autoref{fig:CPMS-deployment}.
 \paragraph{Firewalls, load balancers, \ac{VPN} servers}
-For firewalls \cite{ref:redundant-firewalls}, load balancers \cite{ref:redundant-load-balancers} and \ac{VPN} servers \cite{ref:redundant-VPN-servers} redundancy, the general pattern used is to have a floating IP \cite{ref:floating-ip} mapped to the service exposed and two physical redundant systems. These are directly connected in order to send and receive an \textit{heart-beat}, a signal that tells that the system is up and running. 
+For firewalls \cite{ref:redundant-firewalls}, load balancers \cite{ref:redundant-load-balancers} and \ac{VPN} servers \cite{ref:redundant-VPN-servers} redundancy, the general pattern used is to have a floating IP \cite{ref:floating-ip} mapped to the service exposed and two physical redundant systems. These are directly connected in order to send and receive an \textit{heart-beat}, a signal that tells that the system is up and running.
 When a system doesn't receive the \textit{heart-beat} of the other, the floating IP linked to the service is redirected to the active system.
 \paragraph{Application server}
 For the application server we exploit the load balancers in order to use both application servers (if they are available) or just the active one if the other is unavailable.
