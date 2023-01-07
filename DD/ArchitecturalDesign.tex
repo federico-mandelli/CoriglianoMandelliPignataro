@@ -77,38 +77,38 @@ The two systems implement different interfaces and represent the \textit{Control
 
 \paragraph{\textbf{\ac{eMall}}}
 The main components for the \ac{eMall} system are:
-\begin{itemize}
-    \item \textbf{StationsComponent}: It is the component responsible for handling all the stations research requests (like \textit{getNearestStations}, \textit{getCheapestStation}, \textit{getTopKStationsNearby});
-    \item \textbf{RegistrationComponent}: It is the component responsible for handling the registration details along with the parameters checking during the registration phase;
-    \item \textbf{Timer}: It is the component responsible of handling the registration verification timeout;
-    \item \textbf{ChargeManagerComponent}: It is the component responsible for handling all the charge booking/payment/cancellation processes. \\ It interfaces with the payment \ac{API} and with the charging station \ac{API};
-    \item \textbf{\ac{CPMS}ManagerComponent}: It is the component responsible for handling the \ac{CPMS} operations from the \acp{CPO} users;
-    \item \textbf{\ac{CPO}ManagerComponent}: It is the component responsible for handling the \acp{CPO} requests (like \textit{SetRevenuePercentage} and \textit{setSpecialOffer});
-    \item \textbf{\ac{CPMS} \ac{API}}: It is the component responsible for interfacing the \ac{eMall} with the CPMS interfaces;
-    \item \textbf{AuthenticationComponent}: It is the component responsible for authorizing every operation over the model component. At this level it is implemented part of the controller (of the \ac{MVC} pattern) to check that operation is legit for the account type;
-    \item \textbf{Mail \ac{API}}: It is the component responsible for sending the feedback emails to the user every time an important operation is done;
-    \item \textbf{Payment \ac{API}}: It is a component that interfaces the \ac{eMall} system with the external payment \acp{API};
-    \item \textbf{\ac{eMall}Model}: It is the core component. It stores all the \ac{eMall} data and interfaces them with the other system components.
-\end{itemize}
+\begin{enumerate}[label=\textbf{eMall\arabic*}]
+    \item \textbf{StationsComponent}: It is the component responsible for handling all the stations research requests (like \textit{getNearestStations}, \textit{getCheapestStation}, \textit{getTopKStationsNearby});\label{StationsComponent}
+    \item \textbf{RegistrationComponent}: It is the component responsible for handling the registration details along with the parameters checking during the registration phase;\label{RegistrationComponent}
+    \item \textbf{Timer}: It is the component responsible of handling the registration verification timeout;\label{Timer}
+    \item \textbf{ChargeManagerComponent}: It is the component responsible for handling all the charge booking/payment/cancellation processes. \\ It interfaces with the payment \ac{API} and with the charging station \ac{API};\label{ChargeManagerComponent}
+    \item \textbf{\ac{CPMS}ManagerComponent}: It is the component responsible for handling the \ac{CPMS} operations from the \acp{CPO} users;\label{CPMSManagerComponent}
+    \item \textbf{\ac{CPO}ManagerComponent}: It is the component responsible for handling the \acp{CPO} requests (like \textit{SetRevenuePercentage} and \textit{setSpecialOffer});\label{CPOManagerComponent}
+    \item \textbf{\ac{CPMS} \ac{API}}: It is the component responsible for interfacing the \ac{eMall} with the CPMS interfaces;\label{CPMSAPI}
+    \item \textbf{AuthenticationComponent}: It is the component responsible for authorizing every operation over the model component. At this level it is implemented part of the controller (of the \ac{MVC} pattern) to check that operation is legit for the account type;\label{AuthenticationComponent}
+    \item \textbf{Mail \ac{API}}: It is the component responsible for sending the feedback emails to the user every time an important operation is done;\label{MailAPI}
+    \item \textbf{Payment \ac{API}}: It is a component that interfaces the \ac{eMall} system with the external payment \acp{API};\label{PaymentAPI}
+    \item \textbf{\ac{eMall}Model}: It is the core component. It stores all the \ac{eMall} data and interfaces them with the other system components.\label{eMallModel}
+\end{enumerate}
 There are some apparently similar components with some slight differences:
 \begin{itemize}
     \item The \ac{CPO} manager component is conceptually different from the \ac{CPMS} manager component because the CPMS manager Component alters the stations collection of the model according to the interface with the inserted \ac{CPMS};
 \end{itemize}
 \paragraph{\textbf{\ac{CPMS}}}
 The main components for the \ac{CPMS} system are:
-\begin{itemize}
-    \item \textbf{\ac{CPMS}RegistrationComponent}: It is the component responsible for handling the registration details of new \ac{CPO} maintainers;
-    \item \textbf{\ac{CPMS}StationManagerComponent}: It is the component responsible for handling all the station managing actions from a \ac{CPO} maintainer (\textit{setStationStrategy}, \textit{setStationSource}..);
-    \item \textbf{\ac{CPMS}ChargeManagerComponent}: It is the component responsible for handling all the actions which involve book/enable/cancel a charge. The \ac{eMall} is the only component that utilizes this interface;
-    \item \textbf{\ac{CPMS}AuthenticationComponent}: It is the component responsible for authorizing every operation over the model component. At this level it is implemented part of the controller (of the \ac{MVC} pattern) to check that operation is legit;
-    \item \textbf{\ac{CPMS}ChargingStation \ac{API}}: It is the component that interfaces the \ac{CPMS} system with the external Charging Stations;
-    \item \textbf{\ac{CPMS}Model}: It is the core component. It stores all the \ac{CPMS} data and interfaces them with the other system components.
-\end{itemize}
+\begin{enumerate}[label=\textbf{CPMS\arabic*}]
+    \item \textbf{\ac{CPMS}RegistrationComponent}: It is the component responsible for handling the registration details of new \ac{CPO} maintainers;\label{CPMSRegistrationComponent}
+    \item \textbf{\ac{CPMS}StationManagerComponent}: It is the component responsible for handling all the station managing actions from a \ac{CPO} maintainer (\textit{setStationStrategy}, \textit{setStationSource}..);\label{CPMSStationManagerComponent}
+    \item \textbf{\ac{CPMS}ChargeManagerComponent}: It is the component responsible for handling all the actions which involve book/enable/cancel a charge. The \ac{eMall} is the only component that utilizes this interface;\label{CPMSChargeManagerComponent}
+    \item \textbf{\ac{CPMS}AuthenticationComponent}: It is the component responsible for authorizing every operation over the model component. At this level it is implemented part of the controller (of the \ac{MVC} pattern) to check that operation is legit;\label{CPMSAuthenticationComponent}
+    \item \textbf{\ac{CPMS}ChargingStation \ac{API}}: It is the component that interfaces the \ac{CPMS} system with the external Charging Stations;\label{CPMSChargingStation}
+    \item \textbf{\ac{CPMS}Model}: It is the core component. It stores all the \ac{CPMS} data and interfaces them with the other system components.\label{CPMSModel}
+\end{enumerate}
 In the component diagrams, there are components (\textit{Payment\ac{API}}, \textit{\ac{CPMS}\ac{API}}, \textit{Mail\ac{API}}, \\\textit{\ac{CPMS}ChargingStationAPI}) that could be bypassed, letting the main components interface the external \acp{API}. These components are integrated because they offer the possibility to contain the external interface standards in one single component. This creates the possibility for developers to create an internal interfacing standard different from the external ones.
 
 \subsection{Deployment view}
+The general idea of the deployment view is to show all the principal architectural components with the distribution of the artifacts (applications, firewall rule tables, data\ldots).
 
-\todo[inline]{Menzionare Costi}
 \subsubsection{\ac{eMSP}}
 \begin{figure}[!h]
     \begin{center}
@@ -142,7 +142,8 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
 \begin{itemize}
     \item \ac{CPO} maintainer computer: This device is connected through a \ac{VPN} to a \ac{VPN} server. It runs the management software for the \ac{CPMS} the maintainer wants to administrate on top of an Ubuntu operative system, the most used linux distro according to \cite{ref:most-popular-linux-distro}.
           In our architecture this is the thin client, in fact the \ac{CPMS} management software just handles the view of the information retrieved and sends commands to the application server. All the business logic will be contained in the application server.
-    \item \ac{VPN} server: It permits the \ac{CPO} maintainer computers, the charging stations and the application server to share the same network in order to simplify the communication among the components. The OpenVPN protocol \cite{ref:openvpn-site} has been chosen because it is an open source project and is very widely used in many different applications. This system provides failover as described in \cite{ref:redundant-VPN-servers}.
+    \item \ac{VPN} server: It permits the \ac{CPO} maintainer computers, the charging stations and the application server to share the same network in order to simplify the communication among the components. 
+    The OpenVPN protocol \cite{ref:openvpn-site} has been chosen because it is an open source project and is very widely used in many different applications. This system provides failover as described in \cite{ref:redundant-VPN-servers}.
     \item Application server: This is the component that handles all the commands issued to the system and redirects them to the charging stations if needed. It is surrounded by firewalls so that we can enforce security policies, such as blocking particular public IPs or allow only some internal IPs corresponding to the charging stations or the \ac{CPO} maintainer computers. This system is redundant in order to assure the continuity of availability during maintenance.
     \item Firewalls:
 \end{itemize}
@@ -282,25 +283,36 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
 
 \subsubsection{\ac{eMSP} architectural styles and patterns}
 \begin{itemize}
-    \item \acl{MVC} pattern \cite{ref:MVC-pattern}: It consists in grouping the system in three clusters: \begin{itemize}
-              \item the model, with all the persistent data of the system;
-              \item the view, with the logic to present the model;
-              \item the controller, with the business logic for elaborating requests from the view and manipulating the model.
-          \end{itemize}
-          In this context, the pattern makes easy to separate and decouple the model (distributed on the database), the view (distributed on the client application) and the controller.
-          This last component is then divided into two classes:
-          the first, distributed on the client, consists in the elaboration of the data retrieved from the calendar or the vehicle in order to send to the server very small requests;
-          the second, distributed on the application server, takes care of handling the requests made by the client and interacting with the model.
-    \item Three-tier architecture \cite{ref:multitier-pattern}:
+    \item \acl{MVC} pattern \cite{ref:MVC-pattern}: It consists in grouping the system in three clusters: 
+    \begin{itemize}
+        \item the model, with all the persistent data of the system;
+        \item the view, with the logic to present the model;
+        \item the controller, with the business logic for elaborating requests from the view and manipulating the model.
+    \end{itemize}
+    In this context, the pattern makes easy to separate and decouple the model (distributed on the database), the view (distributed on the client application) and the controller.
+    This last component is then divided into two classes:
+    the first, distributed on the client, consists in the elaboration of the data retrieved from the calendar or the vehicle in order to send to the server very small requests;
+    the second, distributed on the application server, takes care of handling the requests made by the client and interacting with the model.
+    \item Three-tier architecture \cite{ref:multitier-pattern}: In order to increase modularity and manageability of the system, the division among presentation, application and data tiers is used. This also makes it possible to improve just one tier without having to touch the other two. 
     \item \ac{DAO} pattern \cite{ref:dao-pattern}: This pattern permits to map directly the relational tables in the database to objects in the application. It permits to decouple more the application layer and the data layer.
 \end{itemize}
 
 \subsubsection{\ac{CPMS} architectural styles and patterns}
 \begin{itemize}
-    \item \acl{MVC} pattern \cite{ref:MVC-pattern}:
-    \item Two-tier architecture \cite{ref:multitier-pattern}:
+    \item \acl{MVC} pattern \cite{ref:MVC-pattern}: In this case we use this pattern in order to decouple the view logic from the rest. Also, this simplifies the organization and implementation of the codebase. In addition, here too we can benefit from having a software layer that handles the access to the model and avoid that the presentation layer directly accesses the model.
+    \item Two-tier architecture \cite{ref:multitier-pattern}: Since the \ac{CPMS} shouldn't handle the amount of traffic of an \ac{eMSP} system, the \ac{CPMS} is simpler and only distributed on 2 tiers: a thin-client with only the presentation layer which handles the view logic and an application server.
 \end{itemize}
 
 
 \subsection{Other design decisions}
+\subsubsection{\ac{SPOF} avoidance}
+In both the \ac{eMSP} and \ac{CPMS} systems there is a particular care during design for avoiding \acp{SPOF}. Being \ac{eMall} a large service that has to compete with other similar services, this quality can also be an asset of the service. Also, with a lot of potential people using the service in the same time, a downtime would mean a great loss in terms of money and public image. The assumption is that the cost for having and maintaining a redundant system is balanced by the achieved availability of the system.
+The application of these decisions can be seen in \autoref{fig:eMSP-deployment} and \autoref{fig:CPMS-deployment}.
+\paragraph{Firewalls, load balancers, \ac{VPN} servers}
+For firewalls \cite{ref:redundant-firewalls}, load balancers \cite{ref:redundant-load-balancers} and \ac{VPN} servers \cite{ref:redundant-VPN-servers} redundancy, the general pattern used is to have a floating IP \cite{ref:floating-ip} mapped to the service exposed and two physical redundant systems. These are directly connected in order to send and receive an \textit{heart-beat}, a signal that tells that the system is up and running. 
+When a system doesn't receive the \textit{heart-beat} of the other, the floating IP linked to the service is redirected to the active system.
+\paragraph{Application server}
+For the application server we exploit the load balancers in order to use both application servers (if they are available) or just the active one if the other is unavailable.
+\paragraph{Databases}
+The database system is designed to resist to temporary fails of a database server and to have the possibility of recovering from a disaster. A secondary database server is synchronized in real-time in order to take the place of an eventual down of the primary database server. A third database server is located in a different place from the other two in order to make a disaster-recovery plan possible; the synchronization of this server is done one time a day.
 \clearpage

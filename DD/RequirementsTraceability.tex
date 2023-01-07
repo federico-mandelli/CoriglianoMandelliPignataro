@@ -1,1 +1,157 @@
+\ref{StationsComponent}
+\ref{RegistrationComponent}
+\ref{Timer}
+\ref{ChargeManagerComponent}
+\ref{CPMSManagerComponent}
+\ref{CPOManagerComponent}
+\ref{CPMSAPI}
+\ref{AuthenticationComponent}
+\ref{MailAPI}
+\ref{PaymentAPI}
+\ref{eMallModel}
+
+\ref{CPMSRegistrationComponent}
+\ref{CPMSStationManagerComponent}
+\ref{CPMSChargeManagerComponent}
+\ref{CPMSAuthenticationComponent}
+\ref{CPMSChargingStation}
+\ref{CPMSModel}
+
+\begin{enumerate}[label=\textbf{R\arabic*}]
+    \item \textit{The \ac{eMSP} shall allow the users to register, providing name, surname, birthday, email, password, payment method}: 
+    \ref{RegistrationComponent}
+    \ref{PaymentAPI}
+    \ref{MailAPI}
+    \ref{Timer}
+    \ref{eMallModel}
+    \label{req:eMSP-user-registration}
+    \item \textit{The \ac{eMSP} shall allow the user to login with email and password}:
+    \ref{AuthenticationComponent}
+    \ref{eMallModel}
+    \label{req:eMSP-user-login}
+    \item \textit{The \ac{eMSP} shall provide information about a selected station such as types of available sockets, price for the charge, location, available time slots, parameter on environmental friendliness}:
+    \ref{AuthenticationComponent}
+    \ref{eMallModel}
+    \ref{StationsComponent}
+    \ref{CPMSAPI}
+    \ref{CPMSModel}
+    \label{req:eMSP-info-station}
+    \item \textit{The \ac{eMSP} shall reserve a socket in the right charging station for a user who booked a charge through the application}:
+    \ref{AuthenticationComponent}
+    \ref{eMallModel} \ref{ChargeManagerComponent}
+    \ref{CPMSAPI}
+    \ref{CPMSChargeManagerComponent}
+    \ref{CPMSChargingStation}
+    \label{req:eMSP-reserve-socket}
+    \item \textit{The \ac{eMSP} shall allow only one user to book a socket in a particular time slot, so no booking collisions shall occur}:
+    \ref{AuthenticationComponent}
+    \ref{eMallModel}
+    \ref{ChargeManagerComponent}
+    \ref{CPMSAPI}
+    \ref{CPMSChargeManagerComponent}
+    \label{req:eMSP-no-book-collisions}
+    \item \textit{The \ac{eMSP} shall allow the user to pay for a booked charge}:
+    \ref{AuthenticationComponent}
+    \ref{eMallModel}
+    \ref{ChargeManagerComponent}
+    \ref{MailAPI}
+    \ref{PaymentAPI}
+    \ref{CPMSAPI}
+    \ref{CPMSChargeManagerComponent}
+    \label{req:eMSP-payment}
+    \item \textit{The \ac{eMSP} shall refund the user when a charge is canceled}:
+    \ref{AuthenticationComponent}
+    \ref{eMallModel}
+    \ref{ChargeManagerComponent}
+    \ref{MailAPI}
+    \ref{PaymentAPI}
+    \ref{CPMSChargeManagerComponent}
+    \label{req:eMSP-refund}
+    \item \textit{The \ac{eMSP} shall allow the user to see nearby\footnote{This parameter may be set by the user} charging stations ordered by distance, price or environmental friendliness}:
+    \ref{AuthenticationComponent}
+    \ref{eMallModel}
+    \ref{StationsComponent}
+    \ref{CPMSAPI}
+    \ref{CPMSModel}
+    \label{req:eMSP-see-stations}
+    \item \textit{The \ac{eMSP} shall be able to connect to a web calendar, retrieve information about the appointments and parse them}:
+    \todo[inline]{PIDDII}
+    \label{req:eMSP-connect-calendar}
+    \item \textit{The \ac{eMSP} shall be able to use the information about the appointments, the charging stations and the vehicle in order to proactively suggest to the user when and where to charge the vehicle}:
+    \todo[inline]{PIDDII2}
+    \label{req:eMSP-proactive-suggestions}
+    \item \textit{The \ac{eMSP} shall notify the user when the charging process is finished}:
+    \ref{AuthenticationComponent}
+    \ref{eMallModel}
+    \ref{ChargeManagerComponent}
+    \ref{CPMSAPI}
+    \ref{CPMSChargeManagerComponent}
+    \label{req:eMSP-notification}
+    \item \textit{The \ac{eMSP} shall aggregate different \acp{CPO}}:
+    \ref{CPMSManagerComponent}
+    \ref{CPOManagerComponent}
+    \ref{eMallModel}
+    \label{req:eMSP-compatible}
+    \item \textit{The \ac{eMSP} shall allow a \ac{CPO} to register, providing name, email, password, \ac{IBAN} and \gls{partita IVA}}:\ref{RegistrationComponent}
+    \ref{PaymentAPI}
+    \ref{MailAPI}
+    \ref{Timer}
+    \ref{eMallModel}
+    \todo[inline]{Add Payment API to the sequence cpo-sign-up}
+    \label{req:eMSP-cpo-registration}
+    \item \textit{the \ac{eMSP} shall allow to add to an already registered \ac{CPO} a \ac{CPMS}, providing its \ac{API} reference}:
+    \ref{AuthenticationComponent}
+    \ref{eMallModel}
+    \ref{CPMSManagerComponent}
+    \ref{CPMSAPI}
+    \ref{CPMSModel}
+    \todo[inline]{Add component diagram eMall link between CPMSManagerComponent and CPMSApi}
+    \label{req:eMSP-add-cpms}
+    \item \textit{The \ac{eMSP} shall verify the correctness of the identification data for the \acp{CPO}}:
+    \todo[inline]{Add to component diagram eMall link between RegistrationComponent and PaymentAPI}
+    \todo[inline]{Add to component diagram eMall link between RegistrationComponent and CPMSAPI in order to verify if CPMS reachable? or ping?}
+    \ref{RegistrationComponent}
+    \ref{PaymentAPI}
+    \ref{CPMSAPI}
+    \label{req:eMSP-correct-cpo-info}
+    \item \textit{The \ac{eMSP} shall allow the \ac{CPO} to set the wanted revenue percentage}:
+    \ref{AuthenticationComponent}
+    \ref{eMallModel}
+    \ref{CPOManagerComponent}
+    \label{req:eMSP-set-revenue}
+    \item \textit{The \ac{eMSP} shall allow the \ac{CPO} to set special offers}:
+    \ref{AuthenticationComponent}
+    \ref{eMallModel}
+    \ref{CPOManagerComponent}
+    \label{req:eMSP-set-special-offers}
+    \item \textit{The \ac{CPMS} shall be reachable by \acp{eMSP} in order to perform or cancel a booking, or query the system}:
+    \ref{CPMSAPI}
+    \ref{CPMSChargeManagerComponent}
+    \ref{CPMSChargingStation}
+    \ref{CPMSModel}
+    \label{req:CPMS-reachable}
+    \item \textit{The \ac{CPMS} shall allow the \ac{CPO}maintainer to access to the system}:
+    \ref{CPMSAuthenticationComponent}
+    \ref{CPMSModel}
+    \label{req:CPMS-accessible}
+    \item \textit{The \ac{CPMS} shall allow the \ac{CPO}maintainer to modify the information about their systems, such as adding/removing charging stations, set stations sources and create/remove maintainers}:
+    \ref{CPMSAuthenticationComponent}
+    \ref{CPMSModel}
+    \ref{CPMSRegistrationComponent}
+    \ref{CPMSStationManagerComponent}
+    \ref{CPMSChargingStation}
+    \label{req:CPMS-modify-cpo-infos}
+    \item \textit{The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose the energy source and strategy}:
+    \ref{CPMSAuthenticationComponent}
+    \ref{CPMSModel}
+    \ref{CPMSStationManagerComponent}
+    \ref{CPMSChargingStation}
+    \todo[inline]{Delete this requirement?}
+    \label{req:CPMS-select-source-strategy}
+    \item \textit{The \ac{CPMS} shall allow the \ac{CPO}maintainer to choose manual or automatic mode}:
+    \ref{CPMSAuthenticationComponent}
+    \ref{CPMSModel}
+    \ref{CPMSStationManagerComponent}
+    \label{req:CPMS-select-mode}
+\end{enumerate}
 \clearpage
