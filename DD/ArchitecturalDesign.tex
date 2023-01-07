@@ -153,10 +153,7 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
 
 \subsection{Runtime view}
 \todo[inline]{Implementare CPO rimuove CPMS da eMall anche nel RASD.}
-\todo[inline]{A partire dalla figura di user-executes-authorized-command, diamo per scontato di avere lo user che chiede ed il suo tipo (user/CPO). Quindi le varie funzioni possono utilizzare questa informazione. DA SCRIVERE}
-\todo[inline]{Alcuni messaggi asincroni eMall -> CPMS -> ChargingStation sono diventati sincroni. È importante dire che non è a caso ma con un controllo sul timeout.}
 \todo[inline]{Aggiungere IBAN per CPO ai sequence e UML}
-\todo[inline]{Al posto dei suggerimenti dal calendario spiegare perchè in questo contesto non ha senso con i componenti che sono interfacce.}
 \todo[inline]{Controllare che ci sia l'assunzione nel RASD per cui alla prima accensione il primo CPOmaintainer viene impostato.}
 \begin{figure}[!h]
     \begin{center}
@@ -264,6 +261,13 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
     \end{center}
 \end{figure}
 \clearpage
+There are some particular design decisions that need to be clarified:
+\begin{itemize}
+    \item \textbf{Login sequences:} In \autoref{fig:user-executes-authorized-command} and \autoref{fig:cpomaintainer-executes-authorized-command} it is illustrated the way the system authorizes \acp{CPO} and users. The idea is to filter authorized commands using functions (like \cite{ref:command-pattern}). The component that filters the requests is the AuthorizationComponent (present in both \ac{eMall} and \ac{CPMS} systems).\\
+          When the client utilizes the interface, automatically it has to send also his credentials; these are then verified by the AuthorizationComponent and, if correct it executes the corresponding API function. This pattern allows the system to decentralize the authorization verification from the API code and allows every function that needs this data to have access to the client's account information;
+    \item \textbf{Asynchronous messages:} During the inter-system communications (like \ac{eMall} -> \ac{CPMS} or \ac{CPMS} -> ChargingStation) it would be useful to implement asynchronous communications to avoid blocking situations. However in the sequence diagrams there aren't any because a better solution (compromise between having a completely asynchronous communication and having feedback from the interface) is to implement a timeout timer to avoid a complete block. This information is not shown in the sequence diagrams due to its verbosity of notation.
+
+\end{itemize}
 \subsection{Component interfaces}
 
 
