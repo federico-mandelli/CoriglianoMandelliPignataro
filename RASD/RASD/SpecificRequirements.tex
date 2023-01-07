@@ -579,6 +579,39 @@ An internet connection should also be present in order to make the system reacha
     \caption{\ac{CPO}maintainer logs into a \ac{CPMS}}
 \end{table}
 
+% CPOmaintainer adds CPOmaintainer into CPMS
+\begin{table}[h]
+    \begin{center}
+        \begin{tabular}{|c||p{10cm}|}
+            \hline
+            Actor:            & \ac{CPO}maintainer                                          \\
+            \hline
+            Entry conditions: & The \ac{CPO}maintainer is already logged into the \ac{CPMS} \\
+            \hline
+            Event flow:       &
+            \begin{enumerate}
+                \item The \ac{CPO}maintainer presses the \textit{Maintainers} button;
+                \item The \ac{CPMS} provides a form to add a new maintainer;
+                \item The \ac{CPO}maintainer inserts an ID and a password;
+                \item The \ac{CPO}maintainer presses the \textit{Insert} button;
+                \item The \ac{CPMS} checks the maintainer inserted data and creates a maintainer with the specified ID and password.
+            \end{enumerate}
+            \\
+            \hline
+            Exit condition:   & A new \ac{CPO}maintainer is inserted into the \ac{CPMS}.    \\
+            \hline
+            Exceptions:       &
+            \begin{itemize}
+                \item The inserted ID is already present in the \ac{CPMS}: the \ac{CPMS} returns an error message;
+                \item The inserted password is not valid for the password policy: the \ac{CPMS} returns an error message.
+            \end{itemize}
+            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{\ac{CPO}maintainer creates another \ac{CPO}maintainer}
+\end{table}
+
 % CPOmaintainer inserts station into CPMS
 \begin{table}[h]
     \begin{center}
@@ -772,6 +805,12 @@ An internet connection should also be present in order to make the system reacha
     \begin{center}
         \includegraphics[keepaspectratio, width=16cm]{Sequence/user-gets-suggestions.png}
         \caption{Charging suggestions via calendar sequence}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/cpomaintainer-adds-cpomaintainer.png}
+        \caption{\ac{CPO} maintainer adds \ac{CPO} maintainer to \ac{CPMS}}
     \end{center}
 \end{figure}
 \begin{figure}[!h]

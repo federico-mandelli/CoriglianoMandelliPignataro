@@ -151,7 +151,6 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
 \clearpage
 
 \subsection{Runtime view}
-\todo[inline]{Implementare aggiunta di cpo maintainer da parte di un cpo maintainer nei sequence e use case}
 \todo[inline]{Implementare CPO rimuove CPMS da eMall anche nel RASD.}
 \todo[inline]{A partire dalla figura di user-executes-authorized-command, diamo per scontato di avere lo user che chiede ed il suo tipo (user/CPO). Quindi le varie funzioni possono utilizzare questa informazione. DA SCRIVERE}
 \todo[inline]{Alcuni messaggi asincroni eMall -> CPMS -> ChargingStation sono diventati sincroni. È importante dire che non è a caso ma con un controllo sul timeout.}
@@ -233,6 +232,13 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
         \includegraphics[keepaspectratio, width=16cm]{Sequence/user-cancels-charge.png}
         \caption{Cancel a charge sequence}
         \label{fig:user-cancels-charge}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/cpomaintainer-adds-cpomaintainer.png}
+        \caption{\ac{CPO}maintainer adds \ac{CPO}maintainer to \ac{CPMS}}
+        \label{fig:cpomaintainer-adds-cpomaintainer}
     \end{center}
 \end{figure}
 \begin{figure}[!h]
