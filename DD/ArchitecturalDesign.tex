@@ -151,6 +151,13 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
 \clearpage
 
 \subsection{Runtime view}
+\todo[inline]{Implementare aggiunta di cpo maintainer da parte di un cpo maintainer nei sequence e use case}
+\todo[inline]{Implementare CPO rimuove CPMS da eMall anche nel RASD.}
+\todo[inline]{A partire dalla figura di user-executes-authorized-command, diamo per scontato di avere lo user che chiede ed il suo tipo (user/CPO). Quindi le varie funzioni possono utilizzare questa informazione. DA SCRIVERE}
+\todo[inline]{Alcuni messaggi asincroni eMall -> CPMS -> ChargingStation sono diventati sincroni. È importante dire che non è a caso ma con un controllo sul timeout.}
+\todo[inline]{Aggiungere IBAN per CPO ai sequence e UML}
+\todo[inline]{Al posto dei suggerimenti dal calendario spiegare perchè in questo contesto non ha senso con i componenti che sono interfacce.}
+\todo[inline]{Controllare che ci sia l'assunzione nel RASD per cui alla prima accensione il primo CPOmaintainer viene impostato.}
 \begin{figure}[!h]
     \begin{center}
         \includegraphics[keepaspectratio, width=16cm]{Sequence/user-signs-up.png}
@@ -207,11 +214,48 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
         \label{fig:user-searches-stations}
     \end{center}
 \end{figure}
-
-
-\todo[inline]{A partire dalla figura di user-executes-authorized-command, diamo per scontato di avere lo user che chiede ed il suo tipo (user/CPO). Quindi le varie funzioni possono utilizzare questa informazione. DA SCRIVERE}
-\todo[inline]{Alcuni messaggi asincroni eMall -> CPMS -> ChargingStation sono diventati sincroni. È importante dire che non è a caso ma con un controllo sul timeout.}
-\todo[inline]{Aggiungere IBAN per CPO ai sequence e UML}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/user-books-charge.png}
+        \caption{Book a charge sequence}
+        \label{fig:user-books-charge}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/user-pays-charge.png}
+        \caption{Pay a charge sequence}
+        \label{fig:user-pays-charge}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/user-cancels-charge.png}
+        \caption{Cancel a charge sequence}
+        \label{fig:user-cancels-charge}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/cpomaintainer-adds-stations.png}
+        \caption{\ac{CPO}maintainer adds stations to \ac{CPMS}}
+        \label{fig:cpomaintainer-adds-stations}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/cpomaintainer-sets-station-strategy.png}
+        \caption{\ac{CPO}maintainer sets station strategy in \ac{CPMS}}
+        \label{fig:cpomaintainer-sets-station-strategy}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Sequence/cpomaintainer-sets-station-source.png}
+        \caption{\ac{CPO}maintainer sets station source in \ac{CPMS}}
+        \label{fig:cpomaintainer-sets-station-source}
+    \end{center}
+\end{figure}
 \clearpage
 \subsection{Component interfaces}
 
