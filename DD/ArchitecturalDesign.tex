@@ -176,7 +176,6 @@ Another important factor is the redundancy of the systems, in order to avoid \ac
 \clearpage
 
 \subsection{Runtime view}
-\todo[inline]{Controllare che ci sia l'assunzione nel RASD per cui alla prima accensione il primo CPOmaintainer viene impostato.}
 \begin{figure}[!h]
     \begin{center}
         \includegraphics[keepaspectratio, width=16cm]{Sequence/user-signs-up.png}
@@ -317,16 +316,24 @@ There are some particular design decisions that need to be clarified:
     \begin{center}
         \includegraphics[keepaspectratio, width=16cm]{Interface/CPMSInterface.png}
         \caption{\ac{CPMS} components interface}
-        \label{fig:emall-interface}
+        \label{fig:cpms-interface}
     \end{center}
 \end{figure}
-\todo[inline]{Come mai eMallClient non c'è? Risposta: non fornisce interfacce pubbliche}
+The \ac{eMall} client interface diagram is not present due to the absence of concrete exposed interfaces. Follows a brief clarification about the client components' interactions:
+\begin{itemize}
+    \item \textbf{Vehicle and Calendar \acp{API}:} allow the local system to interface itself with the car and the user's calendar if any. They both serve the SuggestionEngine component which is a thread that continues checking the need of a recharge;
+    \item \textbf{\ac{eMall} \ac{API}:} allows the client to interact with the business logic layer of the system. It is interrogated by the suggestion engine and the view component;
+    \item \textbf{\ac{eMall}ViewComponent:} interacts with the suggestion engine and the \ac{eMall} \ac{API} to visualize (it is the view in \ac{MVC} pattern) the application.
+\end{itemize}
+The main aspects that make this subsystem a fat client, is that the SuggestionEngine continues interrogating the vehicle and if needed the eMall server to proactively suggest a charge to the user.
+
+
 \clearpage
 
 \subsection{Selected architectural styles and patterns}
 \begin{itemize}
     \item Bridge pattern \cite{ref:bridge-pattern}: It consists in decoupling completely two systems by having two interfaces. In \autoref{fig:bridge-pattern} there is a simplification of the architecture in order to highlight the usage of this pattern.
-    Instead of having a great system with the composition of an \ac{eMSP} and a \ac{CPMS} we exploit their interfaces in order to implement in a decoupled way these two systems. So, the \ac{eMSP} implementation (i.e. \ac{eMall}) will interact with a \ac{CPMS} implementation through his interface. Doing this, after the interfaces have been chosen, the two systems can be implemented independently.
+          Instead of having a great system with the composition of an \ac{eMSP} and a \ac{CPMS} we exploit their interfaces in order to implement in a decoupled way these two systems. So, the \ac{eMSP} implementation (i.e. \ac{eMall}) will interact with a \ac{CPMS} implementation through his interface. Doing this, after the interfaces have been chosen, the two systems can be implemented independently. \label{pattern:bridge}
 \end{itemize}
 
 \begin{figure}[!h]
