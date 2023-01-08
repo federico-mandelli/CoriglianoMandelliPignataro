@@ -57,7 +57,7 @@ The \ac{CPMS} server, on the other hand, will deal also with charging requests f
 \subsection{Component view}
 \begin{figure}[!h]
     \begin{center}
-        \includegraphics[keepaspectratio, width=16cm]{UML.png}
+        \includegraphics[keepaspectratio, width=16cm]{../RASD/RASD/UML.png}
         \caption{Class diagram}
         \label{fig:UML}
     \end{center}
@@ -77,13 +77,13 @@ The two systems implement different interfaces and represent the \textit{Control
 \makeatletter
 \let\orgdescriptionlabel\descriptionlabel
 \renewcommand*{\descriptionlabel}[1]{%
-  \let\orglabel\label
-  \let\label\@gobble
-  \phantomsection
-  \edef\@currentlabel{#1\unskip}%
-  %\edef\@currentlabelname{#1}%
-  \let\label\orglabel
-  \orgdescriptionlabel{#1}%
+    \let\orglabel\label
+    \let\label\@gobble
+    \phantomsection
+    \edef\@currentlabel{#1\unskip}%
+    %\edef\@currentlabelname{#1}%
+    \let\label\orglabel
+    \orgdescriptionlabel{#1}%
 }
 \makeatother
 
@@ -164,7 +164,6 @@ For the \ac{CPMS} the concept is to keep all the communication as in a private n
 \clearpage
 
 \subsection{Runtime view}
-\todo[inline]{Implementare CPO rimuove CPMS da eMall anche nel RASD.}
 \todo[inline]{Controllare che ci sia l'assunzione nel RASD per cui alla prima accensione il primo CPOmaintainer viene impostato.}
 \begin{figure}[!h]
     \begin{center}
