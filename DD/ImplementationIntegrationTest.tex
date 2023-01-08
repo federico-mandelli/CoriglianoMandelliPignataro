@@ -1,1 +1,25 @@
+\subsection{Implementation}
+The implementation phase should follow the \hyperref[fig:eMSP-component]{component diagram}. \ac{eMall} should be implemented first since it is able to work with pre existing \ac{CPMS}, while the \ac{CPMS} could be implemented later or at the same time by a different team. The two components are fully independent and if the interface are respected the development of one should no interfere with the other one.\\
+In this section \ac{eMall} and \ac{CPMS} will be analyzed separately following a bottom up strategy.\\
+External components (\ac{API}) are considered already finished and tested, furthermore they will not be discussed in this section.
+\subsubsection{eMall}
+The implementation should be divided in 3 layers to be developed in the following order
+\begin{enumerate}
+    \item Model: The eMallModel should be the first component to be developed being the core of the system. The divide and conquer pattern should be used as much as possible to allow the whole team to work at the same time.
+    \item Middle components: the second wave of development should focus on the: CPMSAPI, AuthenticationComponent, PaymentAPI and MailAPI. This components are independent from each others and should be development at the same time compatibly with the team size.
+    \item Leaf components: finally the last components have to be implemented at the same time compatibly with the team size.
+\end{enumerate}
+Once the logic of the system is completed the apps (for users and \ac{CPO}) should be developed.
+\subsubsection{CPMS}
+similarly to the \ac{eMall} the \ac{CPMS} should be implemented in 3 parts
+\begin{enumerate}
+    \item Model: The CPMSModel should be the first component to be developed being the core of the system. The divide and conquer pattern should be used as much as possible to allow the whole team to work at the same time.
+    \item Middle components: the second wave of development should focus on the: CPMSAuthenticationComponent, CPMSChargingStationApi. This components are independent from each others and should be development at the same time compatibly with the team size.
+    \item Leaf components: finally the last components have to be implemented at the same time compatibly with the team size.
+\end{enumerate}
+Once the logic of the system is completed the website (for \ac{CPO}Maintainers) should be developed.
+\subsection{Integration and Test Plan}
+\subsubsection{eMall}
+
+\subsubsection{CPMS}
 \clearpage
