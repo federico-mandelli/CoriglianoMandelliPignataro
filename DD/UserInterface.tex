@@ -1,4 +1,4 @@
-In this section mockups of the user interfaces are presented; an app for the final Users and a site for the \acp{CPO}\\
+In this section mockups of the user interfaces are presented; an app for the final Users and a site for the \acp{CPO}
 \subsection{User}
 The user is whoever wants to use the service to book and manage charges trough the app. The mockups only represent the idea of the app, the actual design could differ based on the OS on which the app is implemented (different operating systems could provide different gestures/features to enhance the users experience).\\
 It is assumed that the user has already installed the correct version of the app compatible with his/hers operating system.\\
@@ -30,7 +30,7 @@ If the user has inserted the wrong email or password he/she can retry it in this
 \end{figure}
 If the user has not already registered himself/herself he/her can do it here by inserting the right data in the corresponding fields and pressing the submit button.
 An email will be sent to the user with a link within, clicking the link will open the app displaying the \hyperref[fig:ConfirmReg]{confirmation page} completing the registration procedure.\\
-If the user wants to return to the \hyperref[fig:Login]{login page} he can do so by pressing the backward arrow in the top left corner.\\
+If the user wants to return to the \hyperref[fig:Login]{login page} he can do so by pressing the backward arrow in the top left corner.
 \begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio, height=15cm]{Mockup/UserAppInterface/Registration Succesful.png}
@@ -151,7 +151,7 @@ If the user has inserted the wrong email or password he/she can retry it in this
     \label{site:Register}
 \end{figure}
 In this page the \ac{CPO} can register itself to the service by providing the asked information and pressing the submit. An email will be sent to the user with a link within, clicking the link will open the app displaying the \hyperref[site:ConfirmReg]{confirmation page} completing the registration procedure.\\
-If the user wants to return to the \hyperref[fig:Login]{login page} he can do so by pressing the backward arrow in the top left corner.\\
+If the user wants to return to the \hyperref[fig:Login]{login page} he can do so by pressing the backward arrow in the top left corner.
 \begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio, height=15cm]{Mockup/CPOAppInterface/RegisterConfirmation.png}
@@ -170,7 +170,7 @@ In this page the \ac{CPO} can change the revenue, create discounts and add cpms 
 To change the Revenue the user has to insert the new revenue percentage in the field and press the submit revenue button, the revenue will be updated and the page refreshed.\\
 To create new discounts the user hast to insert the percentage of discounts, the time frame of the discount and press the submit discount button, the discount will be updated and the page refreshed.\\
 To add new Cpms the user has to insert the IP to the \ac{CPMS} ( if more than one separated by a comma) and press the submit \ac{API} reference to add button, the \ac{API} reference will be updated and the page refreshed.\\
-To remove a Cpms the user has to insert the IP to the \ac{CPMS} ( if more than one separated by a comma) and press the submit \ac{API} reference to remove button, the \ac{CPMS} will be removed and the page refreshed.\\
+To remove a Cpms the user has to insert the IP to the \ac{CPMS} ( if more than one separated by a comma) and press the submit \ac{API} reference to remove button, the \ac{CPMS} will be removed and the page refreshed.
 
 \subsection{CPOMaintainer}
 This are the interfaces for the maintainers to access their \acp{CPMS}, it is assumed that the maintainer is already connected to the vpn trough a pc and a internet connection.
@@ -213,5 +213,31 @@ The user can return to the \hyperref[cpo:Homepage]{homepage} by pressing the bac
 \end{figure}
 In this section the maintainer can add other maintainer to the station by simply creating the credentials(id and password) and pressing the add maintainer button, adding the new maintainer and loading the \hyperref[cpo:Homepage]{homepage}.\\
 The user can return to the \hyperref[cpo:Homepage]{homepage} by pressing the backward arrow in the top left corner.
-
+\subsection{Scenario UI}
+The following table relate the different sequence diagrams with the corresponding user interfaces
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}{|c||c|c|c|c|c|}
+            \hline
+            Sequence diagrams                                                                                   & Implemented by                                                         \\\hline
+            \hyperref[fig:user-signs-up]{user-signs-up}                                                         & \ref{fig:Register}, \ref{fig:ConfirmReg}                               \\\hline
+            \hyperref[fig:cpo-signs-up]{cpo-signs-up}                                                           & \ref{site:Register}, \ref{site:ConfirmReg}                             \\\hline
+            \hyperref[fig:cpo-adds-cpms]{cpo-adds-cpms}                                                         & \ref{site:Homepage}                                                    \\\hline
+            \hyperref[fig:cpo-removes-cpms]{cpo-removes-cpms}                                                   & \ref{site:Homepage}                                                    \\\hline
+            \hyperref[fig:cpo-sets-revenue-percentage]{cpo-sets-revenue-percentage}                             & \ref{site:Homepage}                                                    \\\hline
+            \hyperref[fig:cpo-sets-speciale-offer]{cpo-sets-speciale-offer}                                     & \ref{site:Homepage}                                                    \\\hline
+            \hyperref[fig:user-executes-authorized-command]{user-executes-authorized-command}                   & \ref{fig:Login}, \ref{fig:FailedLogin}                                 \\\hline
+            \hyperref[fig:user-searches-stations]{user-searches-stations}                                       & \ref{fig:Search}, \ref{fig:Results}.\ref{fig:Filters}                  \\\hline
+            \hyperref[fig:user-books-charge]{user-books-charge}                                                 & \ref{fig:StationDetails}, \ref{pop:Booking},\ref{pop:BookingConfirmed} \\\hline
+            \hyperref[fig:user-pays-charge]{user-pays-charge}                                                   & \ref{fig:myCharges}, \ref{pop:Pay}                                     \\\hline
+            \hyperref[fig:user-cancels-charge]{user-cancels-charge}                                             & \ref{fig:myCharges}, \ref{pop:Delete}                                  \\\hline
+            \hyperref[fig:cpomaintainer-executes-authorized-command]{cpomaintainer-executes-authorized-command} & \ref{cpo:Login}                                                        \\\hline
+            \hyperref[fig:cpomaintainer-adds-cpomaintainer]{cpomaintainer-adds-cpomaintainer}                   & \ref{cpo:Homepage}, \ref{cpo:Maintainer}                               \\\hline
+            \hyperref[fig:cpomaintainer-adds-stations]{cpomaintainer-adds-stations}                             & \ref{cpo:Homepage}, \ref{cpo:Station}                                  \\\hline
+            \hyperref[fig:cpomaintainer-sets-station-strategy]{cpomaintainer-sets-station-strategy}             & \ref{cpo:Homepage}, \ref{cpo:Station}                                  \\\hline
+            \hyperref[fig:cpomaintainer-sets-station-source]{cpomaintainer-sets-station-source}                 & \ref{cpo:Homepage}, \ref{cpo:Station}                                  \\\hline
+        \end{tabular}
+    \end{center}
+    \caption{Linking table among sequences and user interfaces}
+\end{table}
 \clearpage
