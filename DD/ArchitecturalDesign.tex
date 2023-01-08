@@ -90,6 +90,16 @@ The two systems implement different interfaces and represent the \textit{Control
 \paragraph{\textbf{\ac{eMall}}}
 The main components for the \ac{eMall} system are:
 \begin{description}
+    \item [\label{CalendarAPI}CalendarAPI] It is the component responsible for interfacing with a general web calendar in order to access to it and get the user's appointments;
+    \item [\label{VehicleAPI}VehicleAPI] It is the component responsible for interfacing with a general electric vehicle in order to get vehicle infos;
+    \item [\label{SuggestionEngine}SuggestionEngine] It is responsible for retrieving and parsing the data for a charge suggestion. It is the only active component of the \ac{eMall} system;
+    \item [\label{eMallAPI}eMallAPI] It is the component in charge of remapping the client requests to the interface of the \ac{eMall} system;
+    \item [\label{eMallViewComponent}eMallViewComponent] It is the component in charge of handling the view logic and interfacing with the user through the UI;
+\end{description}
+
+\paragraph{\textbf{\ac{eMall}}}
+The main components for the \ac{eMall} system are:
+\begin{description}
     \item [\label{StationsComponent}StationsComponent] It is the component responsible for handling all the stations research requests (like \textit{getNearestStations}, \textit{getCheapestStation}, \textit{getTopKStationsNearby});
     \item [\label{RegistrationComponent}RegistrationComponent] It is the component responsible for handling the registration details along with the parameters checking during the registration phase;
     \item [\label{Timer}Timer] It is the component responsible of handling the registration verification timeout;
@@ -316,7 +326,7 @@ There are some particular design decisions that need to be clarified:
 \subsection{Selected architectural styles and patterns}
 \begin{itemize}
     \item Bridge pattern \cite{ref:bridge-pattern}: It consists in decoupling completely two systems by having two interfaces. In \autoref{fig:bridge-pattern} there is a simplification of the architecture in order to highlight the usage of this pattern.
-          Instead of having a great system with the composition of an \ac{eMSP} and a \ac{CPMS} we exploit their interfaces in order to implement in a decoupled way these two systems. So, the \ac{eMSP} implementation (i.e. \ac{eMall}) will interact with a \ac{CPMS} implementation through his interface.
+    Instead of having a great system with the composition of an \ac{eMSP} and a \ac{CPMS} we exploit their interfaces in order to implement in a decoupled way these two systems. So, the \ac{eMSP} implementation (i.e. \ac{eMall}) will interact with a \ac{CPMS} implementation through his interface. Doing this, after the interfaces have been chosen, the two systems can be implemented independently.
 \end{itemize}
 
 \begin{figure}[!h]
