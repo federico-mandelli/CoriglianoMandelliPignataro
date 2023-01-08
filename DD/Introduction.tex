@@ -12,6 +12,7 @@ The document focuses on the design aspects of the \ac{eMall} and \ac{CPMS} syste
     \item \textbf{\ac{CPMS}}: It is a client-server 2-tier architecture due to the low user base and all in one system. The architectural pattern is the \ac{MVC}.
 \end{itemize}
 
+\clearpage
 \subsection{Definitions, Acronyms, Abbreviations}
 \subsubsection{Acronyms}
 \begin{multicols}{2}[]
@@ -32,18 +33,22 @@ The document focuses on the design aspects of the \ac{eMall} and \ac{CPMS} syste
         \acro{IBAN}{International Bank Account Number}
         \acro{VPN}{Virtual Private Network}
         \acro{PAN}{Personal Area Network}
+        \acro{UI}{User Interface}
+        \acro{DBMS}{Data Base Managerment System}
     \end{acronym}
 \end{multicols}
 \subsection{Reference documents}
-\todo[inline]{delete this section?}
+\begin{itemize}
+    \item \textbf{\ac{RASD}:} \url{https://github.com/federico-mandelli/CoriglianoMandelliPignataro}
+\end{itemize}
 \subsection{Document structure}
 The document is divided in seven main sections:
 \begin{itemize}
     \item \textbf{Introduction}: After a brief purpose section, it illustrates the summary of main architectural choices and collects all the acronyms and definitions present on the document;
-    \item \textbf{Architectural Design}: At first it introduces the major interfaces of system, and then illustrates the collection of components, interfaces and the dynamic usage of them. The document includes also infrastructure details at system level;
-    \item \textbf{User Interface Design}: This section includes UI mockups and explains the relation between them and the previously mentioned interfaces and components;
+    \item \textbf{Architectural Design}: At first it introduces the major interfaces of the system, and then it illustrates the collection of components, interfaces and their dynamic usage. The document includes also infrastructure details at system level;
+    \item \textbf{User Interface Design}: This section includes \ac{UI} mockups and references the relation between them and the previously mentioned interfaces and components;
     \item \textbf{Requirements traceability}: Maps the requirements collected inside the \ac{RASD} and the corresponding design elements;
-    \item \textbf{Implementation, Integration and Test Plan}: Describes the plans to follow to implement, integrate and test the whole system and its sub parts;
+    \item \textbf{Implementation, Integration and Test Plan}: Describes the plans to follow to implement, integrate and test the whole system and its components;
     \item \textbf{Effort Spent}: Summarizes the total hours spent on the document formalization;
     \item \textbf{References}: Summarizes all the reference documents that we used during the description.
 \end{itemize}

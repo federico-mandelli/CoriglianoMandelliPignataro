@@ -1,20 +1,20 @@
 \subsection{Implementation}
-The implementation phase should follow the \hyperref[fig:eMSP-component]{component diagram}. \ac{eMall} and the \ac{CPMS} could be implemented at the same time by different teams. The two components are fully independent and if the interfaces are respected the development of one should not interfere with the other one. This is permitted thanks to the usage of the bridge pattern (see \autoref{pattern:bridge}).\\
+The implementation phase should follow the \hyperref[fig:eMSP-component]{component diagram}. \ac{eMall} and the \ac{CPMS} could be implemented at the same time by different teams. The two components are fully independent and if the interfaces are respected the development of one should not interfere with the other. This is permitted thanks to the usage of the bridge pattern (see \autoref{pattern:bridge}).\\
 In this section \ac{eMall} and \ac{CPMS} will be analyzed separately following a bottom up strategy.\\
 External components (\ac{API}) are considered already finished and tested, furthermore they will not be discussed in this section.
 \subsubsection{eMall}
 The implementation should be divided in 3 layers to be developed in the following order
 \begin{enumerate}
     \item Model: The eMallModel should be the first component to be developed being the core of the system. The divide and conquer pattern should be used as much as possible to allow the whole team to work at the same time.
-    \item Middle components: the second wave of development should focus on the: \ac{CPMS}\ac{API}, AuthenticationComponent, Payment\ac{API} and Mail\ac{API}. This components are independent from each others and should be developed at the same time compatibly with the team size.
+    \item Middle components: the second wave of development should focus on the: \ac{CPMS}\ac{API}, AuthenticationComponent, Payment\ac{API} and Mail\ac{API}. This components are independent from each other and should be developed at the same time compatibly with the team size.
     \item Leaf components: finally the last components can be implemented at the same time compatibly with the team size.
 \end{enumerate}
-Once the logic of the system is completed the apps (eMallClient so the view in \ac{MVC} pattern) (for users and \ac{CPO}) should be developed.
+Once the logic of the system is completed the apps (eMallClient: the view in \ac{MVC} pattern) (for users and \acp{CPO}) should be developed.
 \subsubsection{CPMS}
-similarly to the \ac{eMall} the \ac{CPMS} should be implemented in 3 parts
+Similarly to the \ac{eMall} the \ac{CPMS} should be implemented in 3 parts
 \begin{enumerate}
     \item Model: The CPMSModel should be the first component to be developed being the core of the system. The divide and conquer pattern should be used as much as possible to allow the whole team to work at the same time.
-    \item Middle components: the second wave of development should focus on the: CPMSAuthenticationComponent, CPMSChargingStation\ac{API}. This components are independent from each others and should be development at the same time compatibly with the team size.
+    \item Middle components: the second wave of development should focus on the: CPMSAuthenticationComponent, CPMSChargingStation\ac{API}. This components are independent from each others and should be developed at the same time compatibly with the team size.
     \item Leaf components: finally the last components can be implemented at the same time compatibly with the team size.
 \end{enumerate}
 Once the logic of the system is completed the website (for \ac{CPO}Maintainers) should be developed.
@@ -45,7 +45,7 @@ The single units of the same abstraction level are fully testable independently,
 \begin{figure}[H]
     \centering
     \includegraphics[keepaspectratio]{Testing/emall/mail.png}
-    \caption{Mail\ac{API}}
+    \caption{Mail\ac{API} testing}
 \end{figure}
 \begin{figure}[H]
     \centering
