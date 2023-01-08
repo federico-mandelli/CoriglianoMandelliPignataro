@@ -7,25 +7,24 @@ The first interface shown to the user, if not already done, is the \textit{login
 From the \textit{login} page there is also the possibility to go to the \textit{sign up} page where the fields for inserting the necessary information are shown.
 After logging in, there are multiple tabs in the app, which are:
 \begin{itemize}
-    \item A satellite map of the charging stations near user's position;
     \item A personalizable ranked list based on parameters chosen by the user (distance, price, environmental friendliness\ldots).
     \item A screen for enabling/disabling suggestions from the system and for setting up the connection to the user web calendar.
 \end{itemize}
-By selecting a station (from the ranked list or the satellite map) the specific information about it are shown. The user can select the date and the time slot from the available ones.
+By selecting a station (from the ranked list) the specific information about it are shown. The user can select the date and the time slot from the available ones.
 
 A \ac{CPO} can register to the system with a special form providing Company name, email, password, \ac{IBAN} and \gls{partita IVA}. Once the \ac{CPO} is registered and logged in, he can insert/remove the \ac{API} reference to the interface of a \ac{CPMS}.
+
+The \ac{CPO} can also view the price of his service and set the revenue percentage for a single charge. Finally, the \ac{CPO} can also create some special offers.
 
 \paragraph{\ac{CPMS}}
 The \ac{CPMS} works as a web application; When a \ac{CPO}maintainer logs in he has the possibility to handle all the added stations.\\
 In particular he can view: the system status, the list of charging stations and their policy, the available sockets and the \ac{SoC} of batteries.\\
 The \ac{CPO}maintainers can change the policy of each charging station; in particular they can:
 \begin{itemize}
-    \item Choose a the energy provider from a list of \acp{DSO};
+    \item Choose the energy provider from a list of \acp{DSO};
     \item Choose to use only the energy stored in the batteries and, once discharged, to go into automatic mode;
     \item Choose the automatic mode, that will pick autonomously which \ac{DSO} to use, whether to use batteries and when to recharge them;
 \end{itemize}
-
-The \ac{CPO} can also view the price of his service and set the revenue percentage for a single charge. Finally, the \ac{CPO} can also create some special offers.
 
 \subsubsection{Hardware interfaces}
 \paragraph{\ac{eMSP}}
@@ -39,7 +38,7 @@ In order to use the \ac{CPMS}, the \ac{CPO}maintainer (the only type of user of 
 \paragraph{\ac{eMSP}}
 In order to provide all the functionalities, the \ac{eMSP} should provide the following software interfaces:
 \begin{itemize}
-    \item Register to the \ac{eMSP} as a user providing name, email, password, birthday, payment info;
+    \item Register to the \ac{eMSP} as a user providing name, surname, email, password, birthday, payment info;
     \item Register to the \ac{eMSP} as a \ac{CPO} providing name, email, password, \ac{IBAN} and \gls{partita IVA};
     \item Confirm the registration of a given user;
     \item Login to the \ac{eMSP} providing correct email and password;
@@ -57,7 +56,6 @@ The \ac{CPMS} should provide to the external world interfaces for:
     \item Enable a charge on a charging station, passing the ID (a PIN in order to authorize the charge once the user gets in the station), the station and the time slot;
     \item Get information of a particular charging station (location, price of the charge, parameter of environmental friendliness, type of charges available);
     \item Get the availability state of a particular socket;
-    \item Get the future availability of the sockets managed by the system;
 \end{itemize}
 
 \subsubsection{Communication interfaces}
@@ -262,9 +260,9 @@ An internet connection should also be present in order to make the system reacha
     \begin{center}
         \begin{tabular}{|c||p{10cm}|}
             \hline
-            Actor:            & \ac{CPO}                                                                                         \\
+            Actor:            & \ac{CPO}                                                                                                                        \\
             \hline
-            Entry conditions: & The \ac{CPO} is already logged in the system.                                                    \\
+            Entry conditions: & The \ac{CPO} is already logged in the system.                                                                                   \\
             \hline
             Event flow:       &
             \begin{enumerate}
@@ -300,7 +298,7 @@ An internet connection should also be present in order to make the system reacha
             Event flow:       &
             \begin{enumerate}
                 \item The \ac{CPO} selects the option to remove a \ac{CPMS};
-                \item The \ac{CPO} selects the \ac{API} reference he want's to disconnect;
+                \item The \ac{CPO} selects the \ac{API} reference he wants to disconnect;
                 \item The system checks if it exists;
                 \item The system removes the \ac{CPMS} reference.
             \end{enumerate}
@@ -392,7 +390,7 @@ An internet connection should also be present in order to make the system reacha
             \hline
             Event flow:       &
             \begin{enumerate}
-                \item The user presses the \textit{Map} button;
+                \item The user presses the \textit{Stations} button;
                 \item The user inserts the location and time frame;
                 \item The user presses the \textit{Search} button;
                 \item The system shows a ordered list of k best nearby stations.
