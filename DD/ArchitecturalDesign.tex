@@ -285,8 +285,23 @@ There are some particular design decisions that need to be clarified:
     \item \textbf{Asynchronous messages:} During the inter-system communications (like \ac{eMall} -> \ac{CPMS} or \ac{CPMS} -> ChargingStation) it would be useful to implement asynchronous communications to avoid blocking situations. However in the sequence diagrams there aren't any because a better solution (compromise between having a completely asynchronous communication and having feedback from the interface) is to implement a timeout timer to avoid a complete block. This information is not shown in the sequence diagrams due to its verbosity of notation.
 
 \end{itemize}
+\clearpage
 \subsection{Component interfaces}
-
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Interface/eMallInterface.png}
+        \caption{\ac{eMall} components interface}
+        \label{fig:emall-interface}
+    \end{center}
+\end{figure}
+\begin{figure}[!h]
+    \begin{center}
+        \includegraphics[keepaspectratio, width=16cm]{Interface/CPMSInterface.png}
+        \caption{\ac{CPMS} components interface}
+        \label{fig:emall-interface}
+    \end{center}
+\end{figure}
+\clearpage
 
 \subsection{Selected architectural styles and patterns}
 \begin{itemize}
